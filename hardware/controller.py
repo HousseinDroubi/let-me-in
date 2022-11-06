@@ -62,4 +62,11 @@ def turnOnRed():
 #The below function will turn off the red led      
 def turnOffRed():
     print("Turning off red")
-    GPIO.output(29,GPIO.LOW)    
+    GPIO.output(29,GPIO.LOW)
+
+#The below function will return true if red led is turned on.
+#Otherwise, it will return false 
+def isRedTurnedOn():    
+    if(GPIO.input(29)==1):
+        return True
+    return False    
