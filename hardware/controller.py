@@ -257,4 +257,20 @@ def initiate_IRSensor():
 def isSomethingClose():
     if GPIO.input(8)==0:
         return True
-    return False    
+    return False
+
+#The below function will send a request to the server, in order
+#to get barrier status. So, the response must be 'opened', 'closed'
+#'opened' or 'normal'
+def getBarrierStatus():
+    token = os.getenv('MY_TOKEN')
+    auth = {'Authorization': 'Bearer ' + token}
+    try:
+        r = requests.get(os.getenv('GET_BARRIER_STATUS_URL')
+                     ,headers=auth)
+        if(r.text =="closed" or r.text =="opened" or r.text =="normal"):
+            return r.text
+        return "closed"
+    except:
+        print("Error while getting barrier status")
+        return "closed"
