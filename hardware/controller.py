@@ -232,4 +232,10 @@ def barrierAngle(angle):
               i=i-1 
     
     except KeyboardInterrupt:
-        GPIO.cleanup()    
+        GPIO.cleanup()
+
+#The below function will call barrierAngle function and give it
+#90 degree as an angle        
+def openBarrier():
+    print("Opening Barrier")
+    barrierAngle(90)        
