@@ -13,3 +13,9 @@ GPIO.setmode(GPIO.BOARD)
 #Set warning as false will never give attentions that the actual
 #used pins are used.
 GPIO.setwarnings(False)
+
+#The below function will initiate the 3 leds at pin 29,31 and 37
+def initiate_Leds():
+    GPIO.setup(29,GPIO.OUT)
+    GPIO.setup(31,GPIO.OUT)
+    GPIO.setup(37,GPIO.OUT)
