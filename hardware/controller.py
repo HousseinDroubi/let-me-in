@@ -19,3 +19,8 @@ def initiate_Leds():
     GPIO.setup(29,GPIO.OUT)
     GPIO.setup(31,GPIO.OUT)
     GPIO.setup(37,GPIO.OUT)
+    
+#The below function will turn on the green led    
+def turnOnGreen():
+    print("Turning on green")
+    GPIO.output(37,GPIO.HIGH)    
