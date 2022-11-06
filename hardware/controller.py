@@ -69,4 +69,10 @@ def turnOffRed():
 def isRedTurnedOn():    
     if(GPIO.input(29)==1):
         return True
-    return False    
+    return False
+
+#The below function will turn off the 3 leds
+def turnOffLeds():
+    turnOffRed()
+    turnOffGreen()
+    turnOffYellow()
