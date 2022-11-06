@@ -296,4 +296,18 @@ def takePicture():
     image = Image.open("./car_plate.jpg")
     rotated_image = image.rotate(-90)
     #Save the rotated image by overwriting on the previous one
-    rotated_image = rotated_image.save("car_plate.jpg")    
+    rotated_image = rotated_image.save("car_plate.jpg")
+
+#The below function will send a post request to the server,
+#taking the last captured image as data, in order to get the
+#status of this car plate number    
+def checkCarPlate():
+    token = os.getenv('MY_TOKEN')
+    auth = {'Authorization': 'Bearer ' + token}
+    image = {'image' : open('car_plate.jpg','rb')}
+    try:
+        r = requests.post(os.getenv('CHECK_CAR_PLATE_URL')
+                     ,headers=auth,files=image)
+        return r.text
+    except:
+        return "close"    
