@@ -28,4 +28,11 @@ def turnOnGreen():
 #The below function will turn off the green led    
 def turnOffGreen():
     print("Turning off green")
-    GPIO.output(37,GPIO.LOW)    
+    GPIO.output(37,GPIO.LOW)
+
+#The below function will return true if green led is turned on.
+#Otherwise, it will return false
+def isGreenTurnedOn():    
+    if(GPIO.input(37)==1):
+        return True
+    return False    
