@@ -35,4 +35,9 @@ def turnOffGreen():
 def isGreenTurnedOn():    
     if(GPIO.input(37)==1):
         return True
-    return False    
+    return False
+
+#The below function will turn on the yellow led 
+def turnOnYellow():
+    print("Turning on yellow")
+    GPIO.output(31,GPIO.HIGH)
