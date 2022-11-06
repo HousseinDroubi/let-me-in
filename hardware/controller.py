@@ -76,3 +76,12 @@ def turnOffLeds():
     turnOffRed()
     turnOffGreen()
     turnOffYellow()
+
+#The below function will initiate the stepper motor at pin 11,
+#12 ,13 and 15. These pins are plugged into a motor controller
+#called L298N Motor Driver Module
+def initiate_Barrier():
+    GPIO.setup(11,GPIO.OUT)
+    GPIO.setup(12,GPIO.OUT)
+    GPIO.setup(13,GPIO.OUT)
+    GPIO.setup(15,GPIO.OUT)
