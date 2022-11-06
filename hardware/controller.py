@@ -23,4 +23,9 @@ def initiate_Leds():
 #The below function will turn on the green led    
 def turnOnGreen():
     print("Turning on green")
-    GPIO.output(37,GPIO.HIGH)    
+    GPIO.output(37,GPIO.HIGH)
+  
+#The below function will turn off the green led    
+def turnOffGreen():
+    print("Turning off green")
+    GPIO.output(37,GPIO.LOW)    
