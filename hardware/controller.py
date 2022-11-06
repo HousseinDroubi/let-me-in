@@ -310,4 +310,21 @@ def checkCarPlate():
                      ,headers=auth,files=image)
         return r.text
     except:
-        return "close"    
+        return "close"
+
+#The below function will send a get request to the server,
+#taking the car plate number as data, in order to get the decision    
+#of the admin about this car plate number that's not existed
+#neither in the approved list, nor in the blocked list    
+def getCarDecision(car_plate_number):
+    token = os.getenv('MY_TOKEN')
+    auth = {'Authorization': 'Bearer ' + token}
+    try:
+        r = requests.get(os.getenv('GET_CAR_DECISION_URL')+car_plate_number
+                     ,headers=auth)
+        print("car decision is"+ r.text)
+        if(r.text=="close" or r.text=="open" or r.text=="wait"):
+            return r.text
+        return "close"
+    except:
+        return "close"
