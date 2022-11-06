@@ -58,3 +58,8 @@ def isYellowTurnedOn():
 def turnOnRed():
     print("Turning on red")
     GPIO.output(29,GPIO.HIGH)
+    
+#The below function will turn off the red led      
+def turnOffRed():
+    print("Turning off red")
+    GPIO.output(29,GPIO.LOW)    
