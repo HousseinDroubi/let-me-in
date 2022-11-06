@@ -238,4 +238,10 @@ def barrierAngle(angle):
 #90 degree as an angle        
 def openBarrier():
     print("Opening Barrier")
-    barrierAngle(90)        
+    barrierAngle(90)
+    
+#The below function will call barrierAngle function and give it
+#-90 degree as an angle 
+def closeBarrier():
+    print("Closing Barrier")
+    barrierAngle(-90)
