@@ -10,3 +10,6 @@ fct.initiate_Leds()
 
 #Suppose that the barrier is closed as first step
 is_barrier_closed = True
+
+#Turning off all leds in case there was a led truned on
+fct.turnOffLeds()
