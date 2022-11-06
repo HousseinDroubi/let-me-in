@@ -274,3 +274,26 @@ def getBarrierStatus():
     except:
         print("Error while getting barrier status")
         return "closed"
+
+#The below function will take a picture from Raspberry Pi camera,
+#then rotate it by -90 degree.
+def takePicture():
+    #Initiate PiCamera
+    camera = PiCamera()
+    #Set PiCamera resolution
+    camera.resolution = (1920,1080)
+    #Start preview
+    camera.start_preview()
+    time.sleep(1)
+    #Get an image and save it into the same folder of the file
+    #we are calling takePicture() function
+    camera.capture("car_plate.jpg")
+    #Stop preview
+    camera.stop_preview()
+    #Close camera
+    camera.close()
+    #Rotate image using PIL library
+    image = Image.open("./car_plate.jpg")
+    rotated_image = image.rotate(-90)
+    #Save the rotated image by overwriting on the previous one
+    rotated_image = rotated_image.save("car_plate.jpg")    
