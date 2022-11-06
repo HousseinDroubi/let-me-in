@@ -245,3 +245,8 @@ def openBarrier():
 def closeBarrier():
     print("Closing Barrier")
     barrierAngle(-90)
+
+#The below function will initiate the IRSensor at pin 8 as input,
+#since we need to read from it the digital output ('0' or '1')   
+def initiate_IRSensor():
+    GPIO.setup(8,GPIO.IN)    
