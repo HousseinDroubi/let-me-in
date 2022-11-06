@@ -45,4 +45,11 @@ def turnOnYellow():
 #The below function will turn off the yellow led   
 def turnOffYellow():
     print("Turning off yellow")
-    GPIO.output(31,GPIO.LOW)    
+    GPIO.output(31,GPIO.LOW)
+ 
+#The below function will return true if yellow led is turned on.
+#Otherwise, it will return false 
+def isYellowTurnedOn():    
+    if(GPIO.input(31)==1):
+        return True
+    return False     
