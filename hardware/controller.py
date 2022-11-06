@@ -322,7 +322,6 @@ def getCarDecision(car_plate_number):
     try:
         r = requests.get(os.getenv('GET_CAR_DECISION_URL')+car_plate_number
                      ,headers=auth)
-        print("car decision is"+ r.text)
         if(r.text=="close" or r.text=="open" or r.text=="wait"):
             return r.text
         return "close"
