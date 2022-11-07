@@ -80,4 +80,12 @@ class AuthController extends Controller{
         }
         return $this->respondWithToken($token);
     }
+
+    public function getAdminData(){
+        $admin= [
+            "user"=>auth()->user(),
+            "admin_deitls"=>auth()->user()->user,  
+        ];
+        return response()->json(auth()->user());
+    }
 }
