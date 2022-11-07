@@ -26,6 +26,12 @@ class AuthController extends Controller{
         }
     }
     public function saveImage($profile_url){
-        
+        $users_images_path = public_path()."\\assets\\images\\user\\";
+        date_default_timezone_set('Asia/Beirut');
+        $current_time = date ("Y-m-d H:i:s");
+        $image_decoded =base64_decode($profile_url);
+        $user_image_path = $users_images_path.strtotime($current_time).".png";
+        file_put_contents($user_image_path, $image_decoded);
+        return $user_image_path;
     }
 }
