@@ -55,6 +55,17 @@ class EventController extends Controller{
     }
 
     public function addOrUpdateEvent(Request $request){
+        $validator = Validator::make($request->all(), [
+            'car_plate_number' => 'required|string|min:2|max:7',
+        ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        $user_details = UserDetail::where('status','2')->first();
+        if($user_details){
+            return 'close';
+        }
+
         
     }
 }
