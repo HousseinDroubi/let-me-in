@@ -33,6 +33,7 @@ class AdminDetail extends Authenticatable implements JWTSubject{
         return [];
     }
 
+    // The table admin details belongs to table user which are of type '1'
     public function user(){
         return $this->belongsTo(User::class);
     }
