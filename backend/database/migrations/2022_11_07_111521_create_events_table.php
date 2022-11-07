@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
+            $table->timestamp('arrival_time')->nullable();
+            $table->timestamp('departure_time')->nullable();
             $table->timestamps();
         });
     }
