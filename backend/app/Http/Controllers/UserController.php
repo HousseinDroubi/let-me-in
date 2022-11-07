@@ -185,7 +185,9 @@ class UserController extends Controller{
             "message" => "Error while blocking user"
         ]);
     }
+
     public function getUsers(){
+        // The users that have a status = '0' are the normal users
         $users = User::with('userDetail')->whereRelation('userDetail','status',0)->get();
         return response()->json([
             'message' => 'done',
