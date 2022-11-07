@@ -17,7 +17,7 @@ class Code extends Mailable{
     // code blade.
     public $code,$username;
 
-    public function __construct(){
+    public function __construct($code,$username){
 
         $this->code=$code;
         $this->username=$username;
