@@ -159,6 +159,23 @@ class AuthController extends Controller{
                 "message" => "Already same password"
             ]);
         }
+
+        $admin = AdminDetail::where("id",auth('api')->user()->id)->first();
+        // Check if the password is the same hashed one in the table admin_details
+        if (Hash::check($request->old_password, $admin->password)) { 
+            // If the old password is the same as the one saved into admin_details, then we should save the new password
+            $admin->fill([
+             'password' => Hash::make($request->new_password)
+             ])->save();
+
+            return response()->json([
+                "message" => "Password changed successfully"
+            ]);
+         }
+        //return wrong password if they aren't the same  
+        return response()->json([
+            "message" => "Wrong Password"
+        ]);
     }
     
     public function sendCode(Request $request){
