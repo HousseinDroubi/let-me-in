@@ -13,6 +13,8 @@ class Code extends Mailable{
 
     use Queueable, SerializesModels;
 
+    // In this class, we need 'code' and 'username' in order to pass them to the 
+    // code blade.
     public $code,$username;
 
     public function __construct(){
@@ -23,6 +25,7 @@ class Code extends Mailable{
 
     public function envelope(){
 
+        //Subject of the gmail
         return new Envelope(
             subject: 'Reset Password',
         );
@@ -30,6 +33,7 @@ class Code extends Mailable{
 
     public function content(){
 
+        // The form that must be sent to an email
         return new Content(
             markdown: 'emails.codes',
         );
@@ -43,6 +47,6 @@ class Code extends Mailable{
     public function build(){
 
         return $this->subject('Reset Password')
-        ->markdown('emails.acknowledgements');
+        ->markdown('emails.codes');
     }
 }
