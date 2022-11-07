@@ -57,7 +57,7 @@ class UserController extends Controller{
             'message' => 'User successfully registered',
             'data' => $data
             ], 201);
-        }
+    }
 
     public function updateUserData(Request $request){
         $validator = Validator::make($request->all(), [
@@ -116,5 +116,9 @@ class UserController extends Controller{
         return response()->json([
             "message" => "Error while updating user"
         ]);
+    }
+
+    public function blockUser(Request $request){
+        
     }
 }
