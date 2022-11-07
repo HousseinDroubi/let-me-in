@@ -117,4 +117,8 @@ class EventController extends Controller{
         Mail::to($admin->adminDetail->email)->send(new Acknowledgement($admin->username,$user->created_at->format('Y-m-d H:i:s'),$request->car_plate_number));
         return 'wait';
     }
+
+    public function getCarDecision($car_plate_number){
+        
+    }
 }
