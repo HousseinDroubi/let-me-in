@@ -24,7 +24,30 @@ class AuthController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
+        try {
+            $request->profile_url = $this->saveImage($request->profile_url);
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Error while adding an admin',
+                'err'=> $th->getMessage()
+            ], 400);
+        }
+        $admin = User::create([
+                'username' => $request->username,
+                'profile_url' => $request->profile_url,
+                'user_type' => '1',
+            ]);
+        $admin_details = AdminDetail::create([
+            'user_id'=>$admin->id,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return response()->json([
+            'message' => 'Admin successfully registered'
+        ], 201);
     }
+
     public function saveImage($profile_url){
         // Base path of saving images
         $users_images_path = public_path()."\\assets\\images\\user\\";
