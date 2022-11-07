@@ -40,6 +40,16 @@ class EventController extends Controller{
     }
 
     public function checkCarPlate(Request $request){
-        
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        $info = pathinfo($_FILES['image']['name']);
+        $image = $info['basename'];
+        $image_path = public_path()."/assets/images/car/".$image;
+        move_uploaded_file($_FILES['image']['tmp_name'],$image_path);
+        // TODO: Get the number of plate car number 
     }
 }
