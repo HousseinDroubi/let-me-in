@@ -16,6 +16,7 @@ class UserDetail extends Model{
         'status',
     ];
 
+    // The table user details belongs to table user for users of type '0'
     public function user(){
         return $this->belongsTo(User::class);
     }
