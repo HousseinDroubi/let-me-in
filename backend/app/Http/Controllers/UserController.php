@@ -131,12 +131,15 @@ class UserController extends Controller{
                 'message' => 'User not found'
             ], 201);
         }
-    
+        
+        // Here, in case the status of the user is already '1', so, he/she is already blocked
         if($user->userDetail->status=='1'){
             return response()->json([
                 'message' => 'User already blocked'
             ], 201);
         }
+
+        //Blocking user is by changing the status to '1'
         $user->userDetail->status='1';
         if($user->userDetail->save()){
             return response()->json([
