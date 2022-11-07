@@ -24,6 +24,7 @@ class AuthController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
+
         try {
             $request->profile_url = $this->saveImage($request->profile_url);
             
@@ -33,16 +34,20 @@ class AuthController extends Controller{
                 'err'=> $th->getMessage()
             ], 400);
         }
+
+        // Create user of type '1' since this function is just for admins
         $admin = User::create([
                 'username' => $request->username,
                 'profile_url' => $request->profile_url,
                 'user_type' => '1',
             ]);
+        //Create admin details contains user_id from user table, email and password 
         $admin_details = AdminDetail::create([
             'user_id'=>$admin->id,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
         return response()->json([
             'message' => 'Admin successfully registered'
         ], 201);
