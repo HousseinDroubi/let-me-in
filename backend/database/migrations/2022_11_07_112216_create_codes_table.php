@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('codes', function (Blueprint $table) {
             $table->id();
+            $table->integer('code');
+            $table->string('user_id');
+            $table->integer('verified')->default('0');
             $table->timestamps();
         });
     }
