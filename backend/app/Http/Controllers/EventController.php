@@ -66,6 +66,45 @@ class EventController extends Controller{
             return 'close';
         }
 
-        
+        $user_details = UserDetail::where('car_plate_number',$request->car_plate_number)->first();
+        if($user_details){
+            if($user_details->status=='1')
+                return 'close';
+            else{
+                date_default_timezone_set('Asia/Beirut');
+                $current_time = date ("Y-m-d H:i:s");
+                $event = Event::where('user_id',$user_details->user_id)->whereNull('departure_time')->first();
+                if($event){
+                    $event->departure_time = $current_time;
+                    if($event->save()){
+                        return 'open';
+                    }
+                    return 'close';
+                }
+                Event::create([
+                    'user_id' => $user_details->user_id,
+                    'arrival_time' => $current_time,
+                ]);
+                return 'open';
+            }    
+        }
+
+        $user = User::create([
+            'username' => 'Unkown',
+            'profile_url' => NULL,
+            
+        ]);
+
+        $user_details = UserDetail::create([
+            'user_id'=>$user->id,
+            'car_type' => 'Unkown',
+            'car_plate_number' => $request->car_plate_number,
+            'status' => '2',
+        ]);
+    
+        $admin = User::where('id',1)->first();
+        $admin->adminDetail;
+        Mail::to($admin->adminDetail->email)->send(new Acknowledgement($admin->username,$user->created_at->format('Y-m-d H:i:s'),$request->car_plate_number));
+        return 'wait';
     }
 }
