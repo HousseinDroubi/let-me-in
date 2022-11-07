@@ -23,6 +23,11 @@ class BarrierController extends Controller{
     }
 
     public function changeBarrierStatus(Request $request){
-        
+        $validator = Validator::make($request->all(), [
+            'status' => 'required|integer|min:0|max:2'
+        ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
     }
 }
