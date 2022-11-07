@@ -186,4 +186,8 @@ class AuthController extends Controller{
             "message" => "wrong code"
         ]);
     }
+
+    public function changeForgottenPassword(Request $request){
+        
+    }
 }
