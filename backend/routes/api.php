@@ -11,6 +11,7 @@ Route::group(["prefix"=> "v0.1"], function(){
         Route::post("/edit_user", [UserController::class, "updateUserData"])->name("edit-user");
         Route::post("/block_user", [UserController::class, "blockUser"])->name("block-user");
         Route::post("/unblock_user", [UserController::class, "unblockUser"])->name("unblock-user");
+        Route::get("/users", [UserController::class, "getUsers"])->name("users");
 
     });
     Route::post("/login", [AuthController::class, "login"])->name("login");
