@@ -116,6 +116,32 @@ class AuthController extends Controller{
         }else  if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         } 
+
+        $admin = auth()->user();
+
+        $admin->user->username = ($request->username!='') ? $request->username : $admin->user->username;
+        $admin->email = ($request->email!='') ? $request->email : $admin->email;
+
+        if($request->profile_url){
+            try {
+                unlink($admin->user->profile_url);
+                $admin->user->profile_url = $this->saveImage($request->profile_url);
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'message' => 'Error while updating admin',
+                    'err'=> $th->getMessage()
+                ], 400);
+            }
+        }
+        if($admin->save() &&  $admin->user->save()){
+            return response()->json([
+                "message" => "Admin updated Successfully",
+                "data" => $admin
+            ]);
+        }
+        return response()->json([
+            "message" => "Error while updating admin"
+        ]);
     }
     
     public function sendCode(Request $request){
