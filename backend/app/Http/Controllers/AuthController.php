@@ -103,6 +103,10 @@ class AuthController extends Controller{
         ]);
     }
 
+    public function updateAdminData(Request $request){
+
+    }
+    
     public function sendCode(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|min:5|max:30',
