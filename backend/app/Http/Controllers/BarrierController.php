@@ -9,5 +9,7 @@ use App\Models\BarrierStatus;
 
 class BarrierController extends Controller{
 
-    //
+    public function getBarrierStatus(){
+        
+    }
 }
