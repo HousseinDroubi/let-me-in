@@ -192,5 +192,9 @@ class UserController extends Controller{
             'data' =>$users
         ], 201);
     }
+
+    public function getBlockedUsers(){
+        
+    }
       
 }
