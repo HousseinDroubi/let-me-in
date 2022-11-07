@@ -196,6 +196,7 @@ class UserController extends Controller{
     }
 
     public function getBlockedUsers(){
+        // The users that have a status = '1' are the blocked users
         $users = User::with('userDetail')->whereRelation('userDetail','status',1)->get();
         return response()->json([
             'message' => 'done',
