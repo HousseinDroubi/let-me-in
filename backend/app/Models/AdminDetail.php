@@ -29,7 +29,11 @@ class AdminDetail extends Authenticatable implements JWTSubject{
     }
 
     public function getJWTCustomClaims(){
-        
+
         return [];
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
