@@ -116,9 +116,9 @@ class AuthController extends Controller{
         }else  if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         } 
-
+        // Get the admin
         $admin = auth()->user();
-
+        // Change the admin if he/she is requesting to change the username, email or profile picture
         $admin->user->username = ($request->username!='') ? $request->username : $admin->user->username;
         $admin->email = ($request->email!='') ? $request->email : $admin->email;
 
@@ -133,6 +133,8 @@ class AuthController extends Controller{
                 ], 400);
             }
         }
+
+        // Save the changes in both tables, users and admin_details
         if($admin->save() &&  $admin->user->save()){
             return response()->json([
                 "message" => "Admin updated Successfully",
