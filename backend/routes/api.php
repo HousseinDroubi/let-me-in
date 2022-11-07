@@ -16,6 +16,10 @@ Route::group(["prefix"=> "v0.1"], function(){
         Route::get("/users", [UserController::class, "getUsers"])->name("users");
         Route::get("/blocked_users", [UserController::class, "getBlockedUsers"])->name("blocked-users");
         Route::get("/get_events", [EventController::class, "getEvents"])->name("get-events");
+        Route::post("/change_barrier_status", [BarrierController::class, "changeBarrierStatus"])->name("change-barrier-status");
+
+
+        Route::get("/get_barrier_status", [BarrierController::class, "getBarrierStatus"])->name("get-barrier-status");
 
     });
     Route::post("/login", [AuthController::class, "login"])->name("login");
