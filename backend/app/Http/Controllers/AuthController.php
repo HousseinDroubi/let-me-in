@@ -104,7 +104,18 @@ class AuthController extends Controller{
     }
 
     public function updateAdminData(Request $request){
-
+        $validator = Validator::make($request->all(), [
+            'username' => 'string|min:3|max:20|unique:users',
+            'email' => 'string|email|min:5|max:30|unique:admin_details',
+            'profile_url' => 'string',
+        ]);
+        if(count($request->all()) == 0){
+            return response()->json([
+                'message' => 'At least one field required'
+            ], 400);
+        }else  if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        } 
     }
     
     public function sendCode(Request $request){
