@@ -21,4 +21,8 @@ class BarrierController extends Controller{
         }
         return "normal";
     }
+
+    public function changeBarrierStatus(Request $request){
+        
+    }
 }
