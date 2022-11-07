@@ -59,4 +59,10 @@ class Acknowledgement extends Mailable
     {
         return [];
     }
+
+    public function build()
+    {
+        return $this->subject('Acknowledgement')
+        ->markdown('emails.acknowledgements');
+    }
 }
