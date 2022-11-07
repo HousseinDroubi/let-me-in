@@ -15,4 +15,17 @@ class User extends Model{
         'user_type',
     ];
 
+    public function adminDetail(){
+        return $this->hasOne(AdminDetail::class);
+    }
+    public function userDetail(){
+        return $this->hasOne(UserDetail::class);
+    }
+    public function event(){
+        return $this->hasMany(Event::class);
+    }
+    public function code(){
+        return $this->hasMany(Code::class);
+    }
+    
 }
