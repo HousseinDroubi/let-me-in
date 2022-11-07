@@ -10,4 +10,6 @@ Route::group(["prefix"=> "v0.1"], function(){
     });
     Route::post("/login", [AuthController::class, "login"])->name("login");
     Route::post("/register", [AuthController::class, "register"])->name("register");
+    Route::get("/access_denied", [AuthController::class, "denyAccess"])->name("access-denied");
+
 });
