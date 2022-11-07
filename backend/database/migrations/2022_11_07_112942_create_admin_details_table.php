@@ -10,12 +10,15 @@ return new class extends Migration{
 
         Schema::create('admin_details', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id')->unique();
+            $table->string('email')->unique();
+            $table->string('password');
             $table->timestamps();
         });
     }
 
     public function down(){
-        
+
         Schema::dropIfExists('admin_details');
     }
 };
