@@ -126,5 +126,17 @@ class EventController extends Controller{
         if(!$user_details){
             return 'wrong entry';
         }
+
+        if($user_details->status=='2')
+            return 'wait';
+        else if($user_details->status=='1')
+            return 'close';
+
+        $event = Event::where('user_id',$user_details->user_id)->first();
+        if($event){
+            return redirect()->route('access-denied');
+        }
+        $request = Request::create('/add_update_event', 'POST', ['car_plate_number' => $car_plate_number]);    
+        return $this->addOrUpdateEvent($request);  
     }
 }
