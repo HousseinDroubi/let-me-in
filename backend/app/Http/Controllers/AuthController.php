@@ -157,14 +157,15 @@ class AuthController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-
+        // Here, we are checking if there's an admin with the same email passed to this function
         $admin = AdminDetail::where("email",$request->email)->first();
-
         if(!$admin){
             return response()->json([
                 "message" => "Email not exist."
             ]);
         }
+        
+        // Here, we are checking if the admin's id is 1 or not, since he's the only one who can ask for this route 
         if($admin->user_id!='1'){
             return redirect()->route('access-denied');
         }
@@ -173,6 +174,8 @@ class AuthController extends Controller{
             return redirect()->route('access-denied');
         }
 
+        // In the below syntax, we are checking if the code passed to this function is exisitng in table codes.
+        // But, we've also added verified condition, because the generator may generate two equal codes.
         $code = Code::where('code',$request->code)->where('verified',0)->first();
         if($code){
             return response()->json([
