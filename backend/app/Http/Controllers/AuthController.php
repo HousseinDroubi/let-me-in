@@ -188,6 +188,29 @@ class AuthController extends Controller{
     }
 
     public function changeForgottenPassword(Request $request){
-        
+        $validator = Validator::make($request->all(), [
+            'code' => 'required|digits:6',
+            'email' => 'required|string|email|min:5|max:30',
+            'password' => 'required|string|min:5|max:30',
+        ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $admin = AdminDetail::where("email",$request->email)->first();
+
+        if(!$admin){
+            return response()->json([
+                "message" => "Email not exist."
+            ]);
+        }
+        if($admin->user_id!='1'){
+            return redirect()->route('access-denied');
+        }
+        $code = Code::where('verified',0)->first();
+        if(!$code){
+            return redirect()->route('access-denied');
+        }
+
     }
 }
