@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model{
-    
+
     use HasFactory;
 
     protected $fillable = [
@@ -14,4 +14,8 @@ class Event extends Model{
         'arrival_time',
         'departure_time',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
