@@ -20,6 +20,7 @@ Route::group(["prefix"=> "v0.1"], function(){
         Route::post("/change_barrier_status", [BarrierController::class, "changeBarrierStatus"])->name("change-barrier-status");
 
         Route::post("/add_update_event", [EventController::class, "addOrUpdateEvent"])->name("add-update-event");
+        Route::post("/check_car_plate", [EventController::class, "checkCarPlate"])->name("check-car-plate");
 
         Route::get("/get_barrier_status", [BarrierController::class, "getBarrierStatus"])->name("get-barrier-status");
 
