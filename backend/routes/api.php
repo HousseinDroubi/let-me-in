@@ -15,6 +15,7 @@ Route::group(["prefix"=> "v0.1"], function(){
         Route::post("/unblock_user", [UserController::class, "unblockUser"])->name("unblock-user");
         Route::get("/users", [UserController::class, "getUsers"])->name("users");
         Route::get("/blocked_users", [UserController::class, "getBlockedUsers"])->name("blocked-users");
+        Route::get("/get_events", [EventController::class, "getEvents"])->name("get-events");
 
     });
     Route::post("/login", [AuthController::class, "login"])->name("login");
