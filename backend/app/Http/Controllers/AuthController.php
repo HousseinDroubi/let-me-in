@@ -102,4 +102,8 @@ class AuthController extends Controller{
             'message' => "access_denied"
         ]);
     }
+
+    public function sendCode(Request $request){
+        
+    }
 }
