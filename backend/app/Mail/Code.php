@@ -9,59 +9,40 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Code extends Mailable
-{
+class Code extends Mailable{
+
     use Queueable, SerializesModels;
+
     public $code,$username;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
+
+    public function __construct(){
+
         $this->code=$code;
         $this->username=$username;
     }
 
-    /**
-     * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
-     */
-    public function envelope()
-    {
+    public function envelope(){
+
         return new Envelope(
             subject: 'Reset Password',
         );
     }
 
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
-    public function content()
-    {
+    public function content(){
+
         return new Content(
             markdown: 'emails.codes',
         );
     }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
-    public function attachments()
-    {
+    public function attachments(){
+
         return [];
     }
 
-    public function build()
-    {
+    public function build(){
+
         return $this->subject('Reset Password')
         ->markdown('emails.acknowledgements');
     }
-    
 }
