@@ -29,5 +29,21 @@ class BarrierController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
+
+        $barrier_status = BarrierStatus::get()->first();
+        if($barrier_status->status == $request->status){
+            return response()->json([
+                "message" => "already same status"
+            ]);
+        }
+        $barrier_status->status=$request->status;
+        if($barrier_status->save()){
+            return response()->json([
+                "message" => "barrier status changed"
+            ]);
+        }
+        return response()->json([
+            "message" => "error while changing status"
+        ]);
     }
 }
