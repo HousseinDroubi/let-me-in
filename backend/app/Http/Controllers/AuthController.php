@@ -26,11 +26,20 @@ class AuthController extends Controller{
         }
     }
     public function saveImage($profile_url){
+        // Base path of saving images
         $users_images_path = public_path()."\\assets\\images\\user\\";
+
+        // Get the current date and time
         date_default_timezone_set('Asia/Beirut');
         $current_time = date ("Y-m-d H:i:s");
+
+        // Decode the image
         $image_decoded =base64_decode($profile_url);
+
+        // Give it new unique name
         $user_image_path = $users_images_path.strtotime($current_time).".png";
+
+        // Save it into base path
         file_put_contents($user_image_path, $image_decoded);
         return $user_image_path;
     }
