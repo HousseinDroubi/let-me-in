@@ -1,12 +1,14 @@
 <x-mail::message>
-# Introduction
+# Boss, someone need your acknowledgement.
 
-The body of your message.
+Dear {{$username}},
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+The following car plate is just came at {{$arrival_time}}:
+
+Car plate number : {{$car_plate_number}}.
+
+In case you didn't respond with max 40 secondes, no one can enter or exit the building.
 
 Thanks,<br>
-{{ config('app.name') }}
+
 </x-mail::message>
