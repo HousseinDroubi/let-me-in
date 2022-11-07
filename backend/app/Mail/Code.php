@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 class Code extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $code,$username;
     /**
      * Create a new message instance.
      *
@@ -20,7 +20,8 @@ class Code extends Mailable
      */
     public function __construct()
     {
-        //
+        $this->code=$code;
+        $this->username=$username;
     }
 
     /**
