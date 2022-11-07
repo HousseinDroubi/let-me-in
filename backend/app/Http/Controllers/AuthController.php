@@ -145,6 +145,10 @@ class AuthController extends Controller{
             "message" => "Error while updating admin"
         ]);
     }
+
+    public function changeAdminPassowrd(Request $request){
+        
+    }
     
     public function sendCode(Request $request){
         $validator = Validator::make($request->all(), [
