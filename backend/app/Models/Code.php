@@ -14,5 +14,8 @@ class Code extends Model{
         'user_id',
         'verified',
     ];
-    
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
