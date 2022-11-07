@@ -60,6 +60,28 @@ class UserController extends Controller{
         }
 
         public function updateUserData(Request $request){
-            
+            $validator = Validator::make($request->all(), [
+                'id' => 'required|integer|min:3',
+                'username' => 'string|min:3|max:20|unique:users',
+                'car_type' => 'string|min:3|max:30',
+                'car_plate_number' => 'string|min:2|max:7|unique:user_details',
+                'profile_url' => 'string',
+                'decision'=>'integer|min:0|max:1'
+            ]);
+            if($validator->fails()) {
+                return response()->json($validator->errors(), 400);
+            }
+            else if(count($request->all()) == 1){
+                return response()->json([
+                    'message' => 'At least one field required'
+                ], 400);
+            }
+    
+            $user = User::find($request->id);
+            if(!$user){
+                return response()->json([
+                    'message' => 'User not found'
+                ], 400);
+            }
         }
 }
