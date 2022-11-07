@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Http;
 
 
 class EventController extends Controller{
-    
+    public function getEvents(){
+        
+    }
 }
