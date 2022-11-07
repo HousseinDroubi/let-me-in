@@ -15,6 +15,7 @@ class Code extends Model{
         'verified',
     ];
 
+    // The table code belongs to user table of users of type '1', which is the admin
     public function user(){
         return $this->belongsTo(User::class);
     }
