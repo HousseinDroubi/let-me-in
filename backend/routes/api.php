@@ -10,6 +10,7 @@ Route::group(["prefix"=> "v0.1"], function(){
         Route::post("/add_user", [UserController::class, "addUser"])->name("add-user");
         Route::post("/edit_user", [UserController::class, "updateUserData"])->name("edit-user");
         Route::post("/block_user", [UserController::class, "blockUser"])->name("block-user");
+        Route::post("/unblock_user", [UserController::class, "unblockUser"])->name("unblock-user");
 
     });
     Route::post("/login", [AuthController::class, "login"])->name("login");
