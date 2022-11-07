@@ -83,5 +83,33 @@ class UserController extends Controller{
                     'message' => 'User not found'
                 ], 400);
             }
+
+            if($request->decision)
+            $user->status = $request->decision;
+        
+            $user->username = ($request->username!='') ? $request->username : $user->username;
+            $user->userDetail->car_type = ($request->car_type!='') ? $request->car_type : $user->userDetail->car_type;
+            $user->userDetail->car_plate_number = ($request->car_plate_number!='') ? $request->car_plate_number : $user->userDetail->car_plate_number;
+
+            if($request->profile_url){
+                try {
+                    unlink($user->profile_url);
+                    $user->profile_url = (new AuthController)->saveImage($request->profile_url);
+                } catch (\Throwable $th) {
+                    return response()->json([
+                        'message' => 'Error while updating user',
+                        'err'=> $th->getMessage()
+                    ], 400);
+                }
+            }
+            if($user->save() && $user->userDetail->save()){
+                return response()->json([
+                    "message" => "user updated Successfully",
+                    "data" => $user
+                ]);
+            }
+            return response()->json([
+                "message" => "Error while updating user"
+            ]);
         }
 }
