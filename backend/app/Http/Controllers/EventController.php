@@ -126,16 +126,21 @@ class EventController extends Controller{
         if(!$user_details){
             return 'wrong entry';
         }
-
+        // Here, if we got status = '2', that means the admin didn't confirm the 'waiting user' yet
         if($user_details->status=='2')
             return 'wait';
+        // Here, if we got status = '1', that means the admin has blocked 'waiting user'     
         else if($user_details->status=='1')
             return 'close';
 
+        //In case the status was '0' and there's an event made by this user, that means we are asking for
+        //someone who is already user
         $event = Event::where('user_id',$user_details->user_id)->first();
         if($event){
             return redirect()->route('access-denied');
         }
+        // In case the was no event made by this user before, that means we should redirect this function to another
+        // route which is addOrUpdateEvent in order to insert a new event since the barrier will 'open'
         $request = Request::create('/add_update_event', 'POST', ['car_plate_number' => $car_plate_number]);    
         return $this->addOrUpdateEvent($request);  
     }
