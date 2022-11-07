@@ -12,7 +12,7 @@ class BarrierController extends Controller{
         $barrier_status = BarrierStatus::get()->first();
         // In case the barrier status from barrier_statuses table (first record) was '0'or '1', the barrier in the 
         // Hardware part will be respectively 'closed' or 'opened' until further notice from the admin. Otherwise, the
-        // response will be 'normal' which makes the Raspberry Pi start continue the main  required functions
+        // response will be 'normal' which makes the Raspberry Pi start continue the main required functions
         if($barrier_status->status=="0"){
             return "closed";
         }else if($barrier_status->status=="1"){
@@ -30,8 +30,8 @@ class BarrierController extends Controller{
         }
 
         $barrier_status = BarrierStatus::get()->first();
-        // Here, we are checking if the barrier status is the same as the one send by admin, and in case they are
-        // the same, we should return that the status is already the same
+        // Here, we are checking if the barrier status is the same as the one sent by admin, and in case they are
+        // the same, we should return 'already same status'
         if($barrier_status->status == $request->status){
             return response()->json([
                 "message" => "already same status"

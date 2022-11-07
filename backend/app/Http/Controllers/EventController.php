@@ -19,7 +19,7 @@ class EventController extends Controller{
 
     public function getEvents(){
         // In this function, we are getting the non duplicates rows, and then catch any row that has the arrival time
-        // equal to this non duplicate row. Hence, we might have in one day many events that happened
+        // equal to the time of arrival time of this non duplicate row. Hence, we might have in one day many events that happened
         $dates = Event::selectRaw('date(arrival_time) as date')->groupBy('date')->get();
         $all_events =[];
         foreach($dates as $date){
@@ -63,7 +63,7 @@ class EventController extends Controller{
         }
 
         // Here, we are checking if someone is already waiting, so, we should return 'close' in order to get the 
-        // admin's acknowledgement about the 'waiting user'
+        // admin's acknowledgement about the last 'waiting user'
         $user_details = UserDetail::where('status','2')->first();
         if($user_details){
             return 'close';
@@ -129,7 +129,7 @@ class EventController extends Controller{
         // Here, if we got status = '2', that means the admin didn't confirm the 'waiting user' yet
         if($user_details->status=='2')
             return 'wait';
-        // Here, if we got status = '1', that means the admin has blocked 'waiting user'     
+        // Here, if we got status = '1', that means the admin has blocked the 'waiting user'     
         else if($user_details->status=='1')
             return 'close';
 

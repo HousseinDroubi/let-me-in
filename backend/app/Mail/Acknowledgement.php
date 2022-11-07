@@ -12,8 +12,8 @@ use Illuminate\Queue\SerializesModels;
 class Acknowledgement extends Mailable
 {
     use Queueable, SerializesModels;
-    // In this class, we need 'arrival_time' and 'car_plate_number' and 
-    // in order to pass them to the code blade.
+    // In this class, we need 'username', 'arrival_time' and 'car_plate_number' 
+    // in order to pass them to the acknowledgement blade.
     public $username,$arrival_time,$car_plate_number;
 
     public function __construct($username,$arrival_time,$car_plate_number){
