@@ -6,7 +6,6 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Models\BarrierStatus;
 
-
 class BarrierController extends Controller{
 
     public function getBarrierStatus(){
