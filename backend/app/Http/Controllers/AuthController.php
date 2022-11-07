@@ -173,5 +173,14 @@ class AuthController extends Controller{
             return redirect()->route('access-denied');
         }
 
+        $code = Code::where('code',$request->code)->where('verified',0)->first();
+        if($code){
+            return response()->json([
+                "message" => "correct code"
+            ]);
+        }
+        return response()->json([
+            "message" => "wrong code"
+        ]);
     }
 }
