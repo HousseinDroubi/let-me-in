@@ -194,7 +194,11 @@ class UserController extends Controller{
     }
 
     public function getBlockedUsers(){
-        
+        $users = User::with('userDetail')->whereRelation('userDetail','status',1)->get();
+        return response()->json([
+            'message' => 'done',
+            'data' =>$users
+        ], 201);
     }
       
 }
