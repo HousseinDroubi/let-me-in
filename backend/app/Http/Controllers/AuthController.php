@@ -148,4 +148,8 @@ class AuthController extends Controller{
             "data" => "Code sent"
         ]);
     }
+
+    public function verifyCode(Request $request){
+        
+    }
 }
