@@ -147,7 +147,18 @@ class AuthController extends Controller{
     }
 
     public function changeAdminPassowrd(Request $request){
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required|string|min:5|max:30',
+            'new_password' => 'required|string|min:5|max:30',
+        ]);
         
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }else if($request->old_password==$request->new_password){
+            return response()->json([
+                "message" => "Already same password"
+            ]);
+        }
     }
     
     public function sendCode(Request $request){
