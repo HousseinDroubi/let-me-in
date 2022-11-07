@@ -31,11 +31,14 @@ class BarrierController extends Controller{
         }
 
         $barrier_status = BarrierStatus::get()->first();
+        // Here, we are checking if the barrier status is the same as the one send by admin, and in case they are
+        // the same, we should return that the status is already the same
         if($barrier_status->status == $request->status){
             return response()->json([
                 "message" => "already same status"
             ]);
         }
+        
         $barrier_status->status=$request->status;
         if($barrier_status->save()){
             return response()->json([
