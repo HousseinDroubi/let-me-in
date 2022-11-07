@@ -71,4 +71,13 @@ class AuthController extends Controller{
         file_put_contents($user_image_path, $image_decoded);
         return $user_image_path;
     }
+
+    public function login(Request $request){
+        auth()->shouldUse('api');
+        $credentials = $request->only('email','password');
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        return $this->respondWithToken($token);
+    }
 }
