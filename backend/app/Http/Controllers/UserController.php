@@ -185,5 +185,8 @@ class UserController extends Controller{
             "message" => "Error while blocking user"
         ]);
     }
+    public function getUsers(){
+        
+    }
       
 }
