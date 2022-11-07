@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('barrier_statuses', function (Blueprint $table) {
             $table->id();
+            $table->integer('status')->default('2');
             $table->timestamps();
         });
     }
