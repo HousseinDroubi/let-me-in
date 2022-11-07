@@ -58,4 +58,8 @@ class UserController extends Controller{
             'data' => $data
             ], 201);
         }
+
+        public function updateUserData(Request $request){
+            
+        }
 }
