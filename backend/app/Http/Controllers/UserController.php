@@ -34,5 +34,28 @@ class UserController extends Controller{
                 ], 400);
             }
         }
-    }
+
+        // Create new user
+        $user = User::create([
+            'username' => $request->username,
+            'profile_url' => $request->profile_url,
+        ]);
+
+         // Continue creating user details in user_details table
+        $user_details = UserDetail::create([
+            'user_id' => $user->id,
+            'car_type' => $request->car_type,
+            'car_plate_number' => $request->car_plate_number,
+        ]);
+
+        $data = [    
+            "user"=>$user,
+            "user_details"=>$user_details
+        ];
+
+        return response()->json([
+            'message' => 'User successfully registered',
+            'data' => $data
+            ], 201);
+        }
 }
