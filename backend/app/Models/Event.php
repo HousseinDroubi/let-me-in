@@ -15,6 +15,7 @@ class Event extends Model{
         'departure_time',
     ];
 
+    // The table event belongs to user table for users of type '0', which are the users (not admins)
     public function user(){
         return $this->belongsTo(User::class);
     }
