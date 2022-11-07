@@ -25,4 +25,7 @@ class AuthController extends Controller{
             return response()->json($validator->errors(), 400);
         }
     }
+    public function saveImage($profile_url){
+        
+    }
 }
