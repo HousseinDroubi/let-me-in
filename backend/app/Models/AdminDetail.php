@@ -9,7 +9,18 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class AdminDetail extends Authenticatable implements JWTSubject
-{
+class AdminDetail extends Authenticatable implements JWTSubject{
+
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $fillable = [
+        'user_id',
+        'email',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
 }
