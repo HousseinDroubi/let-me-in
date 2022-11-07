@@ -46,6 +46,7 @@ class EventController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
+        
         $info = pathinfo($_FILES['image']['name']);
         $image = $info['basename'];
         $image_path = public_path()."/assets/images/car/".$image;
