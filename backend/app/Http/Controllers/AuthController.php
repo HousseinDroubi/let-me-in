@@ -104,6 +104,22 @@ class AuthController extends Controller{
     }
 
     public function sendCode(Request $request){
-        
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|min:5|max:30',
+        ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $admin = AdminDetail::where("email",$request->email)->first();
+
+        if(!$admin){
+            return response()->json([
+                "message" => "Email not exist."
+            ]);
+        }
+        else if($admin->user_id!='1'){
+            return redirect()->route('access-denied');
+        }
     }
 }
