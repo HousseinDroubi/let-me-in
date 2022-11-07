@@ -11,7 +11,9 @@ use App\Http\Controllers\AuthController;
 
 
 
-class UserController extends Controller
-{
-    //
+class UserController extends Controller{
+
+    public function addUser(Request $request){
+        
+    }
 }
