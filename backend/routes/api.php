@@ -8,6 +8,7 @@ Route::group(["prefix"=> "v0.1"], function(){
     Route::group(["middleware" => "auth:api"], function(){
         Route::get("/get_admin_data", [AuthController::class, "getAdminData"])->name("get-admin-data");
         Route::post("/add_user", [UserController::class, "addUser"])->name("add-user");
+        Route::post("/edit_user", [UserController::class, "updateUserData"])->name("edit-user");
 
     });
     Route::post("/login", [AuthController::class, "login"])->name("login");
