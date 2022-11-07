@@ -110,33 +110,38 @@ class AuthController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-
+        // Here, we are checking if there's an admin with the same email passed to this function
         $admin = AdminDetail::where("email",$request->email)->first();
-
         if(!$admin){
             return response()->json([
                 "message" => "Email not exist."
             ]);
         }
+        // Here, we are checking if the admin's id is 1 or not, since he's the only one who can ask for this route 
         else if($admin->user_id!='1'){
             return redirect()->route('access-denied');
         }
 
+        // In the below syntax, we are checking if there's a code existed before and not verified yet.
         $code = Code::where("user_id",$admin->user_id)->where('verified','0')->first();
-
+        // In case we got the code, no need to add new row to the codes table
         if($code){
+            // Send the email to the admin
             Mail::to($request->email)->send(new MailCode($code->code,$admin->user->username));
             return response()->json([
                 "message" => "done",
                 "data" => "Code re-sent"
             ]);
         }
+        // In case we didn't get the code, we have to initiate new code and send it to user, in addition, to add
+        // this code to the codes table
         $randome_code = random_int(100000, 999999);
 
         $code = Code::create([
             'code' => $randome_code,
             'user_id' => $admin->user_id
         ]);
+        // Send the email
         Mail::to($request->email)->send(new MailCode($randome_code,$admin->user->username));
         return response()->json([
             "message" => "done",
