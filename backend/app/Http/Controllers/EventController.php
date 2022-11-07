@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Http;
 class EventController extends Controller{
 
     public function getEvents(){
+        // In this function, we are getting the non duplicates rows, and then catch any row that has the arrival time
+        // equal to this non duplicate row. Hence, we might have in one day many events that happened
         $dates = Event::selectRaw('date(arrival_time) as date')->groupBy('date')->get();
         $all_events =[];
         foreach($dates as $date){
