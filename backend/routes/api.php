@@ -21,6 +21,7 @@ Route::group(["prefix"=> "v0.1"], function(){
 
         Route::post("/add_update_event", [EventController::class, "addOrUpdateEvent"])->name("add-update-event");
         Route::post("/check_car_plate", [EventController::class, "checkCarPlate"])->name("check-car-plate");
+        Route::get("/get_car_decision/{car_plate_number}", [EventController::class, "getCarDecision"])->name("get-car-decision");
 
         Route::get("/get_barrier_status", [BarrierController::class, "getBarrierStatus"])->name("get-barrier-status");
 
