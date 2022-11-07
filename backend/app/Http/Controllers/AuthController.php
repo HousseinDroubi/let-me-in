@@ -12,7 +12,9 @@ use App\Mail\Code as MailCode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
-class AuthController extends Controller
-{
-    //
+class AuthController extends Controller{
+
+    public function register(Request $request){
+        
+    }
 }
