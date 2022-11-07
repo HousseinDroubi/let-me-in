@@ -71,12 +71,14 @@ class UserController extends Controller{
             if($validator->fails()) {
                 return response()->json($validator->errors(), 400);
             }
+            // Since the id is required. Hence, if the count of the fields of request is 1, that means nothing
+            // has been sent with the id
             else if(count($request->all()) == 1){
                 return response()->json([
                     'message' => 'At least one field required'
                 ], 400);
             }
-    
+            // Get the user in order to update data
             $user = User::find($request->id);
             if(!$user){
                 return response()->json([
@@ -84,6 +86,9 @@ class UserController extends Controller{
                 ], 400);
             }
 
+            // The decision here is for the car plate that's neither in the approved list, nor in the blocked list.
+            // Hence, in case this user has been approved or blocked from admin, the decision must be '0' or '1'
+            // Otherwise, the admin will be updating a user from users page
             if($request->decision)
             $user->status = $request->decision;
         
