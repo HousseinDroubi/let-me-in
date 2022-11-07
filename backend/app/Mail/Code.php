@@ -32,7 +32,7 @@ class Code extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Code',
+            subject: 'Reset Password',
         );
     }
 
@@ -57,4 +57,11 @@ class Code extends Mailable
     {
         return [];
     }
+
+    public function build()
+    {
+        return $this->subject('Reset Password')
+        ->markdown('emails.acknowledgements');
+    }
+    
 }
