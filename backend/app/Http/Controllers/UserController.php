@@ -165,6 +165,22 @@ class UserController extends Controller{
                 'message' => 'User not found'
             ], 201);
         }
+
+        if($user->userDetail->status=='0'){
+            return response()->json([
+                'message' => 'User already unblocked'
+            ], 201);
+        }
+        $user->userDetail->status='0';
+        if($user->userDetail->save()){
+            return response()->json([
+                "message" => "user unblocked successfully",
+                "data" => $user
+            ]);
+        }
+        return response()->json([
+            "message" => "Error while blocking user"
+        ]);
     }
       
 }
