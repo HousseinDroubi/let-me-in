@@ -166,11 +166,14 @@ class UserController extends Controller{
             ], 201);
         }
 
+        // Here, in case the status of the user is already '0', so, he/she is already unblocked
         if($user->userDetail->status=='0'){
             return response()->json([
                 'message' => 'User already unblocked'
             ], 201);
         }
+
+        //Unblocking user is by changing the status to '1'
         $user->userDetail->status='0';
         if($user->userDetail->save()){
             return response()->json([
