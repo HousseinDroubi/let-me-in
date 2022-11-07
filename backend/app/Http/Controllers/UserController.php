@@ -153,7 +153,18 @@ class UserController extends Controller{
     }
 
     public function unblockUser(Request $request){
-        
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer|min:3'
+        ]);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        $user = User::find($request->id);
+        if(!$user){
+            return response()->json([
+                'message' => 'User not found'
+            ], 201);
+        }
     }
       
 }
