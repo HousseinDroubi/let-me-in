@@ -121,5 +121,26 @@ class AuthController extends Controller{
         else if($admin->user_id!='1'){
             return redirect()->route('access-denied');
         }
+
+        $code = Code::where("user_id",$admin->user_id)->where('verified','0')->first();
+
+        if($code){
+            Mail::to($request->email)->send(new MailCode($code->code,$admin->user->username));
+            return response()->json([
+                "message" => "done",
+                "data" => "Code re-sent"
+            ]);
+        }
+        $randome_code = random_int(100000, 999999);
+
+        $code = Code::create([
+            'code' => $randome_code,
+            'user_id' => $admin->user_id
+        ]);
+        Mail::to($request->email)->send(new MailCode($randome_code,$admin->user->username));
+        return response()->json([
+            "message" => "done",
+            "data" => "Code sent"
+        ]);
     }
 }
