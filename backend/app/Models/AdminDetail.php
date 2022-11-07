@@ -23,4 +23,13 @@ class AdminDetail extends Authenticatable implements JWTSubject{
         'password',
     ];
 
+    public function getJWTIdentifier(){
+
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        
+        return [];
+    }
 }
