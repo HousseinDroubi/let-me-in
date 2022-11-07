@@ -13,14 +13,17 @@ class Acknowledgement extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $username,$arrival_time,$car_plate_number;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($username,$arrival_time,$car_plate_number)
     {
-        //
+        $this->username = $username;
+        $this->arrival_time = $arrival_time;
+        $this->car_plate_number = $car_plate_number;
     }
 
     /**
