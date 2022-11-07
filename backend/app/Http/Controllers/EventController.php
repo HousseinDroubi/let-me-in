@@ -53,4 +53,8 @@ class EventController extends Controller{
         move_uploaded_file($_FILES['image']['tmp_name'],$image_path);
         // TODO: Get the number of plate car number 
     }
+
+    public function addOrUpdateEvent(Request $request){
+        
+    }
 }
