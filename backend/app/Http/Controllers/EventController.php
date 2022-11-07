@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
 
-
 class EventController extends Controller{
 
     public function getEvents(){
@@ -38,5 +37,9 @@ class EventController extends Controller{
             "status" => "done",
             "data" => $all_events
         ]);
+    }
+
+    public function checkCarPlate(Request $request){
+        
     }
 }
