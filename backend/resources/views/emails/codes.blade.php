@@ -1,12 +1,12 @@
 <x-mail::message>
-# Introduction
+# Reset Password
 
-The body of your message.
+Dear {{$username}},
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+Your code is {{$code}}.
+
+Please do not share this code with anyone.
 
 Thanks,<br>
-{{ config('app.name') }}
+
 </x-mail::message>
