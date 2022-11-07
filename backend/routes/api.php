@@ -19,6 +19,7 @@ Route::group(["prefix"=> "v0.1"], function(){
         Route::get("/get_events", [EventController::class, "getEvents"])->name("get-events");
         Route::post("/change_barrier_status", [BarrierController::class, "changeBarrierStatus"])->name("change-barrier-status");
 
+        Route::post("/add_update_event", [EventController::class, "addOrUpdateEvent"])->name("add-update-event");
 
         Route::get("/get_barrier_status", [BarrierController::class, "getBarrierStatus"])->name("get-barrier-status");
 
