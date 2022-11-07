@@ -61,19 +61,25 @@ class EventController extends Controller{
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
+
+        // Here, we are checking if someone is already waiting, so, we should return 'close' in order to get the 
+        // admin's acknowledgement about the 'waiting user'
         $user_details = UserDetail::where('status','2')->first();
         if($user_details){
             return 'close';
         }
-
+        
         $user_details = UserDetail::where('car_plate_number',$request->car_plate_number)->first();
         if($user_details){
+            // In case the user status was '1', which means the user is blocked and cannot enter.
             if($user_details->status=='1')
                 return 'close';
             else{
+                // Otherwise, we should insert a new row into events table
                 date_default_timezone_set('Asia/Beirut');
                 $current_time = date ("Y-m-d H:i:s");
                 $event = Event::where('user_id',$user_details->user_id)->whereNull('departure_time')->first();
+                // In case the event is existed before, that means the car was existing in the building before
                 if($event){
                     $event->departure_time = $current_time;
                     if($event->save()){
@@ -81,6 +87,7 @@ class EventController extends Controller{
                     }
                     return 'close';
                 }
+                // In case the above event wasn't exist, we should insert a new event
                 Event::create([
                     'user_id' => $user_details->user_id,
                     'arrival_time' => $current_time,
@@ -88,7 +95,8 @@ class EventController extends Controller{
                 return 'open';
             }    
         }
-
+        // In this case, this user wasn't existed in our system. Hence, we should add him/her to the system with status = '2'
+        // which means 'waiting user', in order to get admin's acknowledgement later on
         $user = User::create([
             'username' => 'Unkown',
             'profile_url' => NULL,
@@ -102,8 +110,10 @@ class EventController extends Controller{
             'status' => '2',
         ]);
     
+        // Get the username of the admin
         $admin = User::where('id',1)->first();
         $admin->adminDetail;
+        // Send an email to the admin taking the new car plate number and the date and time this user came at
         Mail::to($admin->adminDetail->email)->send(new Acknowledgement($admin->username,$user->created_at->format('Y-m-d H:i:s'),$request->car_plate_number));
         return 'wait';
     }
