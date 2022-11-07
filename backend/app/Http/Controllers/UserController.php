@@ -186,7 +186,11 @@ class UserController extends Controller{
         ]);
     }
     public function getUsers(){
-        
+        $users = User::with('userDetail')->whereRelation('userDetail','status',0)->get();
+        return response()->json([
+            'message' => 'done',
+            'data' =>$users
+        ], 201);
     }
       
 }
