@@ -131,5 +131,22 @@ class UserController extends Controller{
                 'message' => 'User not found'
             ], 201);
         }
+    
+        if($user->userDetail->status=='1'){
+            return response()->json([
+                'message' => 'User already blocked'
+            ], 201);
+        }
+        $user->userDetail->status='1';
+        if($user->userDetail->save()){
+            return response()->json([
+                "message" => "user blocked successfully",
+                "data" => $user
+            ]);
+        }
+        return response()->json([
+            "message" => "Error while blocking user"
+        ]);
     }
+      
 }
