@@ -119,6 +119,12 @@ class EventController extends Controller{
     }
 
     public function getCarDecision($car_plate_number){
-        
+        if(strlen($car_plate_number)<2 || strlen($car_plate_number)>8){
+            return 'wrong entry';
+        }
+        $user_details = UserDetail::where('car_plate_number',$car_plate_number)->first();
+        if(!$user_details){
+            return 'wrong entry';
+        }
     }
 }
