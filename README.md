@@ -4,7 +4,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-**[PROJECT PHILOSOPHY](https://github.com/HousseinDroubi/let-me-in#project-philosophy) • [WIREFRAMES](https://github.com/HousseinDroubi/let-me-in#wireframes) • [TECH STACK](https://github.com/HousseinDroubi/let-me-in#tech-stack) • [IMPLEMENTATION](https://github.com/HousseinDroubi/let-me-in#impplementation) • [HOW TO RUN?](https://github.com/HousseinDroubi/let-me-in#-how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/HousseinDroubi/let-me-in#project-philosophy) • [WIREFRAMES](https://github.com/HousseinDroubi/let-me-in#wireframes) • [TECH STACK](https://github.com/HousseinDroubi/let-me-in#tech-stack) • [IMPLEMENTATION](https://github.com/HousseinDroubi/let-me-in#implementation) • [HOW TO RUN?](https://github.com/HousseinDroubi/let-me-in#how-to-run)**
 
 </div>
 
@@ -62,3 +62,36 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 - [Python](https://www.python.org/) is the programming language used for the Pi. Python is an interpreted, object-oriented, high-level programming language with dynamic semantics.
 
 <br><br>
+
+<img src="./readme/title6.svg" id = "how-to-run"/>
+
+
+> This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* Download and Install [XAMPP](https://www.apachefriends.org/download.html)
+* Download and Install [composer](https://getcomposer.org/Composer-Setup.exe)
+* npm
+```sh
+npm install npm@latest -g
+```
+* For the hardware part:
+    - Raspberry Pi 3 model B+
+    - PiCamera
+    - Stepper motor
+    - L298N Motor Driver Module
+    - IR Sensor
+    - Power Supply DC 12V 1A
+    - 3 resistors 330 ohm
+    - Red led
+    - Green led
+    - Yellow led
+    - Breadboard
+    - Jumper wires
+* On the Raspberry Pi, open the terminal:
+```sh
+pip3 install python-dotenv
+```
