@@ -58,7 +58,7 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 - This project uses the [Laravel Framework](https://laravel.com/). Laravel is a web application framework with expressive, elegant syntax.
 - For the Database, MySQL was used.
 - Let me in also uses the [React](https://reactjs.org/) library for the front-end. React makes it painless to create interactive UIs, is component-based and is reusable.
-- For the hardware side, [Raspberry Pi](https://www.raspberrypi.org/) and [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/) as a specific type. Raspberry Pi is a single board computer, which provides a set of GPIO (General Purpose Input/Ouput) pins, so, it allows you to control one or many electronic components for physical computing and explore the Internet of Things (IoT).
+- For the hardware side, this project uses the [Raspberry Pi](https://www.raspberrypi.org/) and [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/) as a specific type. Raspberry Pi is a single board computer, which provides a set of GPIO (General Purpose Input/Ouput) pins, so, it allows you to control one or many electronic components for physical computing and explore the Internet of Things (IoT).
 - [Python](https://www.python.org/) is the programming language used for the Pi. Python is an interpreted, object-oriented, high-level programming language with dynamic semantics.
 
 <br><br>
