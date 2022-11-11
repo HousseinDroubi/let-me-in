@@ -15,4 +15,4 @@
 
 > Let me in system will open the barrier upon the approved list of license car plates the admin choose, just by taking a picture for the car plate number through the Pi camera. 
 >
-> In addition, the admin has the ability to add, edit and block users. Also, he can open/close the barrier permanently or until another decision.
+> In addition, the admin has the ability to add, edit and block users. Also, he can open/close the barrier permanently or until further notice.
