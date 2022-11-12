@@ -95,3 +95,90 @@ npm install npm@latest -g
 ```sh
 pip3 install python-dotenv
 ```
+### Installation
+
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+
+Strting with the backend:
+1. Clone the repo:
+```sh
+git clone https://github.com/HousseinDroubi/let-me-in
+```
+2. Open your XAMPP control panel and start Apache and MySQL
+
+3. Go to backend 
+```sh
+cd backend
+```
+4. Rename the .env.example file to .env and specify your database name
+
+5. Turn on 2-Step Verification on your email
+```sh
+manage your google account->security->turn on 2-Step Verification
+```
+6. At the same page, create App passwords
+```sh
+manage your google account->security->App passwords
+```
+7. Copy the app password, and go back to .env file and fill the following:
+```sh
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME='Your email'
+MAIL_PASSWORD='The password you just copied'
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="Your email"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+8. Migrate the database schema
+```sh
+   php artisan migrate
+```
+9. Generate a new JWT secret key:
+```sh
+php artisan jwt:secret
+```
+10. Install the dependencies
+```sh
+   composer install
+```
+11. Open the cmd and copy the IPv4
+```sh
+ipconfig
+```
+12. Go back and launch the server
+```sh
+php artisan serve --host your IPv4 --port 8000
+```
+13. Using [Postman](https://www.postman.com/downloads/):
+
+- Create an account for the admin and another one for the Raspberry Pi using 'register' route
+- Create one row into the table barrier_statuses 
+- Login for the Raspberry Pi (second email you created for it) using 'login' route, and copy the 'access_token' 
+
+14. Now go to the Raspberry Pi, and clone the repo (same step #1)
+
+15. Rename the .env.example file to .env and past the 'access_token' from postman into MY_TOKEN 
+
+16. Remove 'your IPv4' and replace the IPv4 of your access point (same as step #11). But, be carefull, the Raspberry Pi and your pc must be connected to the same access point
+
+17. Now, we have to connect the circuit as below:
+![circuit](/readme/circuit/let-me-in-circuit.png)
+
+18. Now to get the front-end get running, go into the front-end folder in a new terminal
+```sh
+   cd frontend
+```
+19. Install the dependencies
+```sh 
+npm install
+```
+20. Rename .env.example to .env.local
+
+21. From .env.local, remove your IPv4 and put your own IPv4.
+
+22. Start the application
+```sh
+npm start
+```
