@@ -203,7 +203,11 @@ class UserController extends Controller{
     }
 
     public function getWaitingUser(){
-    
+        $users = User::with('userDetail')->whereRelation('userDetail','status',2)->first();
+        return response()->json([
+            'message' => 'done',
+            'data' =>$users
+        ], 201);
     }
       
 }
