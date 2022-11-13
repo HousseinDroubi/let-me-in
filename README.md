@@ -74,9 +74,34 @@ To get a local copy up and running follow these simple example steps.
 This is an example of how to list things you need to use the software and how to install them.
 * Download and Install [XAMPP](https://www.apachefriends.org/download.html)
 * Download and Install [composer](https://getcomposer.org/Composer-Setup.exe)
+* Download and Install [Tesseract OCR](https://github.com/tesseract-ocr/tesseract#installing-tesseract)
+* Download and Install [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/)
 * npm
 ```sh
 npm install npm@latest -g
+```
+* Now open the environment variables->double click on Path->New->Add python and tesseract ocr. In my case, tesseract OCR path was:
+```sh
+C:\Program Files\Tesseract-OCR
+```
+* Now click Ok. In the 'User variables' above, click on New..., then add the following:
+1. Enter for 'Variable name':
+```sh
+TESSDATA_PREFIX
+``` 
+2. Enter for 'Variable value' the below if your tesseract OCR path is the same as mine then click OK.
+```sh
+C:\Program Files\Tesseract-OCR\tessdata
+```
+* Open your cmd and download using pip as following:
+```sh
+pip install pytesseract
+```
+```sh
+pip install pillow opencv-python
+```
+```sh
+pip install python-dotenv
 ```
 * For the hardware part:
     - Raspberry Pi 3 model B+
