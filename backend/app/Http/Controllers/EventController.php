@@ -50,8 +50,29 @@ class EventController extends Controller{
         $info = pathinfo($_FILES['image']['name']);
         $image = $info['basename'];
         $image_path = public_path()."/assets/images/car/".$image;
-        move_uploaded_file($_FILES['image']['tmp_name'],$image_path);
-        // TODO: Get the number of plate car number 
+
+        if(move_uploaded_file($_FILES['image']['tmp_name'],$image_path)){
+            $ocr_python_url= env('OCR_PYTHON_PATH');
+            $command_order = "python ".$ocr_python_url;
+            $command = escapeshellcmd($command_order);
+            $output=shell_exec($command);
+
+            if(strpos($output, "error") !== false){
+                return "close";
+            }
+
+            $new_output = "";
+            for($i=0;$i<strlen($output);$i++){
+                if (preg_match('~[0-9]+~', $output[$i]) || preg_match('~[A-Z]+~', $output[$i]) ) {
+                    $new_output .=$output[$i];
+                }
+            }
+
+            $request = Request::create('/add_update_event', 'POST', ['car_plate_number' => $new_output]);    
+            return $this->addOrUpdateEvent($request); 
+        }
+
+        return "close";
     }
 
     public function addOrUpdateEvent(Request $request){
