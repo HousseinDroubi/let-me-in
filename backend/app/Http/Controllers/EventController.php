@@ -149,7 +149,10 @@ class EventController extends Controller{
         $admin->adminDetail;
         // Send an email to the admin taking the new car plate number and the date and time this user came at
         Mail::to($admin->adminDetail->email)->send(new Acknowledgement($admin->username,$user->created_at->format('Y-m-d H:i:s'),$request->car_plate_number));
-        return 'wait';
+       
+        //Return the the car plate number to the Raspberry Pi in case we have a new user
+        //So, the Raspberyy Pi will ask for this car plate number maximum 3 times each 10 seconds 
+        return $request->car_plate_number;
     }
 
     public function getCarDecision($car_plate_number){
