@@ -3,7 +3,7 @@
 
 Dear {{$username}},
 
-The following car plate is just came at {{$arrival_time}}:
+The following car plate just came at {{$arrival_time}}:
 
 Car plate number : {{$car_plate_number}}.
 
