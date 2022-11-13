@@ -40,6 +40,7 @@ class EventController extends Controller{
     }
 
     public function checkCarPlate(Request $request){
+        // Get the image from Raspberry Pi
         $validator = Validator::make($request->all(), [
             'image' => 'required|mimes:png,jpg,jpeg|max:2048'
         ]);
@@ -47,16 +48,26 @@ class EventController extends Controller{
             return response()->json($validator->errors(), 400);
         }
         
+        // Save the image inside public folder with same name
         $info = pathinfo($_FILES['image']['name']);
         $image = $info['basename'];
         $image_path = public_path()."/assets/images/car/".$image;
 
+        // If the file saved successfully, we have to execute the ocr.py implemented into public/OCR
+        // Otherwise, we have to return close
         if(move_uploaded_file($_FILES['image']['tmp_name'],$image_path)){
+            // Get the path of ocr.py from .evn file
             $ocr_python_url= env('OCR_PYTHON_PATH');
+
+            // The command to be executed
             $command_order = "python ".$ocr_python_url;
+
+            // Execute the command and get the output
             $command = escapeshellcmd($command_order);
             $output=shell_exec($command);
 
+            // Since we are returning 'error' from ocr.py in case it didn't find the car plate number, so,
+            // we have to return close
             if(strpos($output, "error") !== false){
                 return "close";
             }
@@ -68,10 +79,12 @@ class EventController extends Controller{
                 }
             }
 
+            // Redirect to 'add_update_event' route implemented in this controller below with the car plate
+            // number
             $request = Request::create('/add_update_event', 'POST', ['car_plate_number' => $new_output]);    
             return $this->addOrUpdateEvent($request); 
         }
-
+        // Return 'close' if the image is not uploaded successfully
         return "close";
     }
 
