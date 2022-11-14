@@ -87,7 +87,7 @@ class UserController extends Controller{
         // The decision here is for the car plate that's neither in the approved list, nor in the blocked list.
         // Hence, in case this user has been approved or blocked from admin, the decision must be '0' or '1'
         // Otherwise, the admin will be updating a user from waiting page in the frontend
-        if($request->decision)
+        if($request->decision!='')
         $user->userDetail->status = $request->decision;
     
         $user->username = ($request->username!='') ? $request->username : $user->username;
