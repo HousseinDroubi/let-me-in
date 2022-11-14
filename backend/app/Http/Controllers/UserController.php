@@ -88,7 +88,7 @@ class UserController extends Controller{
         // Hence, in case this user has been approved or blocked from admin, the decision must be '0' or '1'
         // Otherwise, the admin will be updating a user from waiting page in the frontend
         if($request->decision)
-        $user->status = $request->decision;
+        $user->userDetail->status = $request->decision;
     
         $user->username = ($request->username!='') ? $request->username : $user->username;
         $user->userDetail->car_type = ($request->car_type!='') ? $request->car_type : $user->userDetail->car_type;
