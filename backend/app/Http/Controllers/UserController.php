@@ -60,9 +60,9 @@ class UserController extends Controller{
     public function updateUserData(Request $request){
         $validator = Validator::make($request->all(), [
             'id' => 'required|integer|min:3',
-            'username' => 'string|min:3|max:20|unique:users',
+            'username' => 'string|min:3|max:20',
             'car_type' => 'string|min:3|max:30',
-            'car_plate_number' => 'string|min:2|max:7|unique:user_details',
+            'car_plate_number' => 'string|min:2|max:7',
             'profile_url' => 'string',
             'decision'=>'integer|min:0|max:1'
         ]);
@@ -92,8 +92,25 @@ class UserController extends Controller{
     
         $user->username = ($request->username!='') ? $request->username : $user->username;
         $user->userDetail->car_type = ($request->car_type!='') ? $request->car_type : $user->userDetail->car_type;
-        $user->userDetail->car_plate_number = ($request->car_plate_number!='') ? $request->car_plate_number : $user->userDetail->car_plate_number;
+        
+        // Here, we are checking if the admin want to update the car plate numner, but this car plate
+        // number is existed before. Hence, we should return that's already taken. Otherwise, he can 
+        // update it
+        if($user->userDetail->car_plate_number!=$request->car_plate_number){
+            $user_check = User::with('userDetail')
+            ->whereRelation('userDetail','car_plate_number',$request->car_plate_number)
+            ->whereRelation('userDetail','user_id',"!=",$request->id)
+            ->get();
+            if(count($user_check)==1){
+                
+            return response()->json([
+                'message' => 'car plate number already taken'
+            ], 201);
+            }
 
+            $user->userDetail->car_plate_number=$request->car_plate_number;
+        }
+        
         if($request->profile_url){
             try {
                 unlink($user->profile_url);
