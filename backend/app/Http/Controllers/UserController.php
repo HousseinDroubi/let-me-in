@@ -96,24 +96,29 @@ class UserController extends Controller{
         // Here, we are checking if the admin want to update the car plate numner, but this car plate
         // number is existed before. Hence, we should return that's already taken. Otherwise, he can 
         // update it
-        if($user->userDetail->car_plate_number!=$request->car_plate_number){
-            $user_check = User::with('userDetail')
-            ->whereRelation('userDetail','car_plate_number',$request->car_plate_number)
-            ->whereRelation('userDetail','user_id',"!=",$request->id)
-            ->get();
-            if(count($user_check)==1){
-                
-            return response()->json([
-                'message' => 'car plate number already taken'
-            ], 201);
-            }
+        if($request->car_plate_number){
+            if($user->userDetail->car_plate_number!=$request->car_plate_number){
+                $user_check = User::with('userDetail')
+                ->whereRelation('userDetail','car_plate_number',$request->car_plate_number)
+                ->whereRelation('userDetail','user_id',"!=",$request->id)
+                ->get();
+                if(count($user_check)==1){
+                    
+                return response()->json([
+                    'message' => 'car plate number already taken'
+                ], 201);
+                }
 
-            $user->userDetail->car_plate_number=$request->car_plate_number;
-        }
+                $user->userDetail->car_plate_number=$request->car_plate_number;
+            }
+        }    
         
         if($request->profile_url){
             try {
-                unlink($user->profile_url);
+
+                if($user->profile_url!=null)
+                    unlink($user->profile_url);
+                    
                 $user->profile_url = (new AuthController)->saveImage($request->profile_url);
             } catch (\Throwable $th) {
                 return response()->json([
