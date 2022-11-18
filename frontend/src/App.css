@@ -77,6 +77,25 @@
   color: #FFFFFF;
 }
 
+/* Circle */
+
+.circle-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle-content>p{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+}
+
 /* --Pages-- */
 
 /* Home */
