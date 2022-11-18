@@ -77,6 +77,48 @@ const Users=()=> {
         setDefaultt(true);
         
       }
+      if(users.length!==0){
+        return (
+          <> 
+            <PopUp className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} id={id} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked} setPopupDenyVisible={setPopupDenyVisible} attention={attention} setAttention={setAttention}/>
+            <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
+        
+            <div className='land display-none'>
+                <Layout pageName='users'/>
+                <div className='land-content'>
+                    <div className='page-title page-title-users'>
+                        <PageTitle text='All Users'/>
+                        <AddUserButton onClick={showPopup}/>
+                    </div>
 
+                    {users.map((element,index)=>{
+                        return (
+                            <div className='box-container' key={index}>
+                            <BoxUser id = {element[0]} username={element[1]} source ={element[2]} car_type={element[3]} status='block' car_plate_number={element[4]} base_url={base_url} element={element} setPopupVisible={setPopupVisible} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} defaultt={defaultt} setId={setId}/>
+                            </div> 
+                            );
+                    })}
+                    
+                </div>
+            </div>
+        
+          </>
+        );
+      }else{
+        return(
+          <>
+            <PopUp className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked}/>
+            <div className='land'>
+                <Layout pageName='users'/>
+                <div className='add-users-button'>
+                    <AddUserButton onClick={showPopup}/>
+                </div> 
+                <div className='land-content empty'>
+                    <Title title="Start adding your users now" className='title-opacity'/>
+                </div>
+            </div>
+         </>
+         );
+      }
 }
 export default Users;
