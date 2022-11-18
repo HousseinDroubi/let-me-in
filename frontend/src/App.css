@@ -67,6 +67,16 @@
   color: #74777C;
 }
 
+/* Mode title */
+
+.modes-title{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+
 /* --Pages-- */
 
 /* Home */
