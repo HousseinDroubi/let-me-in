@@ -105,7 +105,7 @@ const BlockedUsers= ()=> {
             <div className='land'>
                 <Layout pageName='blocked'/>
                 <div className='land-content empty'>
-                    <PageTitle title="No one is blocked yet" className='title-opacity'/>
+                    <NormalTitle title="No one is blocked yet" className='title-opacity'/>
                 </div>
             
             </div>
