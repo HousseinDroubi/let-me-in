@@ -32,6 +32,7 @@ const Login=()=> {
         navigate('/events');
     }
 
+    // Here we are checking email and password of the admin.
     const  checkEmailAndPassword = ()=>{
         if(email===''){
           showDenyPopUp("Email should not be empty.");
@@ -41,14 +42,17 @@ const Login=()=> {
             showDenyPopUp("Password should not be empty.");
         }
         else{
-        const body = {
-          email: email,
-          password: password
-      };
+          const body = {
+            email: email,
+            password: password
+          };
       
+          // Send the request using axios
          axios.post(`${base_url}login`, body)
           .then(function (response) {
             if(response.status===200){
+
+              // Clear the memory first, then, save the token
               localStorage.clear();
               secureLocalStorage.clear();
               secureLocalStorage.setItem("token",response.data.access_token);
@@ -57,6 +61,8 @@ const Login=()=> {
             };
                   axios.get(`${base_url}get_barrier_status`,header)
                   .then(function (response) {
+                    
+                      // Save the barrier status in the memory
                         localStorage.setItem("barrier_status",response.data);
                   })
                   .catch(function (error) {
@@ -65,6 +71,8 @@ const Login=()=> {
       
                    axios.get(`${base_url}get_admin_data`,header)
                   .then(function (response) {
+      
+                    // Save the email, username and profile url of the admin in the memory
                     secureLocalStorage.setItem("email",response.data.email);
                     secureLocalStorage.setItem("username",response.data.user.username);
                     let profile_url = response.data.user.profile_url.substring(response.data.user.profile_url.indexOf("\\let-me-in\\"));
@@ -99,7 +107,6 @@ const Login=()=> {
                   <SamllText className='text-decoration-underline cursor-pointer mt-13' text="Forgot password?" onClick={navigateToForgotPassword}/>
                 </div>
                 <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
-
             </div>
             </>
       );
