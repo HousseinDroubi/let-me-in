@@ -13,6 +13,19 @@ import PopupDeny from '../components/PopupDeny';
 import axios from 'axios';
 
 const AdminProfile=()=> {
+    const base_url = process.env.REACT_APP_BASE_URL;
+    const myIPv4  = process.env.REACT_APP_MY_IPV4;
+    const [profileImg,setProfileImg]=useState(localStorage.getItem("profile_url"));
+    const [hasPicked,setHasPicked]=useState(false)
+    const [email,setEmail]=useState(secureLocalStorage.getItem("email"));
+    const [username,setUsername]=useState(secureLocalStorage.getItem("username"));
+    const [popupVisible,setPopupVisible]=useState(false);
+    const [oldPassword,setOldPassword]=useState('');
+    const [newPassword,setNewPassword]=useState('');
+    const [confirmPassword,setConfirmPassword]=useState('');
+    const [popupDenyVisible,setPopupDenyVisible]=useState(false);
+    const [attention,setAttention]=useState('');
+    const navigate = useNavigate();
 
 }
   
