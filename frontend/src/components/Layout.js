@@ -17,5 +17,19 @@ const Layout = (props)=>{
     const [isTurnedOnGreen,setIsTurnedOnGreen] = useState(false);
     const [isTurnedOnRed,setIsTurnedOnRed] = useState(false);
 
+    const getBarrierStatus= ()=>{
+        const barrier_status= localStorage.getItem("barrier_status");
+            if(barrier_status==='normal'){
+                setIsTurnedOnBlue(true);
+            }
+            else if(barrier_status==='opened'){
+                setIsTurnedOnGreen(true);
+            }
+            else if(barrier_status==='closed'){
+                setIsTurnedOnRed(true);
+            }
+    }
+    useEffect(() => {getBarrierStatus();
+      });
 }
 export default Layout;
