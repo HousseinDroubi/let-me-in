@@ -11,8 +11,6 @@ import axios from 'axios';
 import  secureLocalStorage  from  "react-secure-storage";
 
 const Login=()=> {
-  
-
     const navigate = useNavigate();
     const base_url = process.env.REACT_APP_BASE_URL;
     const myIPv4  = process.env.REACT_APP_MY_IPV4;
@@ -21,4 +19,10 @@ const Login=()=> {
     const [password,setPassword]=useState('');
     const [popupDenyVisible,setPopupDenyVisible]=useState(false);
     const [attention,setAttention]=useState('');
+
+    const showDenyPopUp = (att)=>{
+        setPopupDenyVisible(true);
+        setAttention(att);
+      }
+      
 }
