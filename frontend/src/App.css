@@ -218,6 +218,16 @@ border: 3px solid #249F55;
   color: #FFFFFF;
 }
 
+/* Box Content */
+
+.box-content{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 5px;
+  color: #FFFFFF;
+}
+
 /* --Pages-- */
 
 /* Home */
