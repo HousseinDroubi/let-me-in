@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Form from '../components/Form';
 import NormalTitle from '../components/NormalTitle';
 import Label from '../components/Label';
-import Text from '../components/Text';
+import SamllText from '../components/SamllText';
 import PopupDeny from '../components/PopupDeny';
 import axios from 'axios';  
 import  secureLocalStorage  from  "react-secure-storage";
@@ -36,6 +36,8 @@ const Login=()=> {
           showDenyPopUp("Email should not be empty.");
         }else if(!email.includes("@")){
           showDenyPopUp("Invalid email.");
+        }else if(password===''){
+            showDenyPopUp("Password should not be empty.");
         }
         else{
         const body = {
@@ -91,14 +93,10 @@ const Login=()=> {
           <Form value={email} setText={setEmail}/>
           <Label  title={"Password"} className='mt-33'/>
           <Form setText={setPassword} value = {password}  type="password"/>
-          <div className='login-contents-checkox'>
-            <Text className='mr-14' text="Remember me"/>
-          </div>
-          
           </div>
           <Button name={"Login"} className='mt-53' onClick={checkEmailAndPassword}/>
           <div className='login-forgot-password'>
-          <Text className='text-decoration-underline cursor-pointer mt-13' text="Forgot password?" onClick={goToForgotPassword}/>
+          <SamllText className='text-decoration-underline cursor-pointer mt-13' text="Forgot password?" onClick={goToForgotPassword}/>
           </div>
           <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
   
