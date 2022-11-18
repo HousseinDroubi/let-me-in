@@ -10,6 +10,7 @@ import axios from 'axios';
 import  secureLocalStorage  from  "react-secure-storage";
 
 const Login=()=> {
+
     const navigate = useNavigate();
     const base_url = process.env.REACT_APP_BASE_URL;
     const myIPv4  = process.env.REACT_APP_MY_IPV4;
@@ -23,7 +24,7 @@ const Login=()=> {
         setAttention(att);
       }
 
-    const goToForgotPassword=()=>{
+    const navigateToForgotPassword=()=>{
         navigate('/forgot_password');
     }  
 
@@ -83,25 +84,24 @@ const Login=()=> {
           });
       }}
       return (
-        <>
-        
-        <div className='home'>
-          <NormalTitle title="Here you can login :)"/>
-          
-          <div className='login-contents'>
-          <Label title={"Email"} />
-          <Form value={email} setText={setEmail}/>
-          <Label  title={"Password"} className='mt-33'/>
-          <Form setText={setPassword} value = {password}  type="password"/>
-          </div>
-          <Button name={"Login"} className='mt-53' onClick={checkEmailAndPassword}/>
-          <div className='login-forgot-password'>
-          <SamllText className='text-decoration-underline cursor-pointer mt-13' text="Forgot password?" onClick={goToForgotPassword}/>
-          </div>
-          <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
-  
-        </div>
-        </>
+            <>
+            <div className='home'>
+                <NormalTitle title="Here you can login :)"/>
+                
+                <div className='login-contents'>
+                <Label title={"Email"} />
+                <Form value={email} setText={setEmail}/>
+                <Label  title={"Password"} className='mt-33'/>
+                <Form setText={setPassword} value = {password}  type="password"/>
+                </div>
+                <Button name={"Login"} className='mt-53' onClick={checkEmailAndPassword}/>
+                <div className='login-forgot-password'>
+                <SamllText className='text-decoration-underline cursor-pointer mt-13' text="Forgot password?" onClick={navigateToForgotPassword}/>
+                </div>
+                <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
+
+            </div>
+            </>
       );
 }
 
