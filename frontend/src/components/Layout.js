@@ -48,6 +48,37 @@ const Layout = (props)=>{
             console.log(error);
             });
     }   
-    
+
+    const turnOfCircles = ()=>{
+        setIsTurnedOnBlue(false);
+        setIsTurnedOnGreen(false);
+        setIsTurnedOnRed(false);
+    }
+    const blueToggeled= ()=>{
+        if(!isTurnedOnBlue){
+         changeBarrierStatus(2);
+        localStorage.setItem("barrier_status","normal");
+        turnOfCircles();
+        setIsTurnedOnBlue(true);
+        }
+    }
+    const greenToggeled= ()=>{
+        if(!isTurnedOnGreen){
+         changeBarrierStatus(1);
+        localStorage.setItem("barrier_status","opened");
+        turnOfCircles();
+        setIsTurnedOnGreen(true);
+    }
+    }
+    const redToggeled= ()=>{
+        if(!isTurnedOnRed){
+         changeBarrierStatus(0);
+        localStorage.setItem("barrier_status","closed");
+        turnOfCircles();
+        setIsTurnedOnRed(true);
+        }
+    }
+
+
 }
 export default Layout;
