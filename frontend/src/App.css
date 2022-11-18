@@ -96,6 +96,14 @@
   color: #FFFFFF;
 }
 
+/* Circle Image */
+
+.circle-image{
+  width:70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
 /* --Pages-- */
 
 /* Home */
