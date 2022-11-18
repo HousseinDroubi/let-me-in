@@ -7,7 +7,6 @@ import DefaultImage from  '../assets/images/default_image.png';
 import Label from '../components/Label';
 import Form from '../components/Form';  
 import BoxButton from '../components/BoxButton';
-import { useState } from 'react';
 import secureLocalStorage from 'react-secure-storage';
 import axios from 'axios';  
 
@@ -25,7 +24,6 @@ const PopUp = (props)=>{
     }
 
     const pickUpImage = ()=>{
-
         document.getElementById('input').click();
     }
 
@@ -42,7 +40,7 @@ const PopUp = (props)=>{
         }
         catch(e){
         }
-      }
+    }
 
       const addOrUpdateUser=()=>{
         if(props.isAddingUser){
@@ -76,8 +74,6 @@ const PopUp = (props)=>{
                 showDenyPopUp("Try with another car plate number.");
                 });
 
-
-
             }
         }
         
@@ -103,7 +99,6 @@ const PopUp = (props)=>{
                     body.profile_url = props.profile.split(',')[1].replace(/"/g,"/");
                 }
           
-
                 axios.post(`${base_url}edit_user`,body,header)
                 .then(function (response) {
                 window.location.reload(false); 
@@ -111,7 +106,6 @@ const PopUp = (props)=>{
                 .catch(function (error) {
                 showDenyPopUp("Something went wrong.");
                 });
-
                 }}
             }
             return (
@@ -127,7 +121,6 @@ const PopUp = (props)=>{
                         
                         <CircleImage source={props.profile===null?DefaultImage:props.profile} className='wid-40 cursor-pointer' onClick={pickUpImage}/>
                         <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
-                        
                         <div>
                             <Label title={"Username"} />
                             <Form value={props.username} setText={props.setUsername} text={props.username} defaultt={props.defaultt}/>
