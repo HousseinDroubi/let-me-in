@@ -381,6 +381,23 @@ color: #FFFFFF;
   color: #FFFFFF;
 }
 
+.popup-content{
+  box-sizing: border-box;
+  position: absolute;
+  width: 600px;
+  height: 650px;
+  background: #0F1319;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popup-content>:last-child{
+  margin-bottom: 20px;
+}
+
+
 .attention-content{
   padding: 1px 0px 1px 30px;
   width: 100%;
