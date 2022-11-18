@@ -20,5 +20,9 @@ const ForgotPassword=()=> {
     const [popupDenyVisible,setPopupDenyVisible]=useState(false);
     const [attention,setAttention]=useState('');
     const base_url =process.env.REACT_APP_BASE_URL;
-
+    
+    const showDenyPopUp = (att)=>{
+        setPopupDenyVisible(true);
+        setAttention(att);
+      }
 }
