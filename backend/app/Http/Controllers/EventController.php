@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DateTime;
 use Validator;
 use App\Models\Admin;
 use App\Models\User;
@@ -25,9 +26,32 @@ class EventController extends Controller{
         foreach($dates as $date){
             $day_numbers = json_decode($date);
             $events_per_day= Event::whereDate('arrival_time','=',$day_numbers->date)->get();
+          
             foreach($events_per_day as $event_per_day){
-                $event_per_day->user;
-            }
+                
+                $event_per_day->user->userDetail;
+                
+                // Here, we are getting the difference between the arrival date and departure date
+                if($event_per_day->departure_time!=null){
+                    $interval =(new DateTime($event_per_day->arrival_time))->diff((new DateTime($event_per_day->departure_time)));
+                    $month= $interval->m;
+                    $hour = $interval->h;
+                    $min = $interval->i;
+                    $sec = $interval->s;
+                    $difference="";
+                    if($month!=0)
+                        $difference.=$month."m,";
+                    if($hour!=0)
+                        $difference.=$hour."hr,";
+                    if($min)
+                        $difference.=$min."min,";
+                    if($sec)
+                        $difference.=$sec."sec,"; 
+                    $event_per_day->setAttribute('difference',substr($difference,0,-1));
+                }else{
+                    $event_per_day->setAttribute('difference','');
+                }
+            }   
             $all_events[]=[
                 'date'=>$day_numbers->date,
                 'events'=>$events_per_day,
