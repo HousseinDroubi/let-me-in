@@ -39,8 +39,23 @@
   top: 356px;
 }
 
+/* Login */
 
+.login-contents{
+  width: 479px;
+  height: auto;
+  display: flex;
+  flex-direction:column;
+  align-items: flex-start;
+}
 
+.login-forgot-password{
+  width: 479px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
 
 
 /* Reusable classes  */
@@ -52,6 +67,18 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+}
+
+.mt-13{
+  margin-top: 13px;
+}
+
+.mt-33{
+  margin-top: 33px;
+}
+
+.mt-53{
+  margin-top: 53px;
 }
 
 .mt-80{
@@ -134,4 +161,19 @@
   font-weight: 400;
   font-size: 22px;
   line-height: 39px;
+}
+
+.text-decoration-underline{
+  text-decoration: underline;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.visiblity-visible{
+  visibility:visible;
+}
+.visiblity-hidden{
+  visibility: hidden;
 }
