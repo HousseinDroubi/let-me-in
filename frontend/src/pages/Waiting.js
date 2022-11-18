@@ -32,6 +32,8 @@ const Waiting=()=> {
       }
 
 
+    //   When this function is called, that means the admin is trying to accept or reject the waiting user.
+    // So, if the decision was '1', that means the admin has rejected that user. Otherwise, he has accepted the user.
     const UpdateUser=(decision)=>{
         if(username.length<3 || username.length>20)
           showDenyPopUp("Username must be between 3 and 20 characters.");
@@ -55,7 +57,7 @@ const Waiting=()=> {
         const header = {
           headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
         };
-          
+                
               axios.post(`${base_url}edit_user`,body,header)
               .then(function (response) {
               setIsSomeoneWaiting(false);
@@ -75,6 +77,7 @@ const Waiting=()=> {
     UpdateUser(0);
     }  
 
+    // Convert the from time to something like: 09:20:00 am
     const formatter = new Intl.DateTimeFormat("en-GB", {
     hour:'2-digit',
     minute:'2-digit',
@@ -82,6 +85,8 @@ const Waiting=()=> {
     hour12: true
     });
 
+    // By default, when the admin has entered this page, the below request will be sent to the server
+    // in order to check the waiting user. So, the admin can accept/reject the user.
     const getWaitingUser = async()=>{
 
         const header = {
