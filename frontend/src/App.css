@@ -308,6 +308,15 @@ color: #FFFFFF;
   background: #A61717;
 }
 
+/* Large Image */
+
+.waiting-profile{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 /* --Pages-- */
 
 /* Home */
