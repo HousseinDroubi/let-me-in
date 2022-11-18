@@ -24,5 +24,12 @@ const Login=()=> {
         setPopupDenyVisible(true);
         setAttention(att);
       }
-      
+
+    const goToForgotPassword=()=>{
+        navigate('/forgot_password');
+    }  
+
+    const navigateToEvents=()=>{
+        navigate('/events');
+    }
 }
