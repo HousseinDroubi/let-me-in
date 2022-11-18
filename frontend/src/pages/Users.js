@@ -43,19 +43,18 @@ const Users=()=> {
                 sub_array.push(element.id);
                 sub_array.push(element.username);
                 if(element.profile_url!==null){
-                  let profile_url = element.profile_url.substring(element.profile_url.indexOf("\\let-me-in\\"));
-                  profile_url = myIPv4+profile_url;
-                  profile_url = profile_url.replace(/\\/g,"/");
-                  sub_array.push(profile_url);
-              }else{
-                sub_array.push(element.profile_url);
-              }
-                
+                    let profile_url = element.profile_url.substring(element.profile_url.indexOf("\\let-me-in\\"));
+                    profile_url = myIPv4+profile_url;
+                    profile_url = profile_url.replace(/\\/g,"/");
+                    sub_array.push(profile_url);
+                }else{
+                    sub_array.push(element.profile_url);
+                }
                 sub_array.push(element.user_detail.car_type);
                 sub_array.push(element.user_detail.car_plate_number);
                 array.push(sub_array);
               });
-              setUsers(array);
+            setUsers(array);
             }
         })
         .catch(function (error) {
@@ -66,5 +65,18 @@ const Users=()=> {
       }
       }
       useEffect( () => {getUsers();});
+
+      const showPopup = ()=>{
+
+        setIsAddingUser(true);
+        setUsername('');
+        setCarType('');
+        setPlateNumber('');
+        setProfile(null);
+        setPopupVisible(true);
+        setDefaultt(true);
+        
+      }
+
 }
 export default Users;
