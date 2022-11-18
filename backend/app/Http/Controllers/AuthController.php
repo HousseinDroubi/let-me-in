@@ -105,7 +105,7 @@ class AuthController extends Controller{
 
     public function updateAdminData(Request $request){
         $validator = Validator::make($request->all(), [
-            'username' => 'string|min:3|max:20|unique:users',
+            'username' => 'string|min:3|max:20',
             'email' => 'string|email|min:5|max:30|unique:admin_details',
             'profile_url' => 'string',
         ]);
