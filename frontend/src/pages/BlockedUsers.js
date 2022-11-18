@@ -46,7 +46,7 @@ const BlockedUsers= ()=> {
             }
         })
         .catch(function (error) {
-            
+
         });
         
         setCalled(true);
@@ -54,6 +54,63 @@ const BlockedUsers= ()=> {
          
           }
           useEffect( () => {getBlockedUsers();});
+        if(blockedUsers.length!==0){
+    
+        return(
+            <div className='land'>
+                <Layout pageName='blocked'/>
+                <div className='land-content'>
+                    <div className='page-title'>
+                        <PageTitle text='Blocked List'/>
+                    </div>
+    
+                    {blockedUsers.map(( element,index) => {
+                    const blockUser=()=>{
+                        const header = {
+                        headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
+                        };
+                    
+                        const body = {
+                        id: element[0]
+                    };
+    
+                    axios.post(`${base_url}unblock_user`,body,header)
+                    .then(function (response) {
+                        console.log(response);
+                        window.location.reload(false); 
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+    
+    
+                    }
+        
+                    return (
+                    <div className='box-container' key={index}>
+                    <Box  id={element[0]} username={element[1]} source={element[2]} car_type={element[3]} car_plate_number={element[4]} icon={BlockedIcon} onClick={blockUser}/>
+                    </div> 
+                    )
+                } 
+            )}
+    
+                </div>
+            </div>
+        );
+        }
+        
+        else{
+        
+        return(
+            <div className='land'>
+                <Layout pageName='blocked'/>
+                <div className='land-content empty'>
+                    <PageTitle title="No one is blocked yet" className='title-opacity'/>
+                </div>
+            
+            </div>
+            );
+        }      
 
 }
 export default BlockedUsers;
