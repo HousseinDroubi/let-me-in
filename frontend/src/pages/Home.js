@@ -3,7 +3,9 @@ import Button from '../components/Button';
 import { useNavigate } from "react-router-dom";
 import logo from '../assets/images/letmein-logo.png';
 import NormalTitle from '../components/NormalTitle';
+
 const Home=()=> {
+
     const navigate = useNavigate();
 
     function navigateToLogin(){
@@ -13,7 +15,6 @@ const Home=()=> {
     return (
       
         <div className='home'>
-        
           <NormalTitle title="Let me in"/>
           <img src={logo} alt="logo" className='image-logo'/>
           <Button name={"Get Started"} onClick={navigateToLogin}  className='mt-80'></Button>
