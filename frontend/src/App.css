@@ -58,7 +58,7 @@
 
 /* Samll Text */
 
-.samll-text{
+.small-text{
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
@@ -96,6 +96,15 @@
   color: #FFFFFF;
 }
 
+.circle-mode{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1F2329;
+  cursor: pointer;
+}
+
 /* Circle Image */
 
 .circle-image{
@@ -123,6 +132,7 @@ border: 3px solid #326AC6;
 .backgorund-mode-green{
   background: #249F55;
 }
+
 .backgorund-border-mode-green{
 border: 3px solid #249F55;
 }
@@ -130,6 +140,7 @@ border: 3px solid #249F55;
 .backgorund-mode-red{
   background: #A61717;
 }
+
 .backgorund-border-mode-red{
   border: 3px solid #A61717;
 }
@@ -137,8 +148,37 @@ border: 3px solid #249F55;
 .button-drawer-background-blue{
   background: #5693F8;
 }
+
 .button-drawer-background-navy{
   background: #0F1319;
+}
+
+.drawer{
+  height: 100vh;
+  width: 400px;
+  background: #1F2329;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.layout-info{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.layout-info>p{
+  margin-left: 10px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 /* Button Drawer */
@@ -233,7 +273,9 @@ border: 3px solid #249F55;
 .mt-33{
   margin-top: 33px;
 }
-
+.mt-34{
+  margin-top: 34px;
+}
 .mt-53{
   margin-top: 53px;
 }
@@ -333,4 +375,12 @@ border: 3px solid #249F55;
 }
 .visiblity-hidden{
   visibility: hidden;
+}
+
+.display-block{
+  display:block ;
+}
+
+.display-none{
+  display: none;
 }
