@@ -116,5 +116,38 @@ const ForgotPassword=()=> {
         }
     }
 
+    const checkEntries = ()=>{
+        if(!isEmailVerified){
+            checkEmail();
+        }else if(!isCodeVerified){
+            checkCode();
+        }else{
+            changePassword();
+        }
+    }
+
+    return(
+        <>
+
+       
+    <div className='home'>
+        <NormalTitle title="Forgot Password"/> 
+        <div className='forgot-password-content'>
+            <Label title="Enter your email" />  
+            <Form value={email} setText={setEmail}/>  
+            <Label title="Enter your code" className='mt-33'/>  
+            <Form value={code} setText={setCode}/>  
+            <Label title="Enter your password" className='mt-33'/>  
+            <Form value={password} setText={setPassword} type="password"/> 
+            <Label title="Re-enter your password" className='mt-33'/>  
+            <Form value={rePassword} setText={setRePassword} type="password"/> 
+            <Button name={text} className='mt-33' onClick={checkEntries}/>
+        </div> 
+        <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>  
+    </div>
+    </>
+    );
 
 }
+
+export default ForgotPassword;
