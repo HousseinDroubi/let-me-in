@@ -61,6 +61,7 @@ const AdminProfile=()=> {
         navigate('/login');
       }
 
+        // Now, we are changing the data whenever the admin has changed any filed
       const editData = ()=>{
         if(email==secureLocalStorage.getItem("email") && username==secureLocalStorage.getItem("username") &&!hasPicked){
           showDenyPopUp("Update at least one element.");
