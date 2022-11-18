@@ -400,6 +400,13 @@ color: #FFFFFF;
   justify-content: center;
 }
 
+/* Admin Profile */
+
+.admin-profile-fields{
+  display: flex;
+  flex-direction: column;
+}
+
 /* Reusable classes  */
 
 .home{
@@ -430,25 +437,25 @@ color: #FFFFFF;
 }
 
 .popup{
-    position:absolute;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position:absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .popup-password{
-    box-sizing: border-box;
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: #0F1319;
-    border: 0.5px solid rgba(255, 255, 255, 0.5);
-    border-radius: 7px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: #0F1319;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .popup-password>:last-child{

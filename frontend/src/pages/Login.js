@@ -89,14 +89,14 @@ const Login=()=> {
                 <NormalTitle title="Here you can login :)"/>
                 
                 <div className='login-contents'>
-                <Label title={"Email"} />
-                <Form value={email} setText={setEmail}/>
-                <Label  title={"Password"} className='mt-33'/>
-                <Form setText={setPassword} value = {password}  type="password"/>
+                  <Label title={"Email"} />
+                  <Form value={email} setText={setEmail}/>
+                  <Label  title={"Password"} className='mt-33'/>
+                  <Form setText={setPassword} value = {password}  type="password"/>
                 </div>
                 <Button name={"Login"} className='mt-53' onClick={checkEmailAndPassword}/>
                 <div className='login-forgot-password'>
-                <SamllText className='text-decoration-underline cursor-pointer mt-13' text="Forgot password?" onClick={navigateToForgotPassword}/>
+                  <SamllText className='text-decoration-underline cursor-pointer mt-13' text="Forgot password?" onClick={navigateToForgotPassword}/>
                 </div>
                 <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
 
