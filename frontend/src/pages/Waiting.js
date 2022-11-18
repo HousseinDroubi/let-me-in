@@ -19,7 +19,6 @@ const Waiting=()=> {
     const [carType,setCarType]=useState('Unkown');
     const [carPlateNumber,setCarPlateNumber]=useState('');
     const [arrivalTime,setArrivalTime]=useState('');
-    const [decisionUser,setDecisionUser] = useState(2);
     const [profileImg,setProfileImg]= useState(waitingProfile);
     const[called,setCalled]=useState(false);
     const [hasPicked,setHasPicked]=useState(false);
@@ -136,41 +135,40 @@ const Waiting=()=> {
           <>
             <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
           
-          <div className='land'>
-           <Layout pageName='waiting'/>
-           <div className='land-content'>
-           <NormalTitle title="Someone is waiting"/>
-           <div>
-            <LargeImage source={profileImg} onClick={showImage}/>
-            <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
+            <div className='land'>
+            <Layout pageName='waiting'/>
+                <div className='land-content'>
+                    <NormalTitle title="Someone is waiting"/>
+                        <div>
+                            <LargeImage source={profileImg} onClick={showImage}/>
+                            <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
+                        </div>
+                    <div>
+                        <Label title='Username' />
+                        <Form value={username} setText={setUsername} text = {username}/>
+                        <Label title='Car Type' />
+                        <Form value={carType} setText={setCarType} text = {carType}/>
+                        <Label title='Car Plate Number' />
+                        <Form value={carPlateNumber} setText={setCarPlateNumber} text = {carPlateNumber}/>
+                        <Label title='Car Plate Number' />
+                        <TextView text = {arrivalTime}/>
+                        <div className='waiting-decision-buttons'>
+                            <DecisionButton text='Reject' onClick={rejectWaitingUser}/>
+                            <DecisionButton text='Accept' onClick={acceptWaitingUser}/>
+                        </div>
+                    </div>
+                </div>
+            
             </div>
-            <div>
-            <Label title='Username' />
-            <Form value={username} setText={setUsername} text = {username}/>
-            <Label title='Car Type' />
-            <Form value={carType} setText={setCarType} text = {carType}/>
-            <Label title='Car Plate Number' />
-            <Form value={carPlateNumber} setText={setCarPlateNumber} text = {carPlateNumber}/>
-            <Label title='Car Plate Number' />
-            <TextView text = {arrivalTime}/>
-            <div className='waiting-decision-buttons'>
-            <DecisionButton text='Reject' onClick={rejectWaitingUser}/>
-            <DecisionButton text='Accept' onClick={acceptWaitingUser}/>
-            </div>
-            </div>
-           </div>
-          
-          </div>
           </>
         );}
           else {
             return(
             <div className='land'>
-            <Layout pageName='waiting'/>
-            <div className='land-content empty'>
-            <NormalTitle title="No one at the door" className='title-opacity'/>
-            </div>
-           
+                <Layout pageName='waiting'/>
+                <div className='land-content empty'>
+                    <NormalTitle title="No one at the door" className='title-opacity'/>
+                </div>
            </div>
            );
           }

@@ -325,6 +325,44 @@ color: #FFFFFF;
   align-items: center;
 }
 
+/* Decision Button */
+
+.decision-button{
+  cursor: pointer;
+  width: 219.5px;
+  height: 58px;
+  border-radius: 4px;
+  background: #1F2329;
+  border-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.decision-button-red-background{
+  background: #A61717;
+}
+
+.decision-button-green-background{
+  background: #249F55;
+}
+
+.decision-button>p{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #F5F5F5;
+}
+
+.waiting-decision-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 46px;
+  margin-bottom: 50px;
+}
+
 /* --Pages-- */
 
 /* Home */
