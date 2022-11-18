@@ -141,7 +141,7 @@ border: 3px solid #249F55;
   background: #0F1319;
 }
 
-/* Layout Drawer */
+/* Button Drawer */
 
 .button-drawer{
   cursor: pointer;
@@ -163,6 +163,19 @@ border: 3px solid #249F55;
   font-size: 14px;
   line-height: 17px;
   position: absolute;
+}
+
+/* Page Title */
+
+.page-title-content{
+  margin-left: 65px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
 }
 
 /* --Pages-- */
