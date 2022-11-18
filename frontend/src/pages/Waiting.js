@@ -71,10 +71,18 @@ const Waiting=()=> {
        const rejectWaitingUser=()=>{
         UpdateUser(1);
        }
-       
+
        const acceptWaitingUser=()=>{
         UpdateUser(0);
        }  
+
+       const formatter = new Intl.DateTimeFormat("en-GB", {
+        hour:'2-digit',
+        minute:'2-digit',
+        second:'2-digit',
+        hour12: true
+      });
+    
 }
   
 export default Waiting;
