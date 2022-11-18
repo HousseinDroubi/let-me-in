@@ -105,6 +105,31 @@ const AdminProfile=()=> {
           }
       }
 
+      return (
+        <>
+          <PopupPassword className={popupVisible?'visiblity-visible':'visiblity-hidden'}  setPopupVisible={setPopupVisible} oldPassword={oldPassword} newPassword={newPassword} confirmPassword={confirmPassword} setOldPassword={setOldPassword} setNewPassword={setNewPassword} setConfirmPassword={setConfirmPassword} setPopupDenyVisible={setPopupDenyVisible} setAttention={setAttention}/>
+          <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
+          <div className='land'>
+            <Layout pageName='profile'/>
+            <div className='land-content'>
+                <Title title="Edit Profile"/>
+                <LargeImage source={profileImg===null?DefaultImage:profileImg} onClick={showImage}/>
+                <div className='admin-profile-fields'>
+                    <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
+                    <Label  title={"Email"} />
+                    <Form setText={setEmail} value = {email} text = {email}/>
+                    <Label  title={"Username"} />
+                    <Form setText={setUsername} value = {username} text = {username}/> 
+                    <Button name={"Change Password"} className='mt-33' onClick={showPopup}/>
+                    <Button name={"Edit Data"} className='mt-33 mb-20' onClick={editData}/>
+                    <Button name={"Logout"} className='mt-33 mb-20 decision-button-red-background' onClick={logoutFromWebsite}/>
+                </div>
+            </div>
+  
+        </div>
+        </>
+      );
+
 }
   
 export default AdminProfile;
