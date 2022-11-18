@@ -21,5 +21,26 @@ const EditUser =()=>{
     props.setProfile(props.source);
     props.setPopupVisible(true);
 }
+
+const blockUser =()=>{
+    const header = {
+        headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
+    };
+  
+    const body = {
+        id: props.id
+    };
+  
+    axios.post(`${props.base_url}block_user`,body,header)
+        .then(function (response) {
+          console.log(response);
+          window.location.reload(false); 
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+}
+
+
 }
 export default BoxUser;
