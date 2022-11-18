@@ -12,6 +12,23 @@
   color: #F5F5F5;
 }
 
+/* Form */
+
+.form{
+  width: 450px;
+  height: 68px;
+  border: 1px solid #404449;
+  border-radius: 7px;
+  background: #1F2329;
+  border-radius: 7px;
+  color:white;
+  padding-left: 28px;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
 /* Button */
 
 .button{
