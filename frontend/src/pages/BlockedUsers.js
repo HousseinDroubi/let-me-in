@@ -13,6 +13,7 @@ const BlockedUsers= ()=> {
     const[called,setCalled]=useState(false);
     const [blockedUsers,setBlockedUsers]=useState([]);
 
+    // Here, we are asking from the server the blocked users (has status ='1')
     const getBlockedUsers = ()=>{
 
         const header = {
@@ -22,12 +23,15 @@ const BlockedUsers= ()=> {
             axios.get(`${base_url}blocked_users`,header)
             .then(function (response) {
             if(response.data.data.length !==0){
+
+                // Defining this array to push other sub arrays, then display them using map
                 let array = [];
                 response.data.data.forEach(element => {
                 const sub_array = [];
                 sub_array.push(element.id);
                 sub_array.push(element.username);
 
+                // Here, we are replacing the image path at the first by our IPv4
                 if(element.profile_url!==null){
                     let profile_url = element.profile_url.substring(element.profile_url.indexOf("\\let-me-in\\"));
                     profile_url = myIPv4+profile_url;
@@ -36,7 +40,6 @@ const BlockedUsers= ()=> {
                 }else{
                 sub_array.push(element.profile_url);
                 }
-                
                 sub_array.push(element.user_detail.car_type);
                 sub_array.push(element.user_detail.car_plate_number);
                 array.push(sub_array);
