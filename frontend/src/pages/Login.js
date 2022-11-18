@@ -9,3 +9,16 @@ import Text from '../components/Text';
 import PopupDeny from '../components/PopupDeny';
 import axios from 'axios';  
 import  secureLocalStorage  from  "react-secure-storage";
+
+const Login=()=> {
+  
+
+    const navigate = useNavigate();
+    const base_url = process.env.REACT_APP_BASE_URL;
+    const myIPv4  = process.env.REACT_APP_MY_IPV4;
+    const [isChecked, setIsChecked] = useState(false);
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+    const [popupDenyVisible,setPopupDenyVisible]=useState(false);
+    const [attention,setAttention]=useState('');
+}
