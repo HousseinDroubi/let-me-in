@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Events from './pages/Events';
 import ForgotPassword from './pages/ForgotPassword';
 import Users from './pages/Users';
+import BlockedUsers from './pages/BlockedUsers';
 // require('dotenv').config()
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path='/forgot_password' element={<ForgotPassword/>}/>
         <Route exact path='/events' element={<Events/>}/>
         <Route exact path='/users' element={<Users/>}/>
+        <Route exact path='/blocked' element={<BlockedUsers/>}/>
       </Routes>
     </Router>
   );
