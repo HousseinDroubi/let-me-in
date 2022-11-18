@@ -10,8 +10,8 @@ const Home=()=> {
     navigate('/login');
     }
     const isLoggedIn=()=>{
-        // if(localStorage.getItem("remember_me")==='checked')
-        //     navigate('/events');
+        if(localStorage.getItem("remember_me")==='checked')
+            navigate('/events');
     }
     useEffect( () => {
     isLoggedIn();
