@@ -112,7 +112,7 @@ const AdminProfile=()=> {
           <div className='land'>
             <Layout pageName='profile'/>
             <div className='land-content'>
-                <Title title="Edit Profile"/>
+                <NormalTitle title="Edit Profile"/>
                 <LargeImage source={profileImg===null?DefaultImage:profileImg} onClick={showImage}/>
                 <div className='admin-profile-fields'>
                     <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
