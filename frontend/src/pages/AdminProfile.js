@@ -61,6 +61,50 @@ const AdminProfile=()=> {
         navigate('/login');
       }
 
+      const editData = ()=>{
+        if(email==secureLocalStorage.getItem("email") && username==secureLocalStorage.getItem("username") &&!hasPicked){
+          showDenyPopUp("Update at least one element.");
+        }else if(email===''){
+          showDenyPopUp("Email should not be empty.");
+        }else if(!email.includes("@")){
+          showDenyPopUp("Invalid email.");
+        }else if(username===''){
+          showDenyPopUp("Usenrame should not be empty.");
+        }else if(username.length<3 || username.length>20){
+          showDenyPopUp("Username must be between 3 and 20 characters.");
+        }else{
+      
+        const body={};
+        
+        if(hasPicked){
+          body.profile_url = profileImg.split(',')[1].replace(/"/g,"/");
+        }
+        if(email!=secureLocalStorage.getItem("email")){
+          body.email=email
+        }
+        if(username!=secureLocalStorage.getItem("username")){
+          body.username=username
+        }
+        const header = {
+          headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
+        };
+          
+              axios.post(`${base_url}update_admin_data`,body,header)
+              .then(function (response) {
+                secureLocalStorage.setItem("email",response.data.data.email);
+                secureLocalStorage.setItem("username",response.data.data.user.username);
+                let profile_url = response.data.data.user.profile_url.substring(response.data.data.user.profile_url.indexOf("\\let-me-in\\"));
+                profile_url = myIPv4+profile_url;
+                profile_url = profile_url.replace(/\\/g,"/");
+                localStorage.setItem("profile_url",profile_url);
+                showDenyPopUp("Data updated successfully.");
+              })
+            .catch(function (error) {
+              showDenyPopUp("Something went wrong.");
+            });
+          }
+      }
+
 }
   
 export default AdminProfile;
