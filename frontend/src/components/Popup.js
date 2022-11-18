@@ -1,6 +1,6 @@
 import '../App.css';
 import classnames from 'classnames';
-import AcceptIcon from '../assets/images/accept.png';
+import AcceptIcon from '../assets/images/accept-icon.png';
 import NormalTitle from '../components/NormalTitle';
 import CircleImage from '../components/CircleImage';
 import DefaultImage from  '../assets/images/default_image.png';

@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../components/Title';
+import NormalTitle from '../components/NormalTitle';
 import Layout from '../components/Layout';
 import BoxUser from '../components/BoxUser';
 import PopupDeny from '../components/PopupDeny';
@@ -8,7 +8,7 @@ import axios from 'axios';
 import secureLocalStorage from 'react-secure-storage';
 import PageTitle from '../components/PageTitle';
 import AddUserButton from '../components/AddUserButton';
-import PopUp from '../components/PopUp';
+import Popup from '../components/Popup';
 
 const Users=()=> {
     const base_url = process.env.REACT_APP_BASE_URL;
@@ -80,7 +80,7 @@ const Users=()=> {
       if(users.length!==0){
         return (
           <> 
-            <PopUp className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} id={id} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked} setPopupDenyVisible={setPopupDenyVisible} attention={attention} setAttention={setAttention}/>
+            <Popup className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} id={id} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked} setPopupDenyVisible={setPopupDenyVisible} attention={attention} setAttention={setAttention}/>
             <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
         
             <div className='land display-none'>
@@ -98,7 +98,7 @@ const Users=()=> {
                             </div> 
                             );
                     })}
-                    
+
                 </div>
             </div>
         
@@ -107,14 +107,15 @@ const Users=()=> {
       }else{
         return(
           <>
-            <PopUp className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked}/>
+            <Popup className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked}/>
+            <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
             <div className='land'>
                 <Layout pageName='users'/>
                 <div className='add-users-button'>
                     <AddUserButton onClick={showPopup}/>
                 </div> 
                 <div className='land-content empty'>
-                    <Title title="Start adding your users now" className='title-opacity'/>
+                    <NormalTitle title="Start adding your users now" className='title-opacity'/>
                 </div>
             </div>
          </>

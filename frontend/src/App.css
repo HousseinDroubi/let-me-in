@@ -217,6 +217,28 @@ border: 3px solid #249F55;
   color: #FFFFFF;
 }
 
+.page-title{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.page-title-users{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-users-button{
+  margin-top: 32px;
+  position:absolute;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
 /* Box Content */
 
 .box-content{
@@ -277,6 +299,13 @@ color: #FFFFFF;
   height: 20px  ;
   width: 20px  ;
   margin-bottom: 2px;
+}
+
+.box-button-background-blue{
+  background: #5693F8;
+}
+.box-button-background-red{
+  background: #A61717;
 }
 
 /* --Pages-- */
