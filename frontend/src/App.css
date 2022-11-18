@@ -250,6 +250,35 @@ line-height: 27px;
 color: #FFFFFF;
 }
 
+/* Box Button */
+
+.box-button{
+  width: 120px;
+  height: 41px;
+  box-sizing: border-box;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-style: none;
+  cursor: pointer;
+}
+
+.box-button>p{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+}
+
+.box-button>img{
+  height: 20px  ;
+  width: 20px  ;
+  margin-bottom: 2px;
+}
+
 /* --Pages-- */
 
 /* Home */
