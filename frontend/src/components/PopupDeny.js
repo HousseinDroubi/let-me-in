@@ -16,9 +16,9 @@ const PopupDeny = (props)=>{
                         </div> 
                     </div>
                         <Title title="Attention!"/>
-                        <div className='attention-content'>
-                        <p>{props.attention}</p>
-                        </div>
+                            <div className='attention-content'>
+                                <p>{props.attention}</p>
+                            </div>
                 </div>
             
         </div>);
