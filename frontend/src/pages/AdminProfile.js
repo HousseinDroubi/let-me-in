@@ -32,6 +32,25 @@ const AdminProfile=()=> {
         setAttention(att);
       }
 
+    const showImage = ()=>{
+        document.getElementById('input').click();
+    }  
+
+    const imageHandler = (e)=>{
+        try{
+          const reader = new FileReader();
+          reader.onload = () =>{
+            if(reader.readyState === 2){
+              setProfileImg(reader.result)
+            }
+          }
+          reader.readAsDataURL(e.target.files[0])
+          setHasPicked(true);
+        }
+        catch(e){
+        }
+      }  
+
 }
   
 export default AdminProfile;
