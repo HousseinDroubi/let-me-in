@@ -26,7 +26,7 @@ const ForgotPassword=()=> {
         setAttention(att);
       }
 
-      const checkEmail = async ()=>{
+      const checkEmail = ()=>{
         
         if(email===''){
             showDenyPopUp("Email cannot be empty.");
@@ -38,7 +38,7 @@ const ForgotPassword=()=> {
             email: email
         };
         
-          await axios.post(`${base_url}send_code`, body)
+        axios.post(`${base_url}send_code`, body)
             .then(function (response) {
                 if(response.data.message==="done"){
                     showDenyPopUp("Code sent.. Please check your email.");
@@ -55,7 +55,7 @@ const ForgotPassword=()=> {
     }
     
     
-    const checkCode = async ()=>{
+    const checkCode = ()=>{
         if(code.length<6){
             showDenyPopUp("Code must be 6 characters.");
         }
@@ -65,7 +65,7 @@ const ForgotPassword=()=> {
             code:code
         };
         
-          await axios.post(`${base_url}verify_code`, body)
+        axios.post(`${base_url}verify_code`, body)
             .then(function (response) {
 
                 if(response.data.message==="Email not exist."){
@@ -76,6 +76,37 @@ const ForgotPassword=()=> {
                     showDenyPopUp("Done, please change your password.");
                     setIsCodeVerified(true);
                     setText("Change Password");
+
+                }
+            })
+            .catch(function (error) {
+                showDenyPopUp("Something went wrong");
+            });
+        }
+    }
+    
+    const changePassword = ()=>{
+        if(password!==rePassword){
+            showDenyPopUp("Passwords don't match.")
+        }else if(password.length<5 || password.length>30){
+            showDenyPopUp("Password must be between 5 and 30 characters.")
+        }
+        else{
+        const body = {
+            email: email,
+            code:code,
+            password:password
+        };
+
+        axios.post(`${base_url}change_forgotten_password`, body)
+            .then(function (response) {
+                if(response.data.message==="Email not exist."){
+                    showDenyPopUp("Email changed.");
+                }else if(response.data.message==="Password changed."){
+                    navigate('/login');
+                }else{
+                    showDenyPopUp("Something went wrong");
+                    
 
                 }
             })
