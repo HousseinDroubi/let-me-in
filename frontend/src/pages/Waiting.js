@@ -92,7 +92,7 @@ const Waiting=()=> {
       if(!called){
             await axios.get(`${base_url}waiting_user`,header)
             .then(function (response) {
-                
+
               setIsSomeoneWaiting(response.data.data===null?false:true);
               if(isSomeoneWaiting){
                 setId(response.data.data.id);
@@ -112,6 +112,24 @@ const Waiting=()=> {
 
       useEffect(() => {getWaitingUser();});
     
+    const imageHandler = (e)=>{
+        try{
+            const reader = new FileReader();
+            reader.onload = () =>{
+            if(reader.readyState === 2){
+                setProfileImg(reader.result)
+            }
+            }
+            reader.readAsDataURL(e.target.files[0])
+            setHasPicked(true);
+        }
+        catch(e){
+        }
+    }
+
+    const showImage = ()=>{
+    document.getElementById('input').click();
+    }  
 }
   
 export default Waiting;
