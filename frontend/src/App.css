@@ -424,3 +424,37 @@ border: 3px solid #249F55;
   justify-content: space-around;
   align-items: center ;
 }
+
+
+.land{
+  display: flex;
+  flex-direction: row;
+  background-color: #0F1319;
+  min-height: 100vh;
+}
+
+.land-content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; 
+  margin-left: 400px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  }
+
+  .box-container{
+    width: 95%;
+  }
+
+  .full{
+    width: 100%;
+  }
+
+  .title-opacity{
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .empty{
+    height: auto;
+   }
