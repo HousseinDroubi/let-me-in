@@ -4,11 +4,12 @@ import Label from '../components/Label';
 import Form from '../components/Form';
 import Button from '../components/Button';
 import PopupDeny from '../components/PopupDeny';
-
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+
 const ForgotPassword=()=> {
+
     const navigate = useNavigate();
     const [text,setText]=useState("Send code");
     const [email,setEmail]=useState('');
@@ -105,9 +106,7 @@ const ForgotPassword=()=> {
                 }else if(response.data.message==="Password changed."){
                     navigate('/login');
                 }else{
-                    showDenyPopUp("Something went wrong");
-                    
-
+                    showDenyPopUp("Something went wrong");   
                 }
             })
             .catch(function (error) {
@@ -127,25 +126,23 @@ const ForgotPassword=()=> {
     }
 
     return(
-        <>
-
-       
-    <div className='home'>
-        <NormalTitle title="Forgot Password"/> 
-        <div className='forgot-password-content'>
-            <Label title="Enter your email" />  
-            <Form value={email} setText={setEmail}/>  
-            <Label title="Enter your code" className='mt-33'/>  
-            <Form value={code} setText={setCode}/>  
-            <Label title="Enter your password" className='mt-33'/>  
-            <Form value={password} setText={setPassword} type="password"/> 
-            <Label title="Re-enter your password" className='mt-33'/>  
-            <Form value={rePassword} setText={setRePassword} type="password"/> 
-            <Button name={text} className='mt-33' onClick={checkEntries}/>
-        </div> 
-        <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>  
-    </div>
-    </>
+            <>
+            <div className='home'>
+                <NormalTitle title="Forgot Password"/> 
+                <div className='forgot-password-content'>
+                    <Label title="Enter your email" />  
+                    <Form value={email} setText={setEmail}/>  
+                    <Label title="Enter your code" className='mt-33'/>  
+                    <Form value={code} setText={setCode}/>  
+                    <Label title="Enter your password" className='mt-33'/>  
+                    <Form value={password} setText={setPassword} type="password"/> 
+                    <Label title="Re-enter your password" className='mt-33'/>  
+                    <Form value={rePassword} setText={setRePassword} type="password"/> 
+                    <Button name={text} className='mt-33' onClick={checkEntries}/>
+                </div> 
+                <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>  
+            </div>
+            </>
     );
 
 }
