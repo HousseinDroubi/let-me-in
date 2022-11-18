@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import Button from '../components/Button';
 import { useNavigate } from "react-router-dom";
 import Form from '../components/Form';
-import Title from '../components/Title';
+import NormalTitle from '../components/NormalTitle';
 import Label from '../components/Label';
 import Text from '../components/Text';
 import PopupDeny from '../components/PopupDeny';
@@ -84,7 +84,7 @@ const Login=()=> {
         <>
         
         <div className='home'>
-          <Title title="Here you can login :)"/>
+          <NormalTitle title="Here you can login :)"/>
           
           <div className='login-contents'>
           <Label title={"Email"} />

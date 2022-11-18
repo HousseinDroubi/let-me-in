@@ -1,5 +1,5 @@
 import '../App.css';
-import Title from './Title';
+import NormalTitle from './NormalTitle';
 import classnames from 'classnames';
 
 const PopupDeny = (props)=>{
@@ -15,7 +15,7 @@ const PopupDeny = (props)=>{
                             <p>x</p>
                         </div> 
                     </div>
-                        <Title title="Attention!"/>
+                        <NormalTitle title="Attention!"/>
                             <div className='attention-content'>
                                 <p>{props.attention}</p>
                             </div>
