@@ -31,5 +31,23 @@ const Layout = (props)=>{
     }
     useEffect(() => {getBarrierStatus();
       });
+
+      const changeBarrierStatus=(status)=>{
+        const header = {
+            headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
+        };
+        const body={
+            status:status
+        };
+            axios.post(`${base_url}change_barrier_status`,body,header)
+            .then(function (response) {
+            console.log(response);
+
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+    }   
+    
 }
 export default Layout;
