@@ -227,6 +227,28 @@ border: 3px solid #249F55;
   color: #FFFFFF;
 }
 
+/* Add User Button */
+
+.add-user-button-content{
+  cursor: pointer;
+  margin-right: 20px;
+  width: 162px;
+  height: 58px;
+  background: #5693F8;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly ;
+}
+
+.add-user-button-content>p{
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 27px;
+color: #FFFFFF;
+}
 
 /* --Pages-- */
 
