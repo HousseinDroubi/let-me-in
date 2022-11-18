@@ -23,7 +23,7 @@ const Home=()=> {
         
           <NormalTitle title="Let me in"/>
           <img src={logo} alt="logo" className='image-logo'/>
-          <Button  name={"Get Started"} onClick={navigate}  className='mt-80 mb-30'></Button>
+          <Button name={"Get Started"} onClick={navigateToLogin}  className='mt-80'></Button>
         </div>
       );
 }
