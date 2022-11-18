@@ -33,7 +33,7 @@ const Waiting=()=> {
       }
 
 
-      const UpdateUser=(decision)=>{
+    const UpdateUser=(decision)=>{
         if(username.length<3 || username.length>20)
           showDenyPopUp("Username must be between 3 and 20 characters.");
         else if(carType<3 || carType.length>20)  
@@ -68,20 +68,49 @@ const Waiting=()=> {
           }
        } 
 
-       const rejectWaitingUser=()=>{
-        UpdateUser(1);
-       }
+    const rejectWaitingUser=()=>{
+    UpdateUser(1);
+    }
 
-       const acceptWaitingUser=()=>{
-        UpdateUser(0);
-       }  
+    const acceptWaitingUser=()=>{
+    UpdateUser(0);
+    }  
 
-       const formatter = new Intl.DateTimeFormat("en-GB", {
-        hour:'2-digit',
-        minute:'2-digit',
-        second:'2-digit',
-        hour12: true
-      });
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+    hour:'2-digit',
+    minute:'2-digit',
+    second:'2-digit',
+    hour12: true
+    });
+
+    const getWaitingUser = async()=>{
+
+        const header = {
+          headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
+        };
+          
+      if(!called){
+            await axios.get(`${base_url}waiting_user`,header)
+            .then(function (response) {
+                
+              setIsSomeoneWaiting(response.data.data===null?false:true);
+              if(isSomeoneWaiting){
+                setId(response.data.data.id);
+                setUsername(response.data.data.username);
+                setCarType(response.data.data.user_detail.car_type);
+                setCarPlateNumber(response.data.data.user_detail.car_plate_number);
+                const time = formatter.format(Date.parse(response.data.data.created_at))
+                setArrivalTime(time);
+                setCalled(true);
+              }
+            })
+            .catch(function (error) {
+              showDenyPopUp("Something went wrong.");
+            });
+          }
+      }
+
+      useEffect(() => {getWaitingUser();});
     
 }
   
