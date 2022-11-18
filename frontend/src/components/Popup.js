@@ -17,5 +17,11 @@ const PopUp = (props)=>{
       props.setPopupDenyVisible(true);
       props.setAttention(att);
     }
+    const closePopup = async()=>{
+        props.setDefaultt(true);
+        props.setPopupVisible(false);
+        props.setProfile('');
+        props.setHasPicked(false);
+    }
 }
 export default PopUp;
