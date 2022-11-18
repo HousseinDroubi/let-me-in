@@ -4,3 +4,9 @@ import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import axios from 'axios';
 import secureLocalStorage from 'react-secure-storage';
+const Events=()=> {
+return(
+    <Layout/>
+);
+}
+export default Events;
