@@ -51,6 +51,16 @@ const AdminProfile=()=> {
         }
       }  
 
+    const showPopup = ()=>{
+    setPopupVisible(true);
+    } 
+    
+    const logoutFromWebsite = ()=>{
+        localStorage.clear();
+        secureLocalStorage.clear();
+        navigate('/login');
+      }
+
 }
   
 export default AdminProfile;
