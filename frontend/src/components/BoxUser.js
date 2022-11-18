@@ -1,0 +1,10 @@
+import '../App.css';
+import classnames from 'classnames';
+import BoxContent from './BoxContent';
+import CircleImage from './CircleImage';
+import BoxButton from './BoxButton';
+import DefaultImage from '../assets/images/default_image.png';
+import secureLocalStorage from 'react-secure-storage';
+import axios from 'axios';
+import EditIcon from '../assets/images/edit_icon.png';
+import BlockedImage from '../assets/images/blocked_icon.png';
