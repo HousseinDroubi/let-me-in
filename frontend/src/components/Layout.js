@@ -79,6 +79,22 @@ const Layout = (props)=>{
         }
     }
 
+    const navigateToEvents = ()=>{
+        navigate('/events');
+    }
+    const navigateToUsers = ()=>{
+        navigate('/users');
+    }
+    const navigateToBlocked = ()=>{
+        navigate('/blocked');
+    }
+    const navigateToWaiting = ()=>{
+        navigate('/waiting');
+    }
+    const navigateToProfile=()=>{
+        navigate('/admin_profile');
+    }
+    
 
 }
 export default Layout;
