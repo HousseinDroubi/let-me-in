@@ -28,6 +28,7 @@ const Users=()=> {
   const [popupDenyVisible,setPopupDenyVisible]=useState(false);
   const [attention,setAttention]=useState('');  
 
+    // Here, we are getting the users who aren't blocked (has status = '0')
   const getUsers = ()=>{
 
     const header = {
