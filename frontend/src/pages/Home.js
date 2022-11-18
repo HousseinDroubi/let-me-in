@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import Button from '../components/Button';
 import { useNavigate } from "react-router-dom";
 import logo from '../assets/images/letmein-logo.png';
@@ -7,16 +7,9 @@ const Home=()=> {
     const navigate = useNavigate();
 
     function navigateToLogin(){
-    navigate('/login');
+      navigate('/login');
     }
-    const isLoggedIn=()=>{
-        if(localStorage.getItem("remember_me")==='checked')
-            navigate('/events');
-    }
-    useEffect( () => {
-    isLoggedIn();
     
-    });
     return (
       
         <div className='home'>
