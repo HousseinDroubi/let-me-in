@@ -52,5 +52,38 @@ const ForgotPassword=()=> {
                 showDenyPopUp("Someting went wrong.");
             });
         }
-    }  
+    }
+    
+    
+    const checkCode = async ()=>{
+        if(code.length<6){
+            showDenyPopUp("Code must be 6 characters.");
+        }
+        else{
+        const body = {
+            email: email,
+            code:code
+        };
+        
+          await axios.post(`${base_url}verify_code`, body)
+            .then(function (response) {
+
+                if(response.data.message==="Email not exist."){
+                    showDenyPopUp("Email changed.");
+                }else if(response.data.message==="wrong code"){
+                    showDenyPopUp("Wrong code.");
+                }else if(response.data.message==="correct code"){
+                    showDenyPopUp("Done, please change your password.");
+                    setIsCodeVerified(true);
+                    setText("Change Password");
+
+                }
+            })
+            .catch(function (error) {
+                showDenyPopUp("Something went wrong");
+            });
+        }
+    }
+
+
 }
