@@ -96,6 +96,14 @@
 }
 
 
+/* Forgot Password */
+
+.forgot-password-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* Reusable classes  */
 
 .home{
