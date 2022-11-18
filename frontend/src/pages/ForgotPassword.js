@@ -27,6 +27,7 @@ const ForgotPassword=()=> {
         setAttention(att);
       }
 
+        // Here, we are chking if this email is the email of the admin itself and saved into the DataBase
       const checkEmail = ()=>{
         
         if(email===''){
@@ -39,9 +40,13 @@ const ForgotPassword=()=> {
             email: email
         };
         
+        // Send request using axios
         axios.post(`${base_url}send_code`, body)
             .then(function (response) {
                 if(response.data.message==="done"){
+
+                    // When the admin reach this point, that means the email has been sent to the 
+                    // entered email successfully
                     showDenyPopUp("Code sent.. Please check your email.");
                     setText("Verify code");
                     setIsEmailVerified(true);
@@ -55,7 +60,7 @@ const ForgotPassword=()=> {
         }
     }
     
-    
+    // Now, we are checking the code entered by the admin
     const checkCode = ()=>{
         if(code.length<6){
             showDenyPopUp("Code must be 6 characters.");
@@ -74,6 +79,9 @@ const ForgotPassword=()=> {
                 }else if(response.data.message==="wrong code"){
                     showDenyPopUp("Wrong code.");
                 }else if(response.data.message==="correct code"){
+
+                    // This doesn't change anything into the DataBase, just to tell the admin
+                    // that the code is correct
                     showDenyPopUp("Done, please change your password.");
                     setIsCodeVerified(true);
                     setText("Change Password");
@@ -86,6 +94,7 @@ const ForgotPassword=()=> {
         }
     }
     
+    // Now, we are changing the password
     const changePassword = ()=>{
         if(password!==rePassword){
             showDenyPopUp("Passwords don't match.")
@@ -104,6 +113,9 @@ const ForgotPassword=()=> {
                 if(response.data.message==="Email not exist."){
                     showDenyPopUp("Email changed.");
                 }else if(response.data.message==="Password changed."){
+
+                    // If the password has been changed, this page will redirect the admin
+                    // to the login page.
                     navigate('/login');
                 }else{
                     showDenyPopUp("Something went wrong");   
