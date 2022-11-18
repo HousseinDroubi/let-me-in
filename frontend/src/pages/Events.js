@@ -3,6 +3,7 @@ import NormalTitle from '../components/NormalTitle';
 import Layout from '../components/Layout';
 import PageTitle from '../components/PageTitle';
 import axios from 'axios';
+import BoxEvent from '../components/BoxEvent';
 import secureLocalStorage from 'react-secure-storage';
 const Events=()=> {
     const myIPv4  = process.env.REACT_APP_MY_IPV4;
@@ -101,8 +102,53 @@ const Events=()=> {
           useEffect( () => {getEvents();});
         
 
-return(
-    <Layout pageName='events'/>
-);
+          if(dates.length!==0){
+            return(
+              <>
+                <div className='land'>
+                 <Layout pageName='events'/>
+                 <div className='land-content'>
+                 
+                  {dates.map((element,index)=>{
+                     return (
+                      <div className='box-container' key={index}>
+                        <PageTitle text={element}/>
+                      {events[index].map((subElement,subIndex)=>{
+                         return(
+                          <>
+                          <div>
+                          <div className='box-container full' key={subIndex}>
+                          <BoxEvent username={events[index][subIndex][3]} source={events[index][subIndex][4]} car_type={events[index][subIndex][5]} car_plate_number={events[index][subIndex][6]} arrival_time={events[index][subIndex][0]} departure_time={events[index][subIndex][1]} difference_time={events[index][subIndex][2]}/>
+                          </div>
+                          </div>
+                          </>
+                         );
+                         
+                         })}
+                     </div>
+                      );
+              })}
+                 </div>
+          
+                </div>
+              </>
+            );
+          }
+          
+          
+          else{
+            return(
+              <>
+                <div className='land'>
+                 <Layout pageName='events'/>
+                 <div className='land-content empty'>
+                 <NormalTitle title="Nothing to show" className='title-opacity'/>
+                 </div>
+          
+                </div>
+              </>
+            );
+                
+          }
 }
 export default Events;
