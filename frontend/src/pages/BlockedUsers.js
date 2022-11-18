@@ -13,5 +13,47 @@ const BlockedUsers= ()=> {
     const[called,setCalled]=useState(false);
     const [blockedUsers,setBlockedUsers]=useState([]);
 
+    const getBlockedUsers = ()=>{
+
+        const header = {
+          headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
+        };
+        if (!called){
+            axios.get(`${base_url}blocked_users`,header)
+            .then(function (response) {
+            if(response.data.data.length !==0){
+                let array = [];
+                response.data.data.forEach(element => {
+                const sub_array = [];
+                sub_array.push(element.id);
+                sub_array.push(element.username);
+
+                if(element.profile_url!==null){
+                    let profile_url = element.profile_url.substring(element.profile_url.indexOf("\\let-me-in\\"));
+                    profile_url = myIPv4+profile_url;
+                    profile_url = profile_url.replace(/\\/g,"/");
+                    sub_array.push(profile_url);
+                }else{
+                sub_array.push(element.profile_url);
+                }
+                
+                sub_array.push(element.user_detail.car_type);
+                sub_array.push(element.user_detail.car_plate_number);
+                array.push(sub_array);
+                });
+
+                setBlockedUsers(array);
+            }
+        })
+        .catch(function (error) {
+            
+        });
+        
+        setCalled(true);
+          }
+         
+          }
+          useEffect( () => {getBlockedUsers();});
+
 }
 export default BlockedUsers;
