@@ -27,6 +27,11 @@ const AdminProfile=()=> {
     const [attention,setAttention]=useState('');
     const navigate = useNavigate();
 
+    const showDenyPopUp = (att)=>{
+        setPopupDenyVisible(true);
+        setAttention(att);
+      }
+
 }
   
 export default AdminProfile;
