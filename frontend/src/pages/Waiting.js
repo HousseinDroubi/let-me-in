@@ -26,6 +26,11 @@ const Waiting=()=> {
     const base_url = process.env.REACT_APP_BASE_URL;
     const [popupDenyVisible,setPopupDenyVisible]=useState(false);
     const [attention,setAttention]=useState('');
+
+    const showDenyPopUp = (att)=>{
+        setPopupDenyVisible(true);
+        setAttention(att);
+      }
 }
   
 export default Waiting;
