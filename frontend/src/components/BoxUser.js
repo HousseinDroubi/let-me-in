@@ -10,7 +10,7 @@ import EditIcon from '../assets/images/edit_icon.png';
 import BlockedImage from '../assets/images/blocked_icon.png';
 
 const BoxUser = (props)=>{
-    //  props.setPopupVisible(true);
+    
     const EditUser =()=>{
         props.setDefaultt(false);
         props.setIsAddingUser(false);
