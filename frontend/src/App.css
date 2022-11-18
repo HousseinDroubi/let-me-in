@@ -104,6 +104,43 @@
   border-radius: 50%;
 }
 
+/* Layout */
+
+.modes-circles{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.backgorund-mode-blue{
+  background: #326AC6;
+}
+.backgorund-border-mode-blue{
+border: 3px solid #326AC6;
+}
+
+.backgorund-mode-green{
+  background: #249F55;
+}
+.backgorund-border-mode-green{
+border: 3px solid #249F55;
+}
+
+.backgorund-mode-red{
+  background: #A61717;
+}
+.backgorund-border-mode-red{
+  border: 3px solid #A61717;
+}
+
+.button-drawer-background-blue{
+  background: #5693F8;
+}
+.button-drawer-background-navy{
+  background: #0F1319;
+}
+
 /* --Pages-- */
 
 /* Home */
