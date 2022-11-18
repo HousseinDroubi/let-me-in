@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import Label from '../components/Label';
 import Form from '../components/Form';
 import { useNavigate } from "react-router-dom";
-import Title from '../components/Title';
+import NormalTitle from '../components/NormalTitle';
 import Layout from '../components/Layout';
 import LargeImage from '../components/LargeImage';
 import secureLocalStorage from 'react-secure-storage';
