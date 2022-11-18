@@ -25,4 +25,32 @@ const ForgotPassword=()=> {
         setPopupDenyVisible(true);
         setAttention(att);
       }
+
+      const checkEmail = async ()=>{
+        
+        if(email===''){
+            showDenyPopUp("Email cannot be empty.");
+        }else if(!email.includes("@")){
+            showDenyPopUp("Invalid email.");
+        }
+        else{
+        const body = {
+            email: email
+        };
+        
+          await axios.post(`${base_url}send_code`, body)
+            .then(function (response) {
+                if(response.data.message==="done"){
+                    showDenyPopUp("Code sent.. Please check your email.");
+                    setText("Verify code");
+                    setIsEmailVerified(true);
+                }else{
+                    showDenyPopUp("This email isn't exist.");
+                }
+            })
+            .catch(function (error) {
+                showDenyPopUp("Someting went wrong.");
+            });
+        }
+    }  
 }
