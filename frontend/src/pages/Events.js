@@ -10,7 +10,15 @@ const Events=()=> {
     const [called,setCalled]=useState(false);
     const[dates,setDates]=useState([]);
     const[events,setEvents]=useState([]);
-    
+
+    const getMonthName = (date)=>{
+        const monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+        "July", "Aug", "Sep", "Oct", "Nov", "Dec"
+      ];  
+      const result = new Date(date);
+      return `${monthNames[result.getMonth()]} ${date.split("-")[2]}, ${date.split("-")[0]}`;
+      }
+
 return(
     <Layout pageName='events'/>
 );
