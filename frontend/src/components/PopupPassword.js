@@ -62,5 +62,26 @@ const PopupPassword = (props)=>{
                 });
         }
     }
+    return (
+    <div className={classnames( "popup",props.className)}>
+        <div className='popup-password'>
+            <div className='popup-title'>  
+                <div className='popup-cancel' onClick={closePopup}>
+                    <p>x</p>
+                </div> 
+            </div>
+            <NormalTitle title="Change Password"/>
+            <div className='admin-profile-fields'>   
+                <Label  title={"Old password"} />
+                <Form setText={props.setOldPassword} value = {props.oldPassword} text={props.oldPassword} type="password"/>  
+                <Label  title={"New password"} />
+                <Form setText={props.setNewPassword} value = {props.newPassword} text = {props.newPassword} type="password"/>
+                <Label  title={"Confirm password"} />
+                <Form setText={props.setConfirmPassword} value = {props.confirmPassword} text = {props.confirmPassword} type="password"/>
+                <Button name={"Change Password"} className='mt-33' onClick={changePassword}/>
+            </div> 
+        </div>
+    </div>
+    );
 }
 export default PopupPassword;
