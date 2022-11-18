@@ -12,6 +12,7 @@ const Events=()=> {
     const[dates,setDates]=useState([]);
     const[events,setEvents]=useState([]);
 
+    // In the below function, we are changing the from month number to its name
     const getMonthName = (date)=>{
         const monthNames = ["Jan", "Feb", "March", "April", "May", "June",
         "July", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -19,8 +20,10 @@ const Events=()=> {
       const result = new Date(date);
       return `${monthNames[result.getMonth()]} ${date.split("-")[2]}, ${date.split("-")[0]}`;
       }
-      const getEvents = ()=>{
 
+      // In the below method we are getting the events happened by the users. Each event contains
+      // data about the user, the arrival time, departure time and the difference between them.
+      const getEvents = ()=>{
 
         const header = {
           headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
