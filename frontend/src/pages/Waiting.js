@@ -4,7 +4,7 @@ import DrawerButton from '../components/DrawerButton';
 import Layout from '../components/Layout';
 import secureLocalStorage from 'react-secure-storage';
 import axios from 'axios';
-import waitingProfile from '../assets/images/waiting_profile.png';
+import waitingProfile from '../assets/images/waiting-image.png';
 import Label from '../components/Label';
 import Form from '../components/Form';
 import TextView from '../components/TextView';
@@ -129,7 +129,51 @@ const Waiting=()=> {
 
     const showImage = ()=>{
     document.getElementById('input').click();
-    }  
+    } 
+    
+    if(isSomeoneWaiting){
+        return (
+          <>
+            <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
+          
+          <div className='land'>
+           <Layout pageName='waiting'/>
+           <div className='land-content'>
+           <NormalTitle title="Someone is waiting"/>
+           <div>
+            <LargeImage source={profileImg} onClick={showImage}/>
+            <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
+            </div>
+            <div>
+            <Label title='Username' />
+            <Form value={username} setText={setUsername} text = {username}/>
+            <Label title='Car Type' />
+            <Form value={carType} setText={setCarType} text = {carType}/>
+            <Label title='Car Plate Number' />
+            <Form value={carPlateNumber} setText={setCarPlateNumber} text = {carPlateNumber}/>
+            <Label title='Car Plate Number' />
+            <TextView text = {arrivalTime}/>
+            <div className='waiting-decision-buttons'>
+            <DecisionButton text='Reject' onClick={rejectWaitingUser}/>
+            <DecisionButton text='Accept' onClick={acceptWaitingUser}/>
+            </div>
+            </div>
+           </div>
+          
+          </div>
+          </>
+        );}
+          else {
+            return(
+            <div className='land'>
+            <Layout pageName='waiting'/>
+            <div className='land-content empty'>
+            <NormalTitle title="No one at the door" className='title-opacity'/>
+            </div>
+           
+           </div>
+           );
+          }
 }
   
 export default Waiting;

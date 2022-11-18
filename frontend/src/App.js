@@ -6,6 +6,7 @@ import Events from './pages/Events';
 import ForgotPassword from './pages/ForgotPassword';
 import Users from './pages/Users';
 import BlockedUsers from './pages/BlockedUsers';
+import Waiting from './pages/Waiting';
 // require('dotenv').config()
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path='/events' element={<Events/>}/>
         <Route exact path='/users' element={<Users/>}/>
         <Route exact path='/blocked' element={<BlockedUsers/>}/>
+        <Route exact path='/waiting' element={<Waiting/>}/>
       </Routes>
     </Router>
   );
