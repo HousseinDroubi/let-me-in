@@ -13,7 +13,19 @@ import LargeImage from '../components/LargeImage';
 import PopupDeny from '../components/PopupDeny';
 
 const Waiting=()=> {
-
+    const [isSomeoneWaiting,setIsSomeoneWaiting]= useState(false);
+    const [id,setId]=useState('');
+    const [username,setUsername]=useState('Unkown');
+    const [carType,setCarType]=useState('Unkown');
+    const [carPlateNumber,setCarPlateNumber]=useState('');
+    const [arrivalTime,setArrivalTime]=useState('');
+    const [decisionUser,setDecisionUser] = useState(2);
+    const [profileImg,setProfileImg]= useState(waitingProfile);
+    const[called,setCalled]=useState(false);
+    const [hasPicked,setHasPicked]=useState(false);
+    const base_url = process.env.REACT_APP_BASE_URL;
+    const [popupDenyVisible,setPopupDenyVisible]=useState(false);
+    const [attention,setAttention]=useState('');
 }
   
 export default Waiting;
