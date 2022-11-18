@@ -317,6 +317,14 @@ color: #FFFFFF;
   cursor: pointer;
 }
 
+/* Text View */
+
+.text-view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* --Pages-- */
 
 /* Home */
