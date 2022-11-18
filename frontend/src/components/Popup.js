@@ -23,5 +23,25 @@ const PopUp = (props)=>{
         props.setProfile('');
         props.setHasPicked(false);
     }
+
+    const pickUpImage = ()=>{
+
+        document.getElementById('input').click();
+    }
+
+    const imageHandler = (e)=>{
+        try{
+          const reader = new FileReader();
+          reader.onload = () =>{
+            if(reader.readyState === 2){
+                props.setProfile(reader.result)
+            }
+          }
+          reader.readAsDataURL(e.target.files[0])
+          props.setHasPicked(true);
+        }
+        catch(e){
+        }
+      }
 }
 export default PopUp;
