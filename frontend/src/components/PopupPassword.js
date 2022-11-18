@@ -9,7 +9,6 @@ import secureLocalStorage from 'react-secure-storage';
 
 const PopupPassword = (props)=>{
     const base_url = process.env.REACT_APP_BASE_URL;
-    const myIPv4  = process.env.REACT_APP_MY_IPV4;
 
     const showDenyPopUp = (att)=>{
     props.setPopupDenyVisible(true);
