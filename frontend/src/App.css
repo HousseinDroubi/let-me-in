@@ -141,6 +141,30 @@ border: 3px solid #249F55;
   background: #0F1319;
 }
 
+/* Layout Drawer */
+
+.button-drawer{
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  background: #0F1319;
+  border-radius: 42px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.button-drawer>p{
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  position: absolute;
+}
+
 /* --Pages-- */
 
 /* Home */
