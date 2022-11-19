@@ -89,20 +89,12 @@ class EventController extends Controller{
             // Execute the command and get the output
             $command = escapeshellcmd($command_order);
             $output=shell_exec($command);
-
-            // Since we are returning 'error' from ocr.py in case it didn't find the car plate number, so,
-            // we have to return close
-            if(strpos($output, "error") !== false){
-                return "close";
-            }
-
             $new_output = "";
             for($i=0;$i<strlen($output);$i++){
                 if (preg_match('~[0-9]+~', $output[$i]) || preg_match('~[A-Z]+~', $output[$i]) ) {
                     $new_output .=$output[$i];
                 }
             }
-
             // Redirect to 'add_update_event' route implemented in this controller below with the car plate
             // number
             $request = Request::create('/add_update_event', 'POST', ['car_plate_number' => $new_output]);    
@@ -194,12 +186,6 @@ class EventController extends Controller{
         else if($user_details->status=='1')
             return 'close';
 
-        //In case the status was '0' and there's an event made by this user, that means we are asking for
-        //someone who is already user
-        $event = Event::where('user_id',$user_details->user_id)->first();
-        if($event){
-            return redirect()->route('access-denied');
-        }
         // In case the was no event made by this user before, that means we should redirect this function to another
         // route which is addOrUpdateEvent in order to insert a new event since the barrier will 'open'
         $request = Request::create('/add_update_event', 'POST', ['car_plate_number' => $car_plate_number]);    
