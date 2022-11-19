@@ -15,7 +15,7 @@ const Home=()=> {
     return (
       
         <div className='home'>
-          <NormalTitle title="Let me in"/>
+          <NormalTitle title="Let me in" className='mb-98'/>
           <img src={logo} alt="logo" className='image-logo'/>
           <Button name={"Get Started"} onClick={navigateToLogin}  className='mt-80'></Button>
         </div>
