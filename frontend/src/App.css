@@ -437,6 +437,9 @@ color: #FFFFFF;
 .mt-80{
   margin-top: 80px;
 }
+.mb-98{
+  margin-bottom: 98px;
+}
 
 .popup{
   position:absolute;
@@ -619,3 +622,21 @@ color: #FFFFFF;
   .empty{
     height: auto;
    }
+
+
+   @media screen and (max-width: 926px) {
+    
+      /* Home */
+    .image-logo{
+      width: 210px;
+      height: 197px;
+      left: 109px;
+      top: 372px;
+    }
+
+    .button{
+      width: 399px;
+      height: 67px;
+    }
+
+  }
