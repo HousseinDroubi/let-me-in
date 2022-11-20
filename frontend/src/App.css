@@ -376,7 +376,6 @@ color: #FFFFFF;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 46px;
-  margin-bottom: 50px;
 }
 
 /* --Pages-- */
@@ -435,6 +434,8 @@ color: #FFFFFF;
 .admin-profile-fields>.button:last-child{
   margin-top: 51px;
 }
+/* Waiting User */
+
 
 /* Reusable classes  */
 
@@ -755,5 +756,21 @@ color: #FFFFFF;
       margin-top: 44px;
     }
 
+    .waiting-user-fields{
+      width: 95%;
+    }
+    .waiting-user-fields>.form{
+      width: 92%;
+    }
+    .decision-button{
+      cursor: pointer;
+      height: 39px;
+      width: 172px;
+    }
+    .decision-button>p{
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 20px;
+    }
 
   }
