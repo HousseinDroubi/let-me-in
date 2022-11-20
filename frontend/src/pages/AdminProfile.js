@@ -10,6 +10,7 @@ import secureLocalStorage from 'react-secure-storage';
 import DefaultImage from '../assets/images/default_image.png';
 import PopupPassword from '../components/PopupPassword';
 import PopupDeny from '../components/PopupDeny';
+import LayoutToggle from '../components/LayoutToggle';
 import axios from 'axios';
 
 const AdminProfile=()=> {
@@ -25,6 +26,7 @@ const AdminProfile=()=> {
     const [confirmPassword,setConfirmPassword]=useState('');
     const [popupDenyVisible,setPopupDenyVisible]=useState(false);
     const [attention,setAttention]=useState('');
+    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
     const navigate = useNavigate();
 
     const showDenyPopUp = (att)=>{
@@ -106,13 +108,22 @@ const AdminProfile=()=> {
           }
       }
 
+      const togglelayoutVisibility =()=>{
+        if(isDrawerVisible){
+            setIsDrawerVisible(false);
+        }else{
+            setIsDrawerVisible(true);
+        }
+    }
+
       return (
         <>
           <PopupPassword className={popupVisible?'visiblity-visible':'visiblity-hidden'}  setPopupVisible={setPopupVisible} oldPassword={oldPassword} newPassword={newPassword} confirmPassword={confirmPassword} setOldPassword={setOldPassword} setNewPassword={setNewPassword} setConfirmPassword={setConfirmPassword} setPopupDenyVisible={setPopupDenyVisible} setAttention={setAttention}/>
           <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
           <div className='land'>
-            <Layout pageName='profile'/>
+            <Layout pageName='profile' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
             <div className='land-content'>
+            <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                 <NormalTitle title="Edit Profile"/>
                 <LargeImage source={profileImg===null?DefaultImage:profileImg} onClick={showImage}/>
                 <div className='admin-profile-fields'>
