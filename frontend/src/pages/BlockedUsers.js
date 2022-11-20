@@ -6,13 +6,15 @@ import secureLocalStorage from 'react-secure-storage';
 import Box from '../components/Box';
 import PageTitle from '../components/PageTitle';
 import BlockedIcon from '../assets/images/blocked_icon.png';
+import LayoutToggle from '../components/LayoutToggle';
 
 const BlockedUsers= ()=> {
     const myIPv4  = process.env.REACT_APP_MY_IPV4;
     const base_url = process.env.REACT_APP_BASE_URL;
     const[called,setCalled]=useState(false);
     const [blockedUsers,setBlockedUsers]=useState([]);
-
+    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
+    
     // Here, we are asking from the server the blocked users (has status ='1')
     const getBlockedUsers = ()=>{
 
@@ -57,12 +59,24 @@ const BlockedUsers= ()=> {
          
           }
           useEffect( () => {getBlockedUsers();});
+
+
+    const togglelayoutVisibility =()=>{
+        if(isDrawerVisible){
+            setIsDrawerVisible(false);
+        }else{
+            setIsDrawerVisible(true);
+        }
+    }
+
+
         if(blockedUsers.length!==0){
     
         return(
             <div className='land'>
-                <Layout pageName='blocked'/>
+                <Layout pageName='blocked' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                 <div className='land-content'>
+                    <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                     <div className='page-title'>
                         <PageTitle text='Blocked List'/>
                     </div>
