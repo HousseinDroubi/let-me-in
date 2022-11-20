@@ -117,7 +117,7 @@ const PopUp = (props)=>{
                                 <p>x</p>
                             </div> 
                         </div>
-                        <NormalTitle title="Edit User"/> 
+                        <NormalTitle title={props.isAddingUser?"Add User":"Edit User"}/> 
                         
                         <CircleImage source={props.profile===null?DefaultImage:props.profile} className='wid-40 cursor-pointer' onClick={pickUpImage}/>
                         <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>

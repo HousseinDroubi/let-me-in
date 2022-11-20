@@ -669,6 +669,11 @@ color: #FFFFFF;
     height: auto;
    }
 
+   .event-contents{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+   }
 
    @media screen and (max-width: 926px) {
     
@@ -800,8 +805,6 @@ color: #FFFFFF;
     }
     .box>.box-details:last-child{
       margin-top: 17px;
-      justify-content: center;
-
     }
     .box-button{
       width: 79.6px;
@@ -810,13 +813,11 @@ color: #FFFFFF;
     .box-button>img{
       height: 12.4px;
       width: 12.57px;
+
     }.box-button>p{
-      font-weight: 700;
+      font-weight: 600;
       font-size: 15px;
       line-height: 15px;
-    }
-    .box>.media-space-between:last-child{
-      justify-content: space-between;
     }
 
     .popup-content{
@@ -830,4 +831,9 @@ color: #FFFFFF;
       align-items: center;
       justify-content: center;
     }
+
+    .event-time-info .box-details{
+      width: 120%;
+    }
+  
   }

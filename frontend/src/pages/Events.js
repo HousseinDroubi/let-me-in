@@ -114,13 +114,13 @@ const Events=()=> {
                  
                   {dates.map((element,index)=>{
                      return (
-                      <div className='box-container' key={index}>
+                      <div className='event-contents' key={index}>
                         <PageTitle text={element}/>
                       {events[index].map((subElement,subIndex)=>{
                          return(
                           <>
                           <div>
-                          <div className='box-container full' key={subIndex}>
+                          <div className='box-container full event-time-info' key={subIndex}>
                           <BoxEvent username={events[index][subIndex][3]} source={events[index][subIndex][4]} car_type={events[index][subIndex][5]} car_plate_number={events[index][subIndex][6]} arrival_time={events[index][subIndex][0]} departure_time={events[index][subIndex][1]} difference_time={events[index][subIndex][2]}/>
                           </div>
                           </div>
