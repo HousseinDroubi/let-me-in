@@ -11,6 +11,7 @@ import TextView from '../components/TextView';
 import DecisionButton from '../components/DecisionButton';
 import LargeImage from '../components/LargeImage';
 import PopupDeny from '../components/PopupDeny';
+import LayoutToggle from '../components/LayoutToggle';
 
 const Waiting=()=> {
     const [isSomeoneWaiting,setIsSomeoneWaiting]= useState(false);
@@ -25,6 +26,7 @@ const Waiting=()=> {
     const base_url = process.env.REACT_APP_BASE_URL;
     const [popupDenyVisible,setPopupDenyVisible]=useState(false);
     const [attention,setAttention]=useState('');
+    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
 
     const showDenyPopUp = (att)=>{
         setPopupDenyVisible(true);
@@ -134,6 +136,14 @@ const Waiting=()=> {
     const showImage = ()=>{
     document.getElementById('input').click();
     } 
+
+    const togglelayoutVisibility =()=>{
+      if(isDrawerVisible){
+          setIsDrawerVisible(false);
+      }else{
+          setIsDrawerVisible(true);
+      }
+  }
     
     if(isSomeoneWaiting){
         return (
@@ -141,8 +151,9 @@ const Waiting=()=> {
             <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
           
             <div className='land'>
-            <Layout pageName='waiting'/>
+            <Layout pageName='waiting' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                 <div className='land-content'>
+                <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                     <NormalTitle title="Someone is waiting" className="mt-47"/>
                         <div>
                             <LargeImage source={profileImg} onClick={showImage}/>

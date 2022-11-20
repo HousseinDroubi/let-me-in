@@ -7,7 +7,6 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import secureLocalStorage from 'react-secure-storage';
 import ModeTitle from './ModeTitle';
-import classnames from 'classnames';
 import LayoutToggle from './LayoutToggle';
 
 const Layout = (props)=>{
@@ -95,7 +94,7 @@ const Layout = (props)=>{
     const navigateToProfile=()=>{
         navigate('/admin_profile');
     }
-    
+
     const togglelayoutVisibility =()=>{
         if(props.isDrawerVisible){
             props.setIsDrawerVisible(false);
