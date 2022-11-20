@@ -102,10 +102,12 @@ const Layout = (props)=>{
                 <Circle isTurnedOn={isTurnedOnGreen} turnedOnStyle='backgorund-mode-green' turnedOffStyle='backgorund-border-mode-green' onClick={greenToggeled} title="Open"/>
                 <Circle isTurnedOn={isTurnedOnRed} turnedOnStyle='backgorund-mode-red' turnedOffStyle='backgorund-border-mode-red' onClick={redToggeled} title="Close"/>
             </div>
+            <div className='layout-buttons'>
             <LayoutButton name={"Home"} onClick={navigateToEvents} className={props.pageName==='events'?'button-drawer-background-blue':'button-drawer-background-navy'}/>
             <LayoutButton name={"All Users"} onClick={navigateToUsers} className={props.pageName==='users'?'button-drawer-background-blue':'button-drawer-background-navy'}/>
             <LayoutButton name={"Blocked List"} onClick={navigateToBlocked} className={props.pageName==='blocked'?'button-drawer-background-blue':'button-drawer-background-navy'}/>
             <LayoutButton name={"Waiting"} onClick={navigateToWaiting} className={props.pageName==='waiting'?'button-drawer-background-blue':'button-drawer-background-navy'}/>
+            </div>
             <div className='layout-info' onClick = {navigateToProfile}>
                 <CircleImage source={localStorage.getItem("profile_url")}/>
                 <ModeTitle title={secureLocalStorage.getItem("username")}/>
