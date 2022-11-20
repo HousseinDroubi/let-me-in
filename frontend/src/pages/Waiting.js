@@ -143,7 +143,7 @@ const Waiting=()=> {
       }else{
           setIsDrawerVisible(true);
       }
-  }
+    }
     
     if(isSomeoneWaiting){
         return (

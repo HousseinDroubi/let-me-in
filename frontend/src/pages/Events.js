@@ -5,12 +5,15 @@ import PageTitle from '../components/PageTitle';
 import axios from 'axios';
 import BoxEvent from '../components/BoxEvent';
 import secureLocalStorage from 'react-secure-storage';
+import LayoutToggle from '../components/LayoutToggle';
+
 const Events=()=> {
     const myIPv4  = process.env.REACT_APP_MY_IPV4;
     const base_url = process.env.REACT_APP_BASE_URL;
     const [called,setCalled]=useState(false);
     const[dates,setDates]=useState([]);
     const[events,setEvents]=useState([]);
+    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
 
     // In the below function, we are changing the from month number to its name
     const getMonthName = (date)=>{
@@ -103,15 +106,22 @@ const Events=()=> {
          
           }
           useEffect( () => {getEvents();});
-        
+
+          const togglelayoutVisibility =()=>{
+            if(isDrawerVisible){
+                setIsDrawerVisible(false);
+            }else{
+                setIsDrawerVisible(true);
+            }
+          }
 
           if(dates.length!==0){
             return(
               <>
                 <div className='land'>
-                 <Layout pageName='events'/>
+                 <Layout pageName='events'  isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                  <div className='land-content'>
-                 
+                 <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                   {dates.map((element,index)=>{
                      return (
                       <div className='event-contents' key={index}>
