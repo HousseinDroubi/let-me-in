@@ -327,8 +327,8 @@ color: #FFFFFF;
 /* Large Image */
 
 .waiting-profile{
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -419,8 +419,21 @@ color: #FFFFFF;
 /* Admin Profile */
 
 .admin-profile-fields{
+  margin-top: 71px;
   display: flex;
   flex-direction: column;
+}
+.admin-profile-fields>.label{
+  margin-top: 24px;
+}
+.admin-profile-fields>.label:first-child{
+  margin-top: 0px;
+}
+.admin-profile-fields>.button{
+  margin-top: 47px;
+}
+.admin-profile-fields>.button:last-child{
+  margin-top: 51px;
 }
 
 /* Reusable classes  */
@@ -442,6 +455,10 @@ color: #FFFFFF;
 }
 .mt-33{
   margin-top: 33px;
+}
+
+.mt-47{
+  margin-top: 47px;
 }
 
 .mt-53{
@@ -716,6 +733,26 @@ color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .waiting-profile{
+      height: 110px;
+      width: 110px;
+    }
+
+    .admin-profile-fields{
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-profile-fields>.label{
+      margin-top: 21px;
+    }
+    .admin-profile-fields>.label:first-child{
+      margin-top: 0px;
+    }
+    .admin-profile-fields>.button{
+      margin-top: 44px;
     }
 
 

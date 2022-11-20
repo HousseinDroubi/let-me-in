@@ -121,9 +121,9 @@ const AdminProfile=()=> {
                     <Form setText={setEmail} value = {email} text = {email}/>
                     <Label  title={"Username"} />
                     <Form setText={setUsername} value = {username} text = {username}/> 
-                    <Button name={"Change Password"} className='mt-33' onClick={showPopup}/>
-                    <Button name={"Edit Data"} className='mt-33 mb-20' onClick={editData}/>
-                    <Button name={"Logout"} className='mt-33 mb-20 decision-button-red-background' onClick={logoutFromWebsite}/>
+                    <Button name={"Change Password"} onClick={showPopup}/>
+                    <Button name={"Edit Data"} onClick={editData}/>
+                    <Button name={"Logout"} className='decision-button-red-background' onClick={logoutFromWebsite}/>
                 </div>
             </div>
   
