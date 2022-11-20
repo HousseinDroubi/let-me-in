@@ -639,4 +639,26 @@ color: #FFFFFF;
       height: 67px;
     }
 
+     .login-contents{
+      width: 365px;
+      align-items: center;
+    }
+    .login-contents{
+      width: 365px;
+      align-items: center;
+    }
+
+    .form{
+      width: 100%;
+      height: 91px; 
+    }
+    
+    .label{
+      align-self: flex-start;
+    }
+    .login-forgot-password{
+      width: 365px;
+    }
+    
+
   }
