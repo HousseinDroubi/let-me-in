@@ -4,8 +4,8 @@ import layoutToggleIcon from '../assets/images/layout-toggle-icon.png';
 const LayoutToggle = (props)=>{
 
     return (
-    <div className='layout-toggle'>
-    <img src={layoutToggleIcon} className={classnames( "layout-toggle-icon",props.className)} onClick={props.onClick} alt=""/>
+    <div className={classnames( "layout-toggle",props.className)}>
+    <img src={layoutToggleIcon}  onClick={props.onClick} alt=""/>
     </div>);
 }
 export default LayoutToggle;

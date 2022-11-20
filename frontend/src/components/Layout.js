@@ -7,6 +7,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import secureLocalStorage from 'react-secure-storage';
 import ModeTitle from './ModeTitle';
+import classnames from 'classnames';
+import LayoutToggle from './LayoutToggle';
 
 const Layout = (props)=>{
 
@@ -93,9 +95,19 @@ const Layout = (props)=>{
     const navigateToProfile=()=>{
         navigate('/admin_profile');
     }
+    
+    const togglelayoutVisibility =()=>{
+        if(props.isDrawerVisible){
+            props.setIsDrawerVisible(false);
+        }else{
+            props.setIsDrawerVisible(true);
+        }
+    }
 
     return (
+        <div className={props.isDrawerVisible?'display-block':'display-none'}>
         <div className='drawer'>
+            <LayoutToggle onClick={togglelayoutVisibility}/>
             <ModeTitle title= {'Modes'}/>
             <div className='modes-circles'>
                 <Circle isTurnedOn={isTurnedOnBlue} turnedOnStyle='backgorund-mode-blue' turnedOffStyle='backgorund-border-mode-blue' onClick={blueToggeled} title="Normal"/>
@@ -112,6 +124,7 @@ const Layout = (props)=>{
                 <CircleImage source={localStorage.getItem("profile_url")}/>
                 <ModeTitle title={secureLocalStorage.getItem("username")}/>
             </div>
+        </div>
         </div>
         );
 

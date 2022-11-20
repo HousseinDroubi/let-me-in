@@ -9,6 +9,7 @@ import secureLocalStorage from 'react-secure-storage';
 import PageTitle from '../components/PageTitle';
 import AddUserButton from '../components/AddUserButton';
 import Popup from '../components/Popup';
+import LayoutToggle from '../components/LayoutToggle';
 
 const Users=()=> {
     const base_url = process.env.REACT_APP_BASE_URL;
@@ -27,7 +28,7 @@ const Users=()=> {
   const [hasPicked,setHasPicked]=useState(false);
   const [popupDenyVisible,setPopupDenyVisible]=useState(false);
   const [attention,setAttention]=useState('');  
-
+  const [isDrawerVisible,setIsDrawerVisible]=useState(true);
     // Here, we are getting the users who aren't blocked (has status = '0')
   const getUsers = ()=>{
 
@@ -78,15 +79,26 @@ const Users=()=> {
         setDefaultt(true);
         
       }
+
+      const togglelayoutVisibility =()=>{
+        if(isDrawerVisible){
+            setIsDrawerVisible(false);
+        }else{
+            setIsDrawerVisible(true);
+        }
+    }
+
       if(users.length!==0){
         return (
           <> 
+
             <Popup className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} id={id} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked} setPopupDenyVisible={setPopupDenyVisible} attention={attention} setAttention={setAttention}/>
             <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
         
             <div className='land display-none'>
-                <Layout pageName='users'/>
+                <Layout pageName='users' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                 <div className='land-content'>
+                <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                     <div className='page-title page-title-users'>
                         <PageTitle text='All Users'/>
                         <AddUserButton onClick={showPopup}/>
