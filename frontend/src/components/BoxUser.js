@@ -52,7 +52,7 @@ const BoxUser = (props)=>{
                 <BoxContent name = {props.car_type}/>
                 <BoxContent name = {props.car_plate_number}/>
             </div>
-            <div className='box-details'>
+            <div className='box-details media-space-between'>
                 <BoxButton onClick={EditUser} text = 'Edit' icon={EditIcon}/>
                 <BoxButton onClick={blockUser} status = 'block' color='red' text = 'Block' icon = {BlockedImage}/>
             </div>
