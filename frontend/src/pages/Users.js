@@ -28,7 +28,7 @@ const Users=()=> {
   const [hasPicked,setHasPicked]=useState(false);
   const [popupDenyVisible,setPopupDenyVisible]=useState(false);
   const [attention,setAttention]=useState('');  
-  const [isDrawerVisible,setIsDrawerVisible]=useState(false);
+  const [isDrawerVisible,setIsDrawerVisible]=useState(true);
     // Here, we are getting the users who aren't blocked (has status = '0')
   const getUsers = ()=>{
 

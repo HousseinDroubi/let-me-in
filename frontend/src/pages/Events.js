@@ -13,7 +13,7 @@ const Events=()=> {
     const [called,setCalled]=useState(false);
     const[dates,setDates]=useState([]);
     const[events,setEvents]=useState([]);
-    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
+    const [isDrawerVisible,setIsDrawerVisible]=useState(true);
 
     // In the below function, we are changing the from month number to its name
     const getMonthName = (date)=>{

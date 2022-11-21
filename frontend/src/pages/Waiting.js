@@ -26,7 +26,7 @@ const Waiting=()=> {
     const base_url = process.env.REACT_APP_BASE_URL;
     const [popupDenyVisible,setPopupDenyVisible]=useState(false);
     const [attention,setAttention]=useState('');
-    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
+    const [isDrawerVisible,setIsDrawerVisible]=useState(true);
 
     const showDenyPopUp = (att)=>{
         setPopupDenyVisible(true);

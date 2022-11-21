@@ -676,13 +676,12 @@ color: #FFFFFF;
    }
    .layout-toggle{
     position: absolute;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     width: 100%;
     margin-top: 20px;
     padding-left: 27px;
-   }
+    
+    display: none;
+  }
 
    .position-static{
       position:static;
@@ -848,4 +847,7 @@ color: #FFFFFF;
       width: 120%;
     }
   
+    .layout-toggle{
+      display: block;
+    }
   }

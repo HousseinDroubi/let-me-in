@@ -13,7 +13,7 @@ const BlockedUsers= ()=> {
     const base_url = process.env.REACT_APP_BASE_URL;
     const[called,setCalled]=useState(false);
     const [blockedUsers,setBlockedUsers]=useState([]);
-    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
+    const [isDrawerVisible,setIsDrawerVisible]=useState(true);
     
     // Here, we are asking from the server the blocked users (has status ='1')
     const getBlockedUsers = ()=>{
