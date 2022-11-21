@@ -418,7 +418,7 @@ color: #FFFFFF;
 /* Admin Profile */
 
 .admin-profile-fields{
-  margin-top: 71px;
+  margin-top: 23px;
   display: flex;
   flex-direction: column;
 }
@@ -494,8 +494,8 @@ color: #FFFFFF;
 .popup-password{
   box-sizing: border-box;
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 750px;
+  height: 648px;
   background: #0F1319;
   border: 0.5px solid rgba(255, 255, 255, 0.5);
   border-radius: 7px;
