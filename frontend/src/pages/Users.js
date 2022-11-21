@@ -123,11 +123,12 @@ const Users=()=> {
             <Popup className={popUpVisible?'visiblity-visible':'visiblity-hidden'} setPopupVisible={setPopupVisible} username={username} carType={carType} plateNumber={plateNumber} profile={profile} hasPicked={hasPicked} setUsername={setUsername} setCarType={setCarType} setPlateNumber={setPlateNumber} setProfile={setProfile} isAddingUser={isAddingUser} setIsAddingUser={setIsAddingUser} setDefaultt={setDefaultt} setHasPicked={setHasPicked}  setPopupDenyVisible={setPopupDenyVisible} attention={attention} setAttention={setAttention}/>
             <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
             <div className='land'>
-                <Layout pageName='users'/>
+                <Layout pageName='users' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                 <div className='add-users-button'>
                     <AddUserButton onClick={showPopup}/>
                 </div> 
                 <div className='land-content empty'>
+                    <LayoutToggle onClick={togglelayoutVisibility} className='position-absolute'/>
                     <NormalTitle title="Start adding your users now" className='title-opacity'/>
                 </div>
             </div>

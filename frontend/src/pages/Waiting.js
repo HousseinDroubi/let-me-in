@@ -181,8 +181,9 @@ const Waiting=()=> {
           else {
             return(
             <div className='land'>
-                <Layout pageName='waiting'/>
+                <Layout pageName='waiting' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                 <div className='land-content empty'>
+                    <LayoutToggle onClick={togglelayoutVisibility} className='position-absolute'/>
                     <NormalTitle title="No one at the door" className='title-opacity'/>
                 </div>
            </div>

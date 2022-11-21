@@ -26,7 +26,7 @@ const AdminProfile=()=> {
     const [confirmPassword,setConfirmPassword]=useState('');
     const [popupDenyVisible,setPopupDenyVisible]=useState(false);
     const [attention,setAttention]=useState('');
-    const [isDrawerVisible,setIsDrawerVisible]=useState(false);
+    const [isDrawerVisible,setIsDrawerVisible]=useState(true);
     const navigate = useNavigate();
 
     const showDenyPopUp = (att)=>{

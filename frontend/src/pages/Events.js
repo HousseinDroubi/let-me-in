@@ -153,8 +153,9 @@ const Events=()=> {
             return(
               <>
                 <div className='land'>
-                 <Layout pageName='events'/>
+                <Layout pageName='events'  isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                  <div className='land-content empty'>
+                 <LayoutToggle onClick={togglelayoutVisibility} className='position-absolute'/>
                  <NormalTitle title="Nothing to show" className='title-opacity'/>
                  </div>
           

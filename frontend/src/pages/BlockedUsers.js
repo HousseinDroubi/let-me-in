@@ -120,8 +120,9 @@ const BlockedUsers= ()=> {
         
         return(
             <div className='land'>
-                <Layout pageName='blocked'/>
+                <Layout pageName='blocked' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
                 <div className='land-content empty'>
+                    <LayoutToggle onClick={togglelayoutVisibility} className='position-absolute'/>
                     <NormalTitle title="No one is blocked yet" className='title-opacity'/>
                 </div>
             
