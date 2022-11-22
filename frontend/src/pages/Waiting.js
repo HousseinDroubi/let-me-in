@@ -148,10 +148,10 @@ const Waiting=()=> {
     if(isSomeoneWaiting){
         return (
           <>
-            <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
           
             <div className='land'>
             <Layout pageName='waiting' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
+                <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
                 <div className='land-content'>
                 <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                     <NormalTitle title="Someone is waiting" className="mt-47"/>
