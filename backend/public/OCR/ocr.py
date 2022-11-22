@@ -30,6 +30,6 @@ car_plate_number.replace(" ", "")
 new_car_plate=""
 for element in range(0, len(car_plate_number)):
     if(car_plate_number[element].isalpha() or car_plate_number[element].isnumeric()):
-        new_car_plate=new_car_plate+car_plate_number[element]
+        new_car_plate=new_car_plate+car_plate_number[element].upper()
 
 print(new_car_plate)   
