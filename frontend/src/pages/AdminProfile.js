@@ -118,10 +118,10 @@ const AdminProfile=()=> {
 
       return (
         <>
-          <PopupPassword className={popupVisible?'visiblity-visible':'visiblity-hidden'}  setPopupVisible={setPopupVisible} oldPassword={oldPassword} newPassword={newPassword} confirmPassword={confirmPassword} setOldPassword={setOldPassword} setNewPassword={setNewPassword} setConfirmPassword={setConfirmPassword} setPopupDenyVisible={setPopupDenyVisible} setAttention={setAttention}/>
-          <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
           <div className='land'>
             <Layout pageName='profile' isDrawerVisible={isDrawerVisible} setIsDrawerVisible={setIsDrawerVisible}/>
+            <PopupPassword className={popupVisible?'visiblity-visible':'visiblity-hidden'}  setPopupVisible={setPopupVisible} oldPassword={oldPassword} newPassword={newPassword} confirmPassword={confirmPassword} setOldPassword={setOldPassword} setNewPassword={setNewPassword} setConfirmPassword={setConfirmPassword} setPopupDenyVisible={setPopupDenyVisible} setAttention={setAttention}/>
+            <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
             <div className='land-content'>
             <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                 <NormalTitle title="Edit Profile"/>
