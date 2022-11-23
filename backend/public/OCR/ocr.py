@@ -1,5 +1,6 @@
 import os
 import cv2
+import imutils
 import pytesseract
 from pathlib import Path
 from dotenv import load_dotenv
@@ -17,7 +18,7 @@ image_path = os.environ.get("CAR_PLATE_PATH")
 myconfig = r"--psm 11 --oem 3"
 
 # Read the image using cv2
-image = cv2.imread(image_path)
+image = imutils.resize(cv2.imread(image_path), width=500)
 car_plate_number =""
 
 
