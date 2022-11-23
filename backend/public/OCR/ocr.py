@@ -19,7 +19,11 @@ myconfig = r"--psm 11 --oem 3"
 
 # Read the image using cv2
 image = imutils.resize(cv2.imread(image_path), width=500)
+
+gray_image=cv2.bilateralFilter(cv2.cvtColor(image,cv2.COLOR_BGR2GRAY),11,17,17)
+
 car_plate_number =""
+
 
 
 car_plate_number.replace(" ", "") 
