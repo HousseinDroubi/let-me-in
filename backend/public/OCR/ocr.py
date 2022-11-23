@@ -20,11 +20,6 @@ myconfig = r"--psm 11 --oem 3"
 image = cv2.imread(image_path)
 car_plate_number =""
 
-# Get all the characters into the image
-boxes = pytesseract.image_to_boxes(image,config=myconfig)
-for box in boxes.splitlines():
-    box = box.split(" ")
-    car_plate_number = car_plate_number+box[0]
 
 car_plate_number.replace(" ", "") 
 new_car_plate=""
