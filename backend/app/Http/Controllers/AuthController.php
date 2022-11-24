@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Mail;
 class AuthController extends Controller{
 
     public function register(Request $request){
+        
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|min:3|max:20|unique:users',
             'email' => 'required|string|email|min:5|max:30|unique:admin_details',
             'password' => 'required|string|min:5|max:30',
             'profile_url' => 'required|string',
         ]);
+
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
@@ -28,7 +30,7 @@ class AuthController extends Controller{
         try {
             $request->profile_url = $this->saveImage($request->profile_url);
             
-        } catch (\Throwable $th) {
+        }catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Error while adding an admin',
                 'err'=> $th->getMessage()
@@ -41,6 +43,7 @@ class AuthController extends Controller{
                 'profile_url' => $request->profile_url,
                 'user_type' => '1',
             ]);
+
         //Create admin details contains user_id from user table, email and password 
         $admin_details = AdminDetail::create([
             'user_id'=>$admin->id,
@@ -54,6 +57,7 @@ class AuthController extends Controller{
     }
 
     public function saveImage($profile_url){
+
         // Base path of saving images
         $users_images_path = public_path()."\\assets\\images\\user\\";
 
@@ -73,8 +77,10 @@ class AuthController extends Controller{
     }
 
     public function login(Request $request){
+        
         auth()->shouldUse('api');
         $credentials = $request->only('email','password');
+
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
@@ -82,6 +88,7 @@ class AuthController extends Controller{
     }
 
     public function getAdminData(){
+
         $admin= [
             "user"=>auth()->user(),
             "admin_deitls"=>auth()->user()->user,  
@@ -90,6 +97,7 @@ class AuthController extends Controller{
     }
 
     protected function respondWithToken($token){
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
@@ -98,26 +106,31 @@ class AuthController extends Controller{
     }
 
     public function denyAccess(){
+
         return response()->json([
             'message' => "access_denied"
         ]);
     }
 
     public function updateAdminData(Request $request){
+
         $validator = Validator::make($request->all(), [
             'username' => 'string|min:3|max:20',
             'email' => 'string|email|min:5|max:30|unique:admin_details',
             'profile_url' => 'string',
         ]);
+
         if(count($request->all()) == 0){
             return response()->json([
                 'message' => 'At least one field required'
             ], 400);
-        }else  if($validator->fails()) {
+        }else if($validator->fails()){
             return response()->json($validator->errors(), 400);
         } 
+
         // Get the admin
         $admin = auth()->user();
+
         // Change the admin if he/she is requesting to change the username, email or profile picture
         $admin->user->username = ($request->username!='') ? $request->username : $admin->user->username;
         $admin->email = ($request->email!='') ? $request->email : $admin->email;
@@ -126,7 +139,7 @@ class AuthController extends Controller{
             try {
                 unlink($admin->user->profile_url);
                 $admin->user->profile_url = $this->saveImage($request->profile_url);
-            } catch (\Throwable $th) {
+            }catch (\Throwable $th) {
                 return response()->json([
                     'message' => 'Error while updating admin',
                     'err'=> $th->getMessage()
@@ -147,6 +160,7 @@ class AuthController extends Controller{
     }
 
     public function changeAdminPassowrd(Request $request){
+
         $validator = Validator::make($request->all(), [
             'old_password' => 'required|string|min:5|max:30',
             'new_password' => 'required|string|min:5|max:30',
@@ -172,6 +186,7 @@ class AuthController extends Controller{
                 "message" => "Password changed successfully"
             ]);
          }
+
         //return wrong password if they aren't the same  
         return response()->json([
             "message" => "Wrong Password"
@@ -179,26 +194,29 @@ class AuthController extends Controller{
     }
     
     public function sendCode(Request $request){
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|min:5|max:30',
         ]);
+
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
+
         // Here, we are checking if there's an admin with the same email passed to this function
         $admin = AdminDetail::where("email",$request->email)->first();
         if(!$admin){
             return response()->json([
                 "message" => "Email not exist."
             ]);
-        }
         // Here, we are checking if the admin's id is 1 or not, since he's the only one who can ask for this route 
-        else if($admin->user_id!='1'){
+        }else if($admin->user_id!='1'){
             return redirect()->route('access-denied');
         }
 
         // In the below syntax, we are checking if there's a code existed before and not verified yet.
         $code = Code::where("user_id",$admin->user_id)->where('verified','0')->first();
+        
         // In case we got the code, no need to add new row to the codes table
         if($code){
             // Send the email to the admin
@@ -216,6 +234,7 @@ class AuthController extends Controller{
             'code' => $randome_code,
             'user_id' => $admin->user_id
         ]);
+
         // Send the email
         Mail::to($request->email)->send(new MailCode($randome_code,$admin->user->username));
         return response()->json([
@@ -225,13 +244,16 @@ class AuthController extends Controller{
     }
 
     public function verifyCode(Request $request){
+
         $validator = Validator::make($request->all(), [
             'code' => 'required|digits:6',
             'email' => 'required|string|email|min:5|max:30',
         ]);
+
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
+
         // Here, we are checking if there's an admin with the same email passed to this function
         $admin = AdminDetail::where("email",$request->email)->first();
         if(!$admin){
@@ -244,6 +266,7 @@ class AuthController extends Controller{
         if($admin->user_id!='1'){
             return redirect()->route('access-denied');
         }
+
         $code = Code::where('verified',0)->first();
         if(!$code){
             return redirect()->route('access-denied');
@@ -263,11 +286,13 @@ class AuthController extends Controller{
     }
 
     public function changeForgottenPassword(Request $request){
+
         $validator = Validator::make($request->all(), [
             'code' => 'required|digits:6',
             'email' => 'required|string|email|min:5|max:30',
             'password' => 'required|string|min:5|max:30',
         ]);
+
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
@@ -293,7 +318,6 @@ class AuthController extends Controller{
         // In the below syntax, we are checking if the code passed to this function is exisitng in table codes.
         // But, we've also added verified condition, because the generator may generate two equal codes.
         $code = Code::where('code',$request->code)->where('verified',0)->first();
-
         if($code){
             $admin->password = Hash::make($request->password);
             $code->verified = 1;
@@ -306,6 +330,7 @@ class AuthController extends Controller{
                 "message" => "Something went wrong!"
             ]);
         }
+        
         // access denied here is because the code must be existed, after verifying it from verifycode() above.
         return redirect()->route('access-denied');
     }
