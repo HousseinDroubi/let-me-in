@@ -8,6 +8,7 @@ return new class extends Migration{
 
     public function up(){
         Schema::create('users', function (Blueprint $table) {
+            
             $table->id();
             // The default of username is 'Unkown' since in our case, sometimes a new car plate 
             // that's neither in the approved list, nor in the blocked list and we need the decision
