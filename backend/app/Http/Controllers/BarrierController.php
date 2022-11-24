@@ -9,10 +9,11 @@ use App\Models\BarrierStatus;
 class BarrierController extends Controller{
 
     public function getBarrierStatus(){
+
         $barrier_status = BarrierStatus::get()->first();
         // In case the barrier status from barrier_statuses table (first record) was '0'or '1', the barrier in the 
-        // Hardware part will be respectively 'closed' or 'opened' until further notice from the admin. Otherwise, the
-        // response will be 'normal' which makes the Raspberry Pi start continue the main required functions
+        // hardware part will be respectively 'closed' or 'opened' until further notice from the admin. Otherwise, the
+        // response will be 'normal' which makes the Raspberry Pi start continue the main required functions.
         if($barrier_status->status=="0"){
             return "closed";
         }else if($barrier_status->status=="1"){
@@ -22,9 +23,11 @@ class BarrierController extends Controller{
     }
 
     public function changeBarrierStatus(Request $request){
+
         $validator = Validator::make($request->all(), [
             'status' => 'required|integer|min:0|max:2'
         ]);
+        
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
