@@ -327,3 +327,16 @@ def getCarDecision(car_plate_number):
         return "close"
     except:
         return "close"
+        
+def letUserIn():
+    #Turn off yellow led
+    fct.turnOffYellow()
+    #Turn on green led
+    fct.turnOnGreen()
+    #Open barrier
+    fct.openBarrier()
+    time.sleep(3)
+    #Close barrier
+    fct.closeBarrier()
+    #Turn off green led
+    fct.turnOffGreen()

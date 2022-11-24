@@ -13,7 +13,6 @@ is_barrier_closed = True
 
 #Turning off all leds in case there was a led truned on
 fct.turnOffLeds()
-
 while True:
     time.sleep(3)
     #Get barrier status will be closed, opened or normal
@@ -84,17 +83,7 @@ while True:
                 car_status = fct.checkCarPlate()
                 #If the response was 'open'
                 if(car_status =="open"):
-                    #Turn off yellow led
-                    fct.turnOffYellow()
-                    #Turn on green led
-                    fct.turnOnGreen()
-                    #Open barrier
-                    fct.openBarrier()
-                    time.sleep(3)
-                    #Close barrier
-                    fct.closeBarrier()
-                    #Turn off green led
-                    fct.turnOffGreen()
+                    fct.letUserIn()
                     
                 #If the response was 'close'    
                 elif(car_status == "close"):
