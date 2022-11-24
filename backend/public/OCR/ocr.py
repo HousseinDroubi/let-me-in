@@ -22,6 +22,8 @@ image = imutils.resize(cv2.imread(image_path), width=500)
 
 gray_image=cv2.bilateralFilter(cv2.cvtColor(image,cv2.COLOR_BGR2GRAY),11,17,17)
 
+canny_edges = cv2.Canny(gray_image,120,200)
+
 car_plate_number =""
 
 
