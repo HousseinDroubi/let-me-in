@@ -27,6 +27,14 @@ canny_edges = cv2.Canny(gray_image,120,200)
 contours,new = cv2.findContours(canny_edges.copy(),cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 contours = sorted(contours,key=cv2.contourArea,reverse=True)[:30]
 
+car_plate_image=None
+for contour in contours:
+    approx = cv2.approxPolyDP(contour,10,True)
+    if len(approx)==4:
+        x,y,w,h=cv2.boundingRect(contour)
+        car_plate_image=gray_image[y:y+h,x:x+w]
+        break
+    
 car_plate_number =""
 
 
