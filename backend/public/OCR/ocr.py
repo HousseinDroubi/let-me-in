@@ -70,7 +70,7 @@ threshold,blackAndWhiteImage=cv2.threshold(car_plate_image,100,255,cv2.THRESH_BI
 car_plate_number = pytesseract.image_to_string(blackAndWhiteImage,config=myconfig,lang='eng')
 
 # Convert all letters to uppercase.
-car_plate_number = car_plate_number.upper()
+car_plate_number = car_plate_number
 
 # Remove any space.
 car_plate_number.replace(" ", "") 
