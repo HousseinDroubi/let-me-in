@@ -15,7 +15,7 @@ image_path = os.environ.get("CAR_PLATE_PATH")
 
 # psm stands for 'Page Segmentation Mode', which is the way that we are extracting the characters from the image
 # osm stands for 'OCR Engine Mode', which is the way we are using the OCR (Here it's the default)
-myconfig = r"--psm 11 --oem 3"
+myconfig = r"--psm 6 --oem 3"
 
 # Read the image using cv2
 image = imutils.resize(cv2.imread(image_path), width=500)
@@ -36,14 +36,13 @@ for contour in contours:
         break
 
 (threshold,blackAndWhiteImage)=cv2.threshold(car_plate_image,100,255,cv2.THRESH_BINARY)
-car_plate_number =""
-
-
+car_plate_number = pytesseract.image_to_string(blackAndWhiteImage,config=myconfig,lang='eng')
+car_plate_number = car_plate_number.upper()
 
 car_plate_number.replace(" ", "") 
-new_car_plate=""
+new_car_plate_number=""
 for element in range(0, len(car_plate_number)):
     if(car_plate_number[element].isalpha() or car_plate_number[element].isnumeric()):
-        new_car_plate=new_car_plate+car_plate_number[element].upper()
+        new_car_plate_number=new_car_plate_number+car_plate_number[element].upper()
 
-print(new_car_plate)   
+print(new_car_plate_number)   
