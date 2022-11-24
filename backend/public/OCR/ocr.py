@@ -34,7 +34,8 @@ for contour in contours:
         x,y,w,h=cv2.boundingRect(contour)
         car_plate_image=gray_image[y:y+h,x:x+w]
         break
-    
+
+(threshold,blackAndWhiteImage)=cv2.threshold(car_plate_image,100,255,cv2.THRESH_BINARY)
 car_plate_number =""
 
 
