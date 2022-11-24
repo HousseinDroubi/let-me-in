@@ -18,6 +18,7 @@ class RasberrypiMiddleware
     // In this middleware, the condition is that who want to ask for a route in the scope of Raspberry Pi middleware must
     // be only of id = '2'
     public function handle(Request $request, Closure $next){
+        
         if(auth('api')->user()->id!='2')
             return redirect()->route('access-denied');
         return $next($request);
