@@ -87,13 +87,7 @@ while True:
                     
                 #If the response was 'close'    
                 elif(car_status == "close"):
-                    #Turn off yellow led
-                    fct.turnOffYellow()
-                    #Turn on red led
-                    fct.turnOnRed()
-                    time.sleep(3)
-                    #Turn off red led
-                    fct.turnOffRed()
+                    fct.rejectUser()
                     
                 else:#If the response was 'wait'
                     
@@ -115,17 +109,7 @@ while True:
                         
                         #If the decision was 'open'
                         if(car_decision=="open"):
-                            #Turn off yellow led
-                            fct.turnOffYellow()
-                            #Turn on green led
-                            fct.turnOnGreen()
-                            #Open barrier
-                            fct.openBarrier()
-                            time.sleep(3)
-                            #Close barrier
-                            fct.closeBarrier()
-                            #Turn off green led
-                            fct.turnOffGreen()
+                            fct.letUserIn()
                             #Stop asking for this car plate number
                             break
                         
@@ -133,13 +117,7 @@ while True:
                         #is more than 2, hence, the system will
                         #consider it as rejected one
                         elif(car_decision=="close" or counter==2):
-                            #Turn off yellow led
-                            fct.turnOffYellow()
-                            #Turn on red led
-                            fct.turnOnRed()
-                            time.sleep(3)
-                            #Turn off red led
-                            fct.turnOffRed()
+                            fct.rejectUser()
                             #Stop asking for this car plate number
                             break
                         

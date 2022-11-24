@@ -330,13 +330,22 @@ def getCarDecision(car_plate_number):
         
 def letUserIn():
     #Turn off yellow led
-    fct.turnOffYellow()
+    turnOffYellow()
     #Turn on green led
-    fct.turnOnGreen()
+    turnOnGreen()
     #Open barrier
-    fct.openBarrier()
+    openBarrier()
     time.sleep(3)
     #Close barrier
-    fct.closeBarrier()
+    closeBarrier()
     #Turn off green led
-    fct.turnOffGreen()
+    turnOffGreen()
+
+def rejectUser():
+    #Turn off yellow led
+    turnOffYellow()
+    #Turn on red led
+    turnOnRed()
+    time.sleep(3)
+    #Turn off red led
+    turnOffRed()
