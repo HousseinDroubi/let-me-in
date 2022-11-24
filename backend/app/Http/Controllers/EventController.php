@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Http;
 class EventController extends Controller{
 
     public function getEvents(){
+
         // In this function, we are getting the non duplicates rows, and then catch any row that has the arrival time
-        // equal to the time of arrival time of this non duplicate row. Hence, we might have in one day many events that happened
+        // equal to the time of arrival time of this non duplicate row. Hence, we might have in one day many events that happened.
         $dates = Event::selectRaw('date(arrival_time) as date')->groupBy('date')->get();
         $all_events =[];
         foreach($dates as $date){
@@ -51,11 +52,13 @@ class EventController extends Controller{
                 }else{
                     $event_per_day->setAttribute('difference','');
                 }
-            }   
+            }
+
             $all_events[]=[
                 'date'=>$day_numbers->date,
                 'events'=>$events_per_day,
             ];
+
             }   
         return response()->json([
             "status" => "done",
@@ -64,10 +67,12 @@ class EventController extends Controller{
     }
 
     public function checkCarPlate(Request $request){
+
         // Get the image from Raspberry Pi
         $validator = Validator::make($request->all(), [
             'image' => 'required|mimes:png,jpg,jpeg|max:2048'
         ]);
+
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
@@ -80,13 +85,14 @@ class EventController extends Controller{
         // If the file saved successfully, we have to execute the ocr.py implemented into public/OCR
         // Otherwise, we have to return close
         if(move_uploaded_file($_FILES['image']['tmp_name'],$image_path)){
+
             // Get the path of ocr.py from .evn file
             $ocr_python_url= env('OCR_PYTHON_PATH');
 
             // The command to be executed
             $command_order = "python ".$ocr_python_url;
 
-            // Execute the command and get the output
+            // Execute the command and get the output.
             $command = escapeshellcmd($command_order);
             $output=shell_exec($command);
             $new_output = "";
@@ -95,6 +101,7 @@ class EventController extends Controller{
                     $new_output .=$output[$i];
                 }
             }
+
             // Redirect to 'add_update_event' route implemented in this controller below with the car plate
             // number
             $request = Request::create('/add_update_event', 'POST', ['car_plate_number' => $new_output]);    
@@ -105,9 +112,11 @@ class EventController extends Controller{
     }
 
     public function addOrUpdateEvent(Request $request){
+
         $validator = Validator::make($request->all(), [
             'car_plate_number' => 'required|string|min:2|max:7',
         ]);
+
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
@@ -129,6 +138,7 @@ class EventController extends Controller{
                 date_default_timezone_set('Asia/Beirut');
                 $current_time = date ("Y-m-d H:i:s");
                 $event = Event::where('user_id',$user_details->user_id)->whereNull('departure_time')->first();
+                
                 // In case the event is existed before, that means the car was existing in the building before
                 if($event){
                     $event->departure_time = $current_time;
@@ -137,6 +147,7 @@ class EventController extends Controller{
                     }
                     return 'close';
                 }
+
                 // In case the above event wasn't exist, we should insert a new event
                 Event::create([
                     'user_id' => $user_details->user_id,
@@ -145,6 +156,7 @@ class EventController extends Controller{
                 return 'open';
             }    
         }
+
         // In this case, this user wasn't existed in our system. Hence, we should add him/her to the system with status = '2'
         // which means 'waiting user', in order to get admin's acknowledgement later on
         $user = User::create([
@@ -172,13 +184,16 @@ class EventController extends Controller{
     }
 
     public function getCarDecision($car_plate_number){
+
         if(strlen($car_plate_number)<2 || strlen($car_plate_number)>8){
             return 'wrong entry';
         }
+
         $user_details = UserDetail::where('car_plate_number',$car_plate_number)->first();
         if(!$user_details){
             return 'wrong entry';
         }
+        
         // Here, if we got status = '2', that means the admin didn't confirm the 'waiting user' yet
         if($user_details->status=='2')
             return 'wait';
