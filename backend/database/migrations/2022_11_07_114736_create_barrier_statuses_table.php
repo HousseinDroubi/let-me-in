@@ -10,6 +10,7 @@ return new class extends Migration{
         
         // In this table, we must have only one record, which declare the barrier status
         Schema::create('barrier_statuses', function (Blueprint $table) {
+            
             $table->id();
             // The default of status is '2', which means the system of Raspberry Pi must
             // work normally. While, when the status is '1' or '0', that means the barrier
