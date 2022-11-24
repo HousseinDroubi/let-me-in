@@ -24,6 +24,9 @@ gray_image=cv2.bilateralFilter(cv2.cvtColor(image,cv2.COLOR_BGR2GRAY),11,17,17)
 
 canny_edges = cv2.Canny(gray_image,120,200)
 
+contours,new = cv2.findContours(canny_edges.copy(),cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+contours = sorted(contours,key=cv2.contourArea,reverse=True)[:30]
+
 car_plate_number =""
 
 
