@@ -118,30 +118,31 @@ const PopUp = (props)=>{
             }
         }
     }
-            return (
-                <div className={classnames( "popup",props.className)}>
-                    <div className='popup-content'>
-                      
-                        <div className='popup-title'>  
-                            <div className='popup-cancel' onClick={closePopup}>
-                                <p>x</p>
-                            </div> 
-                        </div>
-                        <NormalTitle title={props.isAddingUser?"Add User":"Edit User"}/> 
-                        
-                        <CircleImage source={props.profile===null?DefaultImage:props.profile} className='wid-40 cursor-pointer' onClick={pickUpImage}/>
-                        <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
-                        <div className='popup-fields'>
-                            <Label title={"Username"} />
-                            <Form value={props.username} setText={props.setUsername} text={props.username} defaultt={props.defaultt}/>
-                            <Label title={"Car Type"} className='mt-33'/>
-                            <Form value={props.carType} setText={props.setCarType} text={props.carType} defaultt={props.defaultt}/>
-                            <Label  title={"Plate Number"} className='mt-33'/>
-                            <Form value={props.plateNumber} setText={props.setPlateNumber} text={props.plateNumber} defaultt={props.defaultt}/>
-                        </div>
-                        <BoxButton  color='blue' text = {props.isAddingUser?'Add':'Edit'} icon={AcceptIcon} className='mt-33'onClick={addOrUpdateUser}/>
-                    </div>
+    
+    return (
+        <div className={classnames( "popup",props.className)}>
+            <div className='popup-content'>
+                
+                <div className='popup-title'>  
+                    <div className='popup-cancel' onClick={closePopup}>
+                        <p>x</p>
+                    </div> 
                 </div>
-            );        
+                <NormalTitle title={props.isAddingUser?"Add User":"Edit User"}/> 
+                
+                <CircleImage source={props.profile===null?DefaultImage:props.profile} className='wid-40 cursor-pointer' onClick={pickUpImage}/>
+                <input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} className='display-none'/>
+                <div className='popup-fields'>
+                    <Label title={"Username"} />
+                    <Form value={props.username} setText={props.setUsername} text={props.username} defaultt={props.defaultt}/>
+                    <Label title={"Car Type"} className='mt-33'/>
+                    <Form value={props.carType} setText={props.setCarType} text={props.carType} defaultt={props.defaultt}/>
+                    <Label  title={"Plate Number"} className='mt-33'/>
+                    <Form value={props.plateNumber} setText={props.setPlateNumber} text={props.plateNumber} defaultt={props.defaultt}/>
+                </div>
+                <BoxButton  color='blue' text = {props.isAddingUser?'Add':'Edit'} icon={AcceptIcon} className='mt-33'onClick={addOrUpdateUser}/>
+            </div>
+        </div>
+    );        
 }
 export default PopUp;
