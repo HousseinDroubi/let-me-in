@@ -13,7 +13,6 @@ const Home=()=> {
     }
     
     return (
-      
         <div className='home'>
           <NormalTitle title="Let me in" className='mb-98'/>
           <img src={logo} alt="logo" className='image-logo'/>
