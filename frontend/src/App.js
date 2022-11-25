@@ -10,6 +10,7 @@ import Waiting from './pages/Waiting';
 import AdminProfile from './pages/AdminProfile';
 
 function App() {
+
   return (
     <Router>
       <Routes>
@@ -24,6 +25,7 @@ function App() {
       </Routes>
     </Router>
   );
+  
 }
 
 export default App;
