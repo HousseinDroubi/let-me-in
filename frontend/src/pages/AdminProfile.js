@@ -14,6 +14,7 @@ import LayoutToggle from '../components/LayoutToggle';
 import axios from 'axios';
 
 const AdminProfile=()=> {
+
     const base_url = process.env.REACT_APP_BASE_URL;
     const myIPv4  = process.env.REACT_APP_MY_IPV4;
     const [profileImg,setProfileImg]=useState(localStorage.getItem("profile_url"));
@@ -39,6 +40,7 @@ const AdminProfile=()=> {
     }  
 
     const imageHandler = (e)=>{
+
         try{
           const reader = new FileReader();
           reader.onload = () =>{
@@ -54,7 +56,7 @@ const AdminProfile=()=> {
       }  
 
     const showPopup = ()=>{
-    setPopupVisible(true);
+        setPopupVisible(true);
     } 
     
     const logoutFromWebsite = ()=>{
@@ -82,38 +84,44 @@ const AdminProfile=()=> {
         if(hasPicked){
           body.profile_url = profileImg.split(',')[1].replace(/"/g,"/");
         }
+
         if(email!=secureLocalStorage.getItem("email")){
           body.email=email
         }
+        
         if(username!=secureLocalStorage.getItem("username")){
           body.username=username
         }
+        
         const header = {
           headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
         };
           
-              axios.post(`${base_url}update_admin_data`,body,header)
-              .then(function (response) {
-                secureLocalStorage.setItem("email",response.data.data.email);
-                secureLocalStorage.setItem("username",response.data.data.user.username);
-                let profile_url = response.data.data.user.profile_url.substring(response.data.data.user.profile_url.indexOf("\\let-me-in\\"));
-                profile_url = myIPv4+profile_url;
-                profile_url = profile_url.replace(/\\/g,"/");
-                localStorage.setItem("profile_url",profile_url);
-                showDenyPopUp("Data updated successfully.");
-              })
-            .catch(function (error) {
-              showDenyPopUp("Something went wrong.");
-            });
-          }
+        axios.post(`${base_url}update_admin_data`,body,header)
+        .then(function (response) {
+          secureLocalStorage.setItem("email",response.data.data.email);
+          secureLocalStorage.setItem("username",response.data.data.user.username);
+          let profile_url = response.data.data.user.profile_url.substring(response.data.data.user.profile_url.indexOf("\\let-me-in\\"));
+          profile_url = myIPv4+profile_url;
+          profile_url = profile_url.replace(/\\/g,"/");
+          localStorage.setItem("profile_url",profile_url);
+          showDenyPopUp("Data updated successfully.");
+        })
+        .catch(function (error) {
+          showDenyPopUp("Something went wrong.");
+        });
+        
+        }
       }
 
       const togglelayoutVisibility =()=>{
+
         if(isDrawerVisible){
             setIsDrawerVisible(false);
         }else{
             setIsDrawerVisible(true);
         }
+
     }
 
       return (
@@ -123,7 +131,7 @@ const AdminProfile=()=> {
             <PopupPassword className={popupVisible?'visiblity-visible':'visiblity-hidden'}  setPopupVisible={setPopupVisible} oldPassword={oldPassword} newPassword={newPassword} confirmPassword={confirmPassword} setOldPassword={setOldPassword} setNewPassword={setNewPassword} setConfirmPassword={setConfirmPassword} setPopupDenyVisible={setPopupDenyVisible} setAttention={setAttention}/>
             <PopupDeny className={popupDenyVisible?'visiblity-visible':'visiblity-hidden'} setPopupDenyVisible={setPopupDenyVisible} attention={attention}/>
             <div className='land-content'>
-            <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
+                <LayoutToggle onClick={togglelayoutVisibility} className='position-static'/>
                 <NormalTitle title="Edit Profile"/>
                 <LargeImage source={profileImg===null?DefaultImage:profileImg} onClick={showImage}/>
                 <div className='admin-profile-fields'>
@@ -136,9 +144,8 @@ const AdminProfile=()=> {
                     <Button name={"Edit Data"} onClick={editData}/>
                     <Button name={"Logout"} className='decision-button-red-background' onClick={logoutFromWebsite}/>
                 </div>
-            </div>
-  
-        </div>
+              </div>
+          </div>
         </>
       );
 
