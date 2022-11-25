@@ -4,7 +4,7 @@ import classnames from 'classnames';
 const TextView = (props)=>{
 
     return (
-         <p className={classnames( "form text-view",props.className)}>{props.text}</p>
+        <p className={classnames( "form text-view",props.className)}>{props.text}</p>
     );     
    
 }
