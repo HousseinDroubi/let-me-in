@@ -11,11 +11,14 @@ import secureLocalStorage from 'react-secure-storage';
 import axios from 'axios';  
 
 const PopUp = (props)=>{
+
     const base_url = process.env.REACT_APP_BASE_URL;  
+
     const showDenyPopUp = (att)=>{
       props.setPopupDenyVisible(true);
       props.setAttention(att);
     }
+
     const closePopup = async()=>{
         props.setDefaultt(true);
         props.setPopupVisible(false);
@@ -28,6 +31,7 @@ const PopUp = (props)=>{
     }
 
     const imageHandler = (e)=>{
+
         try{
           const reader = new FileReader();
           reader.onload = () =>{
@@ -42,8 +46,10 @@ const PopUp = (props)=>{
         }
     }
 
-      const addOrUpdateUser=()=>{
+    const addOrUpdateUser=()=>{
+
         if(props.isAddingUser){
+
             if(props.username.length<3 || props.username.length>20){
               showDenyPopUp("Username must be between 3 and 20 characters");
             }else if(props.carType.length<3 || props.carType.length>20){
@@ -52,12 +58,12 @@ const PopUp = (props)=>{
               showDenyPopUp("Car plate number must be between 2 and 7 characters");
             }
             else{
-              
                 const body={
                     username:props.username,
                     car_type:props.carType,
                     car_plate_number:props.plateNumber
                 };
+
                 if(props.hasPicked){
                     body.profile_url = props.profile.split(',')[1].replace(/"/g,"/");
                 }
@@ -68,16 +74,16 @@ const PopUp = (props)=>{
     
                 axios.post(`${base_url}add_user`,body,header)
                 .then(function (response) {
-                window.location.reload(false); 
+                    window.location.reload(false); 
                 })
                 .catch(function (error) {
-                showDenyPopUp("Try with another car plate number.");
+                    showDenyPopUp("Try with another car plate number.");
                 });
-
             }
         }
         
-            else{
+        else{
+
             if(props.username.length<3 || props.username.length>20){
                 showDenyPopUp("Username must be between 3 and 20 characters");
             }else if(props.carType.length<3 || props.carType.length>20){
@@ -86,28 +92,32 @@ const PopUp = (props)=>{
                 showDenyPopUp("Car plate number must be between 2 and 7 characters");
             }
             else{
+
                 const body={
                     id:props.id,
                     username:props.username,
                     car_type:props.carType,
                     car_plate_number:props.plateNumber
                 };
+
                 const header = {
                     headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
                 };
+                
                 if(props.hasPicked){
                     body.profile_url = props.profile.split(',')[1].replace(/"/g,"/");
                 }
-          
+            
                 axios.post(`${base_url}edit_user`,body,header)
                 .then(function (response) {
-                window.location.reload(false); 
+                    window.location.reload(false); 
                 })
                 .catch(function (error) {
-                showDenyPopUp("Something went wrong.");
+                    showDenyPopUp("Something went wrong.");
                 });
-                }}
             }
+        }
+    }
             return (
                 <div className={classnames( "popup",props.className)}>
                     <div className='popup-content'>
@@ -130,7 +140,6 @@ const PopUp = (props)=>{
                             <Form value={props.plateNumber} setText={props.setPlateNumber} text={props.plateNumber} defaultt={props.defaultt}/>
                         </div>
                         <BoxButton  color='blue' text = {props.isAddingUser?'Add':'Edit'} icon={AcceptIcon} className='mt-33'onClick={addOrUpdateUser}/>
-
                     </div>
                 </div>
             );        
