@@ -11,7 +11,7 @@ load_dotenv()
 GPIO.setmode(GPIO.BOARD)
 
 #Set warning as false will never give attentions that the actual
-#used pins are used.
+#used pins are in use.
 GPIO.setwarnings(False)
 
 #The below function will initiate the 3 leds at pin 29,31 and 37
@@ -283,6 +283,7 @@ def takePicture():
     #Set PiCamera resolution
     camera.resolution = (1920,1080)
     #Start preview
+    print("Taking a picture")
     camera.start_preview()
     time.sleep(1)
     #Get an image and save it into the same folder of the file
