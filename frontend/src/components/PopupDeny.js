@@ -3,6 +3,7 @@ import NormalTitle from './NormalTitle';
 import classnames from 'classnames';
 
 const PopupDeny = (props)=>{
+
     const closePopup=()=>{
         props.setPopupDenyVisible(false);
     }
@@ -15,13 +16,13 @@ const PopupDeny = (props)=>{
                             <p>x</p>
                         </div> 
                     </div>
-                        <NormalTitle title="Attention!"/>
-                            <div className='attention-content'>
-                                <p>{props.attention}</p>
-                            </div>
+                    <NormalTitle title="Attention!"/>
+                    <div className='attention-content'>
+                        <p>{props.attention}</p>
+                    </div>
                 </div>
-            
-        </div>);
+            </div>
+        );
         
     }
     export default PopupDeny;
