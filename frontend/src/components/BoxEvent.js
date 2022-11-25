@@ -3,12 +3,11 @@ import classnames from 'classnames';
 import BoxContent from './BoxContent';
 import CircleImage from './CircleImage';
 import DefaultImage from '../assets/images/default_image.png';
-const BoxEvent = (props)=>{
 
+const BoxEvent = (props)=>{
 
     return (
         <div className={classnames( "box",props.className)}>
-
             <div className='box-image'>
                 <CircleImage source={props.source===null?DefaultImage:props.source}/>
                 <BoxContent name = {props.username}/>
