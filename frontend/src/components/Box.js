@@ -4,6 +4,7 @@ import BoxContent from './BoxContent';
 import CircleImage from './CircleImage';
 import BoxButton from './BoxButton';
 import DefaultImage from '../assets/images/default_image.png';
+
 const Box = (props)=>{
 
     return (
@@ -21,5 +22,6 @@ const Box = (props)=>{
             </div>
         </div>
     );   
+    
 }
 export default Box;
