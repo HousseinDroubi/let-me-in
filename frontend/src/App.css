@@ -189,6 +189,7 @@ border: 3px solid #249F55;
   justify-content: center;
   border: none;
 }
+
 .button-drawer-background-blue{
   background: #5693F8;
 }
@@ -213,9 +214,11 @@ border: 3px solid #249F55;
   justify-content: center;
   align-items: center;
 }
+
 .layout-buttons>.button-drawer{
   margin-top: 62px;
 }
+
 .layout-buttons>.button-drawer:first-child{
   margin-top: 0px;
 }
@@ -281,11 +284,11 @@ border: 3px solid #249F55;
 }
 
 .add-user-button-content>p{
-font-style: normal;
-font-weight: 700;
-font-size: 22px;
-line-height: 27px;
-color: #FFFFFF;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
 }
 
 /* Box Button */
@@ -406,7 +409,6 @@ color: #FFFFFF;
   justify-content: end;
 }
 
-
 /* Forgot Password */
 
 .forgot-password-content{
@@ -422,20 +424,23 @@ color: #FFFFFF;
   display: flex;
   flex-direction: column;
 }
+
 .admin-profile-fields>.label{
   margin-top: 24px;
 }
+
 .admin-profile-fields>.label:first-child{
   margin-top: 0px;
 }
+
 .admin-profile-fields>.button{
   margin-top: 47px;
 }
+
 .admin-profile-fields>.button:last-child{
   margin-top: 51px;
 }
 /* Waiting User */
-
 
 /* Reusable classes  */
 
@@ -451,9 +456,11 @@ color: #FFFFFF;
 .mt-13{
   margin-top: 13px;
 }
+
 .mb-20{
   margin-bottom: 20px;
 }
+
 .mt-33{
   margin-top: 33px;
 }
@@ -563,10 +570,10 @@ color: #FFFFFF;
   flex-direction: column;
   align-items: center;
 }
+
 .popup-content>:last-child{
   margin-bottom: 20px;
 }
-
 
 .attention-content{
   padding: 1px 0px 1px 30px;
@@ -617,6 +624,7 @@ color: #FFFFFF;
   padding-right: 29px;
   padding-left: 29px;
 }
+
 .box-image{
   display: flex;
   flex-direction: row;
@@ -634,7 +642,6 @@ color: #FFFFFF;
   justify-content: space-around;
   align-items: center ;
 }
-
 
 .land{
   display: flex;
@@ -654,43 +661,45 @@ color: #FFFFFF;
   align-content: center;
   }
 
-  .box-container{
-    width: 95%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.box-container{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-  }
+}
 
-  .full{
-    width: 100%;
-  }
+.full{
+  width: 100%;
+}
 
-  .title-opacity{
-    color: rgba(255, 255, 255, 0.5);
-  }
-  .empty{
-    height: auto;
-   }
+.title-opacity{
+  color: rgba(255, 255, 255, 0.5);
+}
 
-   .event-contents{
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-   }
-   .layout-toggle{
-    position: absolute;
-    width: 100%;
-    margin-top: 20px;
-    padding-left: 27px;
-    display: none;
-  }
+.empty{
+  height: auto;
+}
 
-   .position-static{
-      position:static;
-   }
+.event-contents{
+display: flex;
+flex-direction: column;
+width: 95%;
+}
 
-   @media screen and (max-width: 926px) {
+.layout-toggle{
+position: absolute;
+width: 100%;
+margin-top: 20px;
+padding-left: 27px;
+display: none;
+}
+
+.position-static{
+  position:static;
+}
+
+  @media screen and (max-width: 926px){
     
       /* Home */
     .image-logo{
@@ -709,13 +718,16 @@ color: #FFFFFF;
       width: 365px;
       align-items: center;
     }
+
     .login-contents{
       width: 365px;
       align-items: center;
     }
+
     .admin-profile-fields>.form{
       width: 92%;
     }
+    
     .form{
       width: 100%;
       height: 67px; 
@@ -724,12 +736,15 @@ color: #FFFFFF;
     .label{
       align-self: flex-start;
     }
+
     .login-forgot-password{
       width: 365px;
     }
+
     .forgot-password-content{
       width: 365px;
     }
+
     .drawer{  
       min-height: 100vh;
       width: 375px;
@@ -739,12 +754,15 @@ color: #FFFFFF;
       height: 67px;
       width: 263px;
     }
+
     .layout-buttons{
       margin-top: 62px;
     }
+
     .layout-buttons>.button-drawer{
       margin-top: 45px;
     }
+
     .layout-info{
       margin-top: 103px;
     }
@@ -752,6 +770,7 @@ color: #FFFFFF;
     .land-content{
       margin-left: 0px;
     }
+
     .popup-password{
       width: 100%;
       height: 100%;
@@ -770,12 +789,15 @@ color: #FFFFFF;
       display: flex;
       flex-direction: column;
     }
+
     .admin-profile-fields>.label{
       margin-top: 21px;
     }
+
     .admin-profile-fields>.label:first-child{
       margin-top: 0px;
     }
+
     .admin-profile-fields>.button{
       margin-top: 44px;
     }
@@ -783,14 +805,17 @@ color: #FFFFFF;
     .waiting-user-fields{
       width: 95%;
     }
+
     .waiting-user-fields>.form{
       width: 92%;
     }
+
     .decision-button{
       cursor: pointer;
       height: 39px;
       width: 172px;
     }
+
     .decision-button>p{
       font-weight: 700;
       font-size: 15px;
@@ -805,30 +830,38 @@ color: #FFFFFF;
       justify-content: center;
       align-items: center;
     }
+
     .box-image{
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
+
     .box-details{
       width: 60%;
       flex-direction: row;
     }
+
     .box-image>.box-details:first{
       justify-content: space-between;
     }
+
     .box>.box-details:last-child{
       margin-top: 17px;
     }
+
     .box-button{
       width: 79.6px;
       height: 31px;
     }
+    
     .box-button>img{
       height: 12.4px;
       width: 12.57px;
 
-    }.box-button>p{
+    }
+    
+    .box-button>p{
       font-weight: 600;
       font-size: 15px;
       line-height: 15px;
@@ -854,8 +887,8 @@ color: #FFFFFF;
       display: block;
     }
     
-   .position-absolute{
+    .position-absolute{
     top: 0px;
     position: absolute;
- }
+    }
   }
