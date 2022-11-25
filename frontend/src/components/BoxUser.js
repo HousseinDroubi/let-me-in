@@ -43,7 +43,6 @@ const BoxUser = (props)=>{
 
     return (
         <div className={classnames( "box",props.className)}>
-
             <div className='box-image'>
                 <CircleImage source={props.source===null?DefaultImage:props.source}/>
                 <BoxContent name = {props.username}/>
@@ -58,5 +57,6 @@ const BoxUser = (props)=>{
             </div>
         </div>
     );
+
 }
 export default BoxUser;
