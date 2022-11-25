@@ -64,7 +64,7 @@ for contour in contours:
 
 # Now, we are converting the cropped image to only black and white image by fixing the theshold.
 # Hence, any pixel that has a value more than 100, it will be converted to 255 which is white, otherwise, it will be converted to 0 which is black.
-threshold,blackAndWhiteImage=cv2.threshold(car_plate_image,100,255,cv2.THRESH_BINARY)
+threshold,blackAndWhiteImage=cv2.threshold(car_plate_image,120,255,cv2.THRESH_BINARY)
 
 # Get the car plate number from image using pytesseract and with english language.
 car_plate_number = pytesseract.image_to_string(blackAndWhiteImage,config=myconfig,lang='eng')
