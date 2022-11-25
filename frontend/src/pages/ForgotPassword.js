@@ -36,12 +36,13 @@ const ForgotPassword=()=> {
             showDenyPopUp("Invalid email.");
         }
         else{
-        const body = {
-            email: email
-        };
-        
-        // Send request using axios
-        axios.post(`${base_url}send_code`, body)
+            
+            const body = {
+                email: email
+            };
+            
+            // Send request using axios
+            axios.post(`${base_url}send_code`, body)
             .then(function (response) {
                 if(response.data.message==="done"){
 
@@ -62,46 +63,50 @@ const ForgotPassword=()=> {
     
     // Now, we are checking the code entered by the admin
     const checkCode = ()=>{
+
         if(code.length<6){
             showDenyPopUp("Code must be 6 characters.");
         }
         else{
+
         const body = {
             email: email,
             code:code
         };
         
         axios.post(`${base_url}verify_code`, body)
-            .then(function (response) {
+        .then(function (response) {
 
-                if(response.data.message==="Email not exist."){
-                    showDenyPopUp("Email changed.");
-                }else if(response.data.message==="wrong code"){
-                    showDenyPopUp("Wrong code.");
-                }else if(response.data.message==="correct code"){
+            if(response.data.message==="Email not exist."){
+                showDenyPopUp("Email changed.");
+            }else if(response.data.message==="wrong code"){
+                showDenyPopUp("Wrong code.");
+            }else if(response.data.message==="correct code"){
 
-                    // This doesn't change anything into the DataBase, just to tell the admin
-                    // that the code is correct
-                    showDenyPopUp("Done, please change your password.");
-                    setIsCodeVerified(true);
-                    setText("Change Password");
+                // This doesn't change anything into the DataBase, just to tell the admin
+                // that the code is correct
+                showDenyPopUp("Done, please change your password.");
+                setIsCodeVerified(true);
+                setText("Change Password");
 
-                }
-            })
-            .catch(function (error) {
-                showDenyPopUp("Something went wrong");
-            });
+            }
+        })
+        .catch(function (error) {
+            showDenyPopUp("Something went wrong");
+        });
         }
     }
     
     // Now, we are changing the password
     const changePassword = ()=>{
+
         if(password!==rePassword){
             showDenyPopUp("Passwords don't match.")
         }else if(password.length<5 || password.length>30){
             showDenyPopUp("Password must be between 5 and 30 characters.")
         }
         else{
+
         const body = {
             email: email,
             code:code,
@@ -109,25 +114,26 @@ const ForgotPassword=()=> {
         };
 
         axios.post(`${base_url}change_forgotten_password`, body)
-            .then(function (response) {
-                if(response.data.message==="Email not exist."){
-                    showDenyPopUp("Email changed.");
-                }else if(response.data.message==="Password changed."){
+        .then(function (response) {
+            if(response.data.message==="Email not exist."){
+                showDenyPopUp("Email changed.");
+            }else if(response.data.message==="Password changed."){
 
-                    // If the password has been changed, this page will redirect the admin
-                    // to the login page.
-                    navigate('/login');
-                }else{
-                    showDenyPopUp("Something went wrong");   
-                }
-            })
-            .catch(function (error) {
-                showDenyPopUp("Something went wrong");
-            });
+                // If the password has been changed, this page will redirect the admin
+                // to the login page.
+                navigate('/login');
+            }else{
+                showDenyPopUp("Something went wrong");   
+            }
+        })
+        .catch(function (error) {
+            showDenyPopUp("Something went wrong");
+        });
         }
     }
 
     const checkEntries = ()=>{
+
         if(!isEmailVerified){
             checkEmail();
         }else if(!isCodeVerified){
@@ -135,6 +141,7 @@ const ForgotPassword=()=> {
         }else{
             changePassword();
         }
+        
     }
 
     return(
