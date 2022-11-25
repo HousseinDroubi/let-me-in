@@ -3,19 +3,22 @@ import time
 
 #Initiate stepper motor
 fct.initiate_Barrier()
+
 #Initiate IRSensor
 fct.initiate_IRSensor()
+
 #Initiate Leds
 fct.initiate_Leds()
 
-#Suppose that the barrier is closed as first step
+#Suppose that the barrier is closed by default
 is_barrier_closed = True
 
-#Turning off all leds in case there was a led truned on
+#Turning off all leds in case there was a led turned on
 fct.turnOffLeds()
+
 while True:
     time.sleep(3)
-    #Get barrier status will be closed, opened or normal
+    #Get barrier status response will be 'closed', 'opened' or 'normal'
     barrier_status = fct.getBarrierStatus()
     
     #If the response was 'closed'
@@ -71,7 +74,7 @@ while True:
             time.sleep(2)
             
             #If the IRSensor still returning true, that means
-            #something a car is waiting
+            #there is a user that's waiting
             if(fct.isSomethingClose()):
                 #Turn on yellow led
                 fct.turnOnYellow()
@@ -79,7 +82,7 @@ while True:
                 fct.takePicture()
                 
                 #Get the car status from the server, the response,
-                #must be open, close or wait
+                #must be 'open', 'close' or the 'car plate number'
                 car_status = fct.checkCarPlate()
                 #If the response was 'open'
                 if(car_status =="open"):
@@ -89,22 +92,22 @@ while True:
                 elif(car_status == "close"):
                     fct.rejectUser()
                     
-                else:#If the response was 'wait'
+                else:#If the response was the car plate number
                     
-                    #Here, we are supposing that we should count for
+                    #Here, we are supposing that we should count
                     #for this car plate number as maximum
                     #three times. So, in case the admin wasn't
-                    #responding,the system will suppose that
-                    #this car plate as a rejected one
+                    #responding, the system will suppose that
+                    #this car plate is a rejected one
                     counter = 0
                     while(counter<3):
                         
-                        #Retry asking for this car plate after 10 secondes.
+                        #Ask for this car plate number after 10 secondes.
                         print("Retrying after 10 secondes")
                         time.sleep(10)
                         
                         #Get the decision of this car plate, the decision
-                        #must be open, close or wait.
+                        #must be 'open', 'close' or 'wait'.
                         car_decision = fct.getCarDecision(car_status)
                         
                         #If the decision was 'open'
@@ -115,7 +118,7 @@ while True:
                         
                         #If the decision was 'close', or the counter
                         #is more than 2, hence, the system will
-                        #consider it as rejected one
+                        #consider it is a rejected one
                         elif(car_decision=="close" or counter==2):
                             fct.rejectUser()
                             #Stop asking for this car plate number
