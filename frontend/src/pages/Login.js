@@ -42,6 +42,7 @@ const Login=()=> {
             showDenyPopUp("Password should not be empty.");
         }
         else{
+
           const body = {
             email: email,
             password: password
@@ -49,48 +50,49 @@ const Login=()=> {
       
           // Send the request using axios
          axios.post(`${base_url}login`, body)
-          .then(function (response) {
-            if(response.status===200){
+        .then(function (response) {
+          if(response.status===200){
 
-              // Clear the memory first, then, save the token
-              localStorage.clear();
-              secureLocalStorage.clear();
-              secureLocalStorage.setItem("token",response.data.access_token);
-              const header = {
-                headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
-            };
-                  axios.get(`${base_url}get_barrier_status`,header)
-                  .then(function (response) {
-                    
-                      // Save the barrier status in the memory
-                        localStorage.setItem("barrier_status",response.data);
-                  })
-                  .catch(function (error) {
-                    showDenyPopUp("Someting went wrong.");
-                  });
+            // Clear the memory first, then, save the token
+            localStorage.clear();
+            secureLocalStorage.clear();
+            secureLocalStorage.setItem("token",response.data.access_token);
+            const header = {
+              headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
+          };
+              axios.get(`${base_url}get_barrier_status`,header)
+              .then(function (response) {
+                
+                  // Save the barrier status in the memory
+                    localStorage.setItem("barrier_status",response.data);
+              })
+              .catch(function (error) {
+                showDenyPopUp("Someting went wrong.");
+              });
       
-                   axios.get(`${base_url}get_admin_data`,header)
-                  .then(function (response) {
+              axios.get(`${base_url}get_admin_data`,header)
+            .then(function (response) {
+
+              // Save the email, username and profile url of the admin in the memory
+              secureLocalStorage.setItem("email",response.data.email);
+              secureLocalStorage.setItem("username",response.data.user.username);
+              let profile_url = response.data.user.profile_url.substring(response.data.user.profile_url.indexOf("\\let-me-in\\"));
+              profile_url = myIPv4+profile_url;
+              profile_url = profile_url.replace(/\\/g,"/");
+              localStorage.setItem("profile_url",profile_url);
+            })
+            .catch(function (error) {
+              showDenyPopUp("Someting went wrong.");
+            });
+            navigateToEvents();
+          }
       
-                    // Save the email, username and profile url of the admin in the memory
-                    secureLocalStorage.setItem("email",response.data.email);
-                    secureLocalStorage.setItem("username",response.data.user.username);
-                    let profile_url = response.data.user.profile_url.substring(response.data.user.profile_url.indexOf("\\let-me-in\\"));
-                    profile_url = myIPv4+profile_url;
-                    profile_url = profile_url.replace(/\\/g,"/");
-                    localStorage.setItem("profile_url",profile_url);
-                  })
-                  .catch(function (error) {
-                    showDenyPopUp("Someting went wrong.");
-                  });
-                  navigateToEvents();
-            }
-      
-          })
-          .catch(function (error) {
-            showDenyPopUp("Wrong email or password.");
-          });
+        })
+        .catch(function (error) {
+          showDenyPopUp("Wrong email or password.");
+        });
       }}
+      
       return (
             <>
             <div className='home'>
