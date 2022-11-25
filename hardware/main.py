@@ -36,8 +36,7 @@ while True:
         if(not fct.isRedTurnedOn()):
             #Turn on red led
             fct.turnOnRed()
-            
-            
+               
     #If the response was 'opened'      
     elif(barrier_status == "opened"):
         print("opened")
@@ -53,7 +52,6 @@ while True:
         if(not fct.isGreenTurnedOn()):
             #Turn on green led
             fct.turnOnGreen()
-            
             
     else:#If the response was 'normal'
         print("normal")
