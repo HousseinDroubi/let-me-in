@@ -12,8 +12,8 @@ const Events=()=> {
     const myIPv4  = process.env.REACT_APP_MY_IPV4;
     const base_url = process.env.REACT_APP_BASE_URL;
     const [called,setCalled]=useState(false);
-    const[dates,setDates]=useState([]);
-    const[events,setEvents]=useState([]);
+    const [dates,setDates]=useState([]);
+    const [events,setEvents]=useState([]);
     const [isDrawerVisible,setIsDrawerVisible]=useState(true);
 
     // In the below function, we are changing the from month number to its name
