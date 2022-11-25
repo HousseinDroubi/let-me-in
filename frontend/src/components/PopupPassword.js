@@ -8,11 +8,12 @@ import axios from 'axios';
 import secureLocalStorage from 'react-secure-storage';
 
 const PopupPassword = (props)=>{
+
     const base_url = process.env.REACT_APP_BASE_URL;
 
     const showDenyPopUp = (att)=>{
-    props.setPopupDenyVisible(true);
-    props.setAttention(att);
+        props.setPopupDenyVisible(true);
+        props.setAttention(att);
     }
     
     const closePopup=()=>{
@@ -20,6 +21,7 @@ const PopupPassword = (props)=>{
     }
 
     const changePassword = ()=>{
+
         if(props.oldPassword==='')
           showDenyPopUp("Old password should not be empty.");
         else if(props.newPassword==='')
@@ -44,43 +46,44 @@ const PopupPassword = (props)=>{
                 headers: { Authorization: `Bearer ${secureLocalStorage.getItem("token")}` }
             };
                 
-                    axios.post(`${base_url}change_admin_password`,body,header)
-                    .then(function (response) {
-                    if(response.data.message==='Wrong Password'){
-                        
-                        showDenyPopUp("Wrong Password."); 
-                    }else{
-                        showDenyPopUp("Password changed successfully"); 
-                        props.setOldPassword("");
-                        props.setNewPassword("");
-                        props.setConfirmPassword("");
-                    }
-                })
-                .catch(function (error) {
-                    showDenyPopUp("Something went wrong."); 
-                });
+            axios.post(`${base_url}change_admin_password`,body,header)
+            .then(function (response) {
+                if(response.data.message==='Wrong Password'){
+                    
+                    showDenyPopUp("Wrong Password."); 
+                }else{
+                    showDenyPopUp("Password changed successfully"); 
+                    props.setOldPassword("");
+                    props.setNewPassword("");
+                    props.setConfirmPassword("");
+                }
+            })
+            .catch(function (error) {
+                showDenyPopUp("Something went wrong."); 
+            });
         }
     }
+
     return (
-    <div className={classnames( "popup",props.className)}>
-        <div className='popup-password'>
-            <div className='popup-title'>  
-                <div className='popup-cancel' onClick={closePopup}>
-                    <p>x</p>
+        <div className={classnames( "popup",props.className)}>
+            <div className='popup-password'>
+                <div className='popup-title'>  
+                    <div className='popup-cancel' onClick={closePopup}>
+                        <p>x</p>
+                    </div> 
+                </div>
+                <NormalTitle title="Change Password"/>
+                <div className='admin-profile-fields'>   
+                    <Label  title={"Old password"} />
+                    <Form setText={props.setOldPassword} value = {props.oldPassword} text={props.oldPassword} type="password"/>  
+                    <Label  title={"New password"} />
+                    <Form setText={props.setNewPassword} value = {props.newPassword} text = {props.newPassword} type="password"/>
+                    <Label  title={"Confirm password"} />
+                    <Form setText={props.setConfirmPassword} value = {props.confirmPassword} text = {props.confirmPassword} type="password"/>
+                    <Button name={"Change Password"} className='mt-33' onClick={changePassword}/>
                 </div> 
             </div>
-            <NormalTitle title="Change Password"/>
-            <div className='admin-profile-fields'>   
-                <Label  title={"Old password"} />
-                <Form setText={props.setOldPassword} value = {props.oldPassword} text={props.oldPassword} type="password"/>  
-                <Label  title={"New password"} />
-                <Form setText={props.setNewPassword} value = {props.newPassword} text = {props.newPassword} type="password"/>
-                <Label  title={"Confirm password"} />
-                <Form setText={props.setConfirmPassword} value = {props.confirmPassword} text = {props.confirmPassword} type="password"/>
-                <Button name={"Change Password"} className='mt-33' onClick={changePassword}/>
-            </div> 
         </div>
-    </div>
     );
 }
 export default PopupPassword;
