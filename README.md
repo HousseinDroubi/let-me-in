@@ -63,6 +63,21 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 
 <br><br>
 
+<img src="./readme/title5.svg" id="implementation"/>
+> Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below, these are gifs from the real app.
+
+| Open the Barrier| 
+| -----------------|
+|![OpenBarrier](/readme/gifs/open_barrier.gif)|
+
+| Close the Barrier| 
+| -----------------|
+|![CloseBarrier](/readme/gifs/close_barrier.gif)|
+
+| Return to Initial State| 
+| -----------------|
+|![NormalBarrier](/readme/gifs/return_to_normal.gif)|
+
 <img src="./readme/title6.svg" id = "how-to-run"/>
 
 
