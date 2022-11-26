@@ -78,6 +78,14 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 | -----------------|
 |![NormalBarrier](/readme/gifs/return_to_normal.gif)|
 
+| User in the Accepted List| 
+| -----------------|
+|![AcceptedUser](/readme/gifs/accepted_user.gif)|
+
+| User in the Blocked List| 
+| -----------------|
+|![BlockedUser](/readme/gifs/rejected_user.gif)|
+
 <img src="./readme/title6.svg" id = "how-to-run"/>
 
 
@@ -214,7 +222,7 @@ php artisan serve --host your IPv4 --port 8000
 ```sh 
 npm install
 ```
-20. Rename .env.example to .env.local
+20. Rename .env.example to .env
 
 21. From .env.local, remove your IPv4 and put your own IPv4.
 
