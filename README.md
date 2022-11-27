@@ -104,13 +104,37 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 
 | Add User  | Edit User's Data |
 | -----------------| -----|
-| ![Login](/readme/gifs/add_user.gif) | ![ChangePassword](/readme/gifs/edit_user.gif) 
+| ![AddUser](/readme/gifs/add_user.gif) | ![EditUser](/readme/gifs/edit_user.gif) 
 
 | Block User  | Unblock User |
 | -----------------| -----|
-| ![Login](/readme/gifs/block_user.gif) | ![ChangePassword](/readme/gifs/unblock_user.gif) 
+| ![BlockUser](/readme/gifs/block_user.gif) | ![UnblockUser](/readme/gifs/unblock_user.gif) 
 
-<img src="./readme/title6.svg" id = "how-to-run"/>
+> These are screenshots from the real app.
+
+| Landing  | Login |
+| -----------------| -----|
+| ![Landing](/readme/screenshots/get_started.png) | ![Login](/readme/screenshots/login.png) 
+
+| Forgot Password  | Home |
+| -----------------| -----|
+| ![ForgotPassword](/readme/screenshots/forgot_password.png) | ![Home](/readme/screenshots/home_page.png) 
+
+| All Users  | Add User |
+| -----------------| -----|
+| ![AllUsers](/readme/screenshots/all_users.png) | ![AddUser](/readme/screenshots/add_user.png)
+
+| Edit User  | Blocked Users |
+| -----------------| -----|
+| ![EditUser](/readme/screenshots/edit_user.png) | ![BlockedUsers](/readme/screenshots/blocked_users.png) 
+
+| Waiting User  | Admin Profile |
+| -----------------| -----|
+| ![WaitingUser](/readme/screenshots/waiting_user.png) | ![AdminProfile](/readme/screenshots/edit_admin_data.png) 
+
+| Change Password  |
+| -----------------| 
+| ![ChangePassword](/readme/screenshots/change_admin_password.png) |
 
 
 > This is an example of how you may give instructions on setting up your project locally.
