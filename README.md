@@ -86,6 +86,14 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 | -----------------|
 |![BlockedUser](/readme/gifs/rejected_user.gif)|
 
+| Accept New User| 
+| -----------------|
+|![AcceptNewUser](/readme/gifs/new_user_accept.gif)|
+
+| Reject New User| 
+| -----------------|
+|![RejectNewUser](/readme/gifs/new_user_reject.gif)|
+
 <img src="./readme/title6.svg" id = "how-to-run"/>
 
 
@@ -224,7 +232,7 @@ npm install
 ```
 20. Rename .env.example to .env
 
-21. From .env.local, remove your IPv4 and put your own IPv4.
+21. From .env remove your IPv4 and put your own IPv4.
 
 22. Start the application
 ```sh
