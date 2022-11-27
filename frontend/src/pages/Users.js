@@ -62,7 +62,6 @@ const Users=()=> {
           }
       })
       .catch(function (error) {
-        console.log(error);
       });
     
       setCalled(true);

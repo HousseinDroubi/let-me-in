@@ -46,10 +46,8 @@ const Layout = (props)=>{
 
         axios.post(`${base_url}change_barrier_status`,body,header)
         .then(function (response) {
-            console.log(response);
         })
         .catch(function (error) {
-            console.log(error);
         });
     }   
 

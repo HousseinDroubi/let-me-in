@@ -33,11 +33,9 @@ const BoxUser = (props)=>{
     
         axios.post(`${props.base_url}block_user`,body,header)
             .then(function (response) {
-            console.log(response);
             window.location.reload(false); 
             })
             .catch(function (error) {
-            console.log(error);
             });
     }
 

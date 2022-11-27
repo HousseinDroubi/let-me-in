@@ -98,11 +98,9 @@ const BlockedUsers= ()=> {
     
                     axios.post(`${base_url}unblock_user`,body,header)
                     .then(function (response) {
-                        console.log(response);
                         window.location.reload(false); 
                     })
                     .catch(function (error) {
-                        console.log(error);
                     });
     
     
