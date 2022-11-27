@@ -94,6 +94,10 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 | -----------------|
 |![RejectNewUser](/readme/gifs/new_user_reject.gif)|
 
+| Forgot Password| 
+| -----------------|
+|![ForgotPassword](/readme/gifs/forgot_password.gif)|
+
 <img src="./readme/title6.svg" id = "how-to-run"/>
 
 
