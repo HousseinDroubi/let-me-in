@@ -106,6 +106,10 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 | -----------------| -----|
 | ![Login](/readme/gifs/add_user.gif) | ![ChangePassword](/readme/gifs/edit_user.gif) 
 
+| Block User  | Unblock User |
+| -----------------| -----|
+| ![Login](/readme/gifs/block_user.gif) | ![ChangePassword](/readme/gifs/unblock_user.gif) 
+
 <img src="./readme/title6.svg" id = "how-to-run"/>
 
 
