@@ -98,7 +98,7 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 | -----------------|
 |![ForgotPassword](/readme/gifs/forgot_password.gif)|
 
-| Login  | Edit Profile |
+| Home Page  | Edit Profile |
 | -----------------| -----|
 | ![Login](/readme/gifs/login.gif) | ![ChangePassword](/readme/gifs/change_password.gif) 
 
