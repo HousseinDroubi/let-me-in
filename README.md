@@ -136,7 +136,9 @@ Here's a brief high-level overview of the tech stack the Let me in system uses:
 | -----------------| 
 | ![ChangePassword](/readme/screenshots/change_admin_password.png) |
 
+<br><br>
 
+<img src="./readme/title6.svg" id="how-to-run"/>
 > This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
